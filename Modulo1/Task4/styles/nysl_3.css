@@ -1,0 +1,325 @@
+/* DEFINICION DE VARIABLES */
+:root{
+    --logo-size: 100px;
+    --header-heigth: 50vh;
+    --content-width: 80%;
+    --logo-margin: calc(var(--logo-size) + 35px);
+    --nav-heigth: calc(var(--header-heigth) * 0.15);
+    --bgcolor: #f1f6ff;
+}
+
+/* DEFINICION DE LOS MARGENES */
+
+* {
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#contenido > h2, li {
+    margin: 5px;
+}
+main {
+    padding: 25px;
+}
+body {
+    
+    background-color: var(--bgcolor);
+}
+p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* FORMATO DE HEADER Y SUS CHILDS */
+body > header {
+    position: relative;
+    top: 0;
+    min-height: var(--header-heigth);
+    min-width: 100%;
+}
+body > header > h1 {
+    position: absolute;
+    bottom: 50px;    
+    right: 20px;
+    text-shadow: 1px 1px 25px #22ea10;
+   
+    
+}
+#bgImg {
+    z-index: -999;
+    position: absolute;
+    bottom: 0;
+    min-height: 85%;
+    min-width: 100%;
+    background: url(../img/design3_image1.jpg) center 0;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: -30px;
+}
+
+header > h2 {
+    min-width: 100%;
+    text-align: center;
+    background-color: #033949;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2px;
+}
+
+/* FORMATO Y POSICION DE LOGO */
+#logo{
+    z-index: 999;
+    height: var(--logo-size);
+    width: var(--logo-size);
+    background: url('../img/nysl_logo.png');
+    background-size: cover;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+}
+
+/* FORMATO DE NAV */
+nav {
+    position: absolute;
+    top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    background-color: #033949;
+    height: var(--nav-heigth);
+    line-height: var(--nav-heigth);
+    
+}
+
+nav ul {
+    padding-left: 140px;
+
+}
+
+nav li {
+    display: inline-block;
+    margin: 0px 5px;
+    height: var(--nav-heigth);
+    transition: background-color 0.7s;  
+}
+
+nav li:hover {
+    background-color: #22ea10;
+    
+}
+
+nav li > a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.25em;
+}
+nav li.active {
+    border-bottom: #22ea10 solid 5px;
+    height: calc(var(--nav-heigth) - 5px); /*Al alto del <nav> le resto 5px para que el subrayado del link activo quede dentro del mismo <li>*/
+    
+    
+}
+nav li.active > a{
+    font-weight: bold;
+    /* text-shadow: 1px 2px #A3FF15;
+    color: gray; */
+
+}
+
+/* FORMATO DE CONTENIDO */
+#contenido {
+    position: absolute;
+    width: var(--content-width);
+    left: 10%;
+    top: calc(var(--header-heigth + 5vh));
+}
+
+#contenido > * > li{
+    display: block;
+}
+
+#contenido > p {
+    padding: 0px 15px;
+}
+
+.card {
+    padding: 15px;
+    transition: box-shadow 0.7s, background-color 1s;
+}
+
+.card:hover {
+    /* border: #033949 1px solid; */
+    box-shadow: #033949 1px 1px 10px;
+    background-color: rgba(3, 57, 73, 0.1);
+}
+
+
+/* FORMATOS DE LISTAS */
+
+#rulesMain > header {
+    position:relative;
+    top: 25px;
+    text-align: center;
+    /* min-height: 0; */
+}
+#rulesHeader {
+    text-align: center;
+    margin: 20px;
+}
+ul, ol , .squarelist, .alphalist{
+    margin-left: 25px;
+}
+#rulesMain > p {
+    padding: 30px;
+}
+
+.alphalist {
+    list-style-type: lower-alpha;
+}
+.squarelist {
+    list-style-type: square;
+}
+.blocklist > li {
+    display: block;
+}
+.circlelist {
+    list-style-type: circle;
+}
+#fifaregs > li {
+    margin: 10px;
+}
+
+/* FORMATOS VARIOS DE TEXTO */
+#events > li > h4{
+    font-style: italic;
+}
+
+/* FORMATOS DE TABLA */
+table {
+    width: 75%;   
+}
+table, th, td {
+    border: 0px solid black;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+.gamesSchedule tr:hover, .locations tr:hover  {
+    background-color: cadetblue;
+}
+
+caption {
+    text-align: left;
+    font-weight: bold;
+}
+
+#gameInfoMain > * {
+    padding: 10px;
+}
+
+.gamesSchedule th, .gamesSchedule td {
+    width: 25%;
+}
+
+.locations td{
+    width: 50%;
+    text-align: left;
+}
+
+/* FORMATOS DE FORM */
+
+#registrationForm {
+    width: 100%;
+}
+
+#registrationForm > * {
+    margin: 15px;
+}
+
+input[type=text] {
+    padding: 5px;
+    border-bottom: 1px #033949 solid;
+    background-color: transparent;    
+    min-width: 15%;
+    max-width: 100%;
+  }
+
+  input[type=text]:focus {
+      background-color: #0339494f;
+      color: white;
+      
+  }
+
+  input[type=submit] {
+      background-color: #033949;
+      border: #033949 2px solid;
+      color: white;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 7px;
+      transition: backround-color 0.7s, color 0.9s;
+  }
+  input[type=submit]:hover {
+      background-color: white;
+      color: #033949;
+  }
+
+  label {
+      width: 20%;
+  }
+  fieldset {    
+      width: 100%;
+      padding-top: 10px;
+      margin-left: 0;
+      margin-right: 0;
+
+  }
+
+
+  .row {
+      width: 100%;
+
+    }
+    .row > * {
+        display: inline;
+        margin: 3%;
+
+    }
+    .col-1 {
+        width: 100%;
+    }
+        
+    .col-2 {
+      width: 50%;
+  }
+
+  .col-4 {
+      width: 25%;
+  }
+  .col-1 input[type=text] {
+    min-width: 50%;
+  }
+  .col-2 input[type=text] {
+    min-width: 25%;
+  }
+
+  #gradeSelection  input{
+      margin-left: 15px;
+  }
+
+  fieldset.col-2 {
+      width: 43%;
+     
+  }
+
+  /* TODO */
+
+  /* 
+    PONER LOS LABEL COMO DISPLAY:INLINE-BLOC; Y PROBAR QUE LOS RADIO QUEDEN BIEN
+  
+  */

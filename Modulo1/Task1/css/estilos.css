@@ -1,0 +1,26 @@
+nav{
+    display:inline-flex;
+    justify-content: space-between;
+}
+nav>div{
+    width: 25%;
+}
+#events > li > h4{
+    font-style: italic;
+}
+body{
+    display: grid;
+    grid-template-columns: 15% auto;
+    grid-gap: 30px;
+   
+}
+#barraIzquierda > img {
+    max-width: 100%;
+}
+#logo{
+    max-height: 150px;
+}
+
+#barraIzquierda{
+    text-align: center;
+}

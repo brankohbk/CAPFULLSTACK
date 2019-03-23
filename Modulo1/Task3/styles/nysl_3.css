@@ -1,0 +1,208 @@
+/* DEFINICION DE VARIABLES */
+:root{
+    --logo-size: 100px;
+    --header-heigth: 50vh;
+    --content-width: calc(100vw - var(--logo-size) * 2);
+    --logo-margin: calc(var(--logo-size) + 35px);
+    --nav-heigth: calc(var(--header-heigth) * 0.15);
+}
+
+/* DEFINICION DE LOS MARGENES */
+
+ * {
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+    font-family: 'Roboto', serif;
+}
+
+#contenido > h2, li {
+    margin: 5px;
+}
+main {
+    padding: 25px;
+}
+p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* FORMATO DE HEADER Y SUS CHILDS */
+body > header {
+    position: relative;
+    top: 0;
+    min-height: var(--header-heigth);
+    min-width: 100%;
+}
+body > header > h1 {
+    position: absolute;
+    bottom: 50px;    
+    right: 20px;
+    text-shadow: 1px 2px #22ea10, 2px 1px #1263e5;
+   
+    
+}
+#bgImg {
+    z-index: -999;
+    position: absolute;
+    bottom: 0;
+    min-height: 85%;
+    min-width: 100%;
+    background: url(../img/design3_image1.jpg) center 0;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: -30px;
+}
+
+header > h2 {
+    min-width: 100%;
+    text-align: center;
+    background-color: #033949;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 2px;
+}
+
+/* FORMATO Y POSICION DE LOGO */
+#logo{
+    z-index: 999;
+    height: var(--logo-size);
+    width: var(--logo-size);
+    background: url('../img/nysl_logo.png');
+    background-size: cover;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* FORMATO DE NAV */
+nav {
+    position: absolute;
+    top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    background-color: #033949;
+    height: var(--nav-heigth);
+    line-height: var(--nav-heigth);
+    
+}
+
+nav ul {
+    padding-left: 140px;
+
+}
+
+nav li {
+    display: inline-block;
+    margin: 0px 5px;
+    height: var(--nav-heigth);
+    
+}
+
+nav li:hover {
+    background-color: #22ea10;
+}
+
+nav li > a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.25em;
+}
+nav li.active > a{
+    text-shadow: 1px 2px #A3FF15;
+    font-weight: bold;
+    color: gray;
+
+}
+
+/* FORMATO DE CONTENIDO */
+#contenido {
+    position: absolute;
+    max-width: var(--content-width);
+    left: var(--logo-margin);
+    top: calc(var(--header-heigth + 5vh));
+}
+
+#contenido > * > li{
+    display: block;
+}
+
+#contenido > p {
+    padding: 0px 15px;
+}
+
+
+/* FORMATOS DE LISTAS */
+
+#rulesMain > header {
+    position:relative;
+    top: 25px;
+    text-align: center;
+    /* min-height: 0; */
+}
+#rulesHeader {
+    text-align: center;
+    margin: 20px;
+}
+ul, ol , .squarelist, .alphalist{
+    margin-left: 25px;
+}
+#rulesMain > p {
+    padding: 30px;
+}
+
+.alphalist {
+    list-style-type: lower-alpha;
+}
+.squarelist {
+    list-style-type: square;
+}
+.blocklist > li {
+    display: block;
+}
+.circlelist {
+    list-style-type: circle;
+}
+#fifaregs > li {
+    margin: 10px;
+}
+
+/* FORMATOS VARIOS DE TEXTO */
+#events > li > h4{
+    font-style: italic;
+}
+
+/* FORMATOS DE TABLA */
+table {
+    width: 75%;   
+}
+table, th, td {
+    border: 0px solid black;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+.gamesSchedule tr:hover, .locations tr:hover  {
+    background-color: cadetblue;
+}
+
+caption {
+    text-align: left;
+    font-weight: bold;
+}
+
+#gameInfoMain > * {
+    padding: 10px;
+}
+
+.gamesSchedule th, .gamesSchedule td {
+    width: 25%;
+}
+
+.locations td{
+    width: 50%;
+    text-align: left;
+}
