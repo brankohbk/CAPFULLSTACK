@@ -28,177 +28,175 @@
     </nav>
 
     <main id="contenido">
-
-        <form id="registrationForm" action="show_data.html" method="GET">
+        <!-- SE SETEÓ EL AUTOCOMPLETE EN OFF PARA QUE NO MOLESTE LA CARGA DE INFO -->
+        <form id="registrationForm" autocomplete="off" action="show_data.html" method="GET">
             <fieldset>
                 <div class="row">
-                    <div class="col-2"><label for="first_name">First Name: </label> <input id="first_name" type="text"
-                            name="first_name"></div>
-                    <div class="col-2"><label for="last_name">Last Name: </label> <input id="last_name" type="text"
-                            name="last_name"></div>
+                    <label class="col-2">First Name: <input id="first_name" type="text"
+                            name="first_name"></label>
+                    <label class="col-2">Last Name: <input id="last_name" type="text"
+                            name="last_name"></label>
                 </div>
                 <div class="row">
-                    <div class="col-1">
-                        <label for="street">Street Address: </label> <input id="street" type="text" name="street">
-                    </div>
+
+                    <label class="col-1">Street Address: <input id="street" type="text"
+                            name="street"></label>
+
                 </div>
                 <div class="row">
-                    <div class="col-2"><label for="city">City: </label><input type="text" name="city" id="city"></div>
-                    <div class="col-2"><label for="zip">Zip Code: </label> <input type="text" name="zip" id="zip"></div>
+                    <label class="col-2">City: <input type="text" name="city" id="city"> </label>
+                    <label class="col-2">Zip Code:<input type="text" name="zip" id="zip"> </label>
                 </div>
                 <div class="row">
-                    <div class="col-2"><label for="birth">Birth Date (mm/dd/yyyy): </label> <input type="text"
-                            name="birth" id="birth"></div>
-                    <div class="col-2"><label for="gender">Gender: </label><input type="radio" name="gender"
-                            value="male" checked> Male <input type="radio" name="gender" value="female"> Female</div>
+                    <label class="col-2">Birth Date (mm/dd/yyyy): <input type="text" name="birth"
+                            id="birth"> </label>
+                    <label class="col-2">Gender: <input type="radio" name="gender" value="male" checked>
+                        Male</label>
+                    <label><input type="radio" name="gender" value="female"> Female </label>
                 </div>
                 <div class="row">
-                    <div class="col-1" id="gradeSelection"><label for="grade">Grade: </label>
-                        <input type="radio" name="grade" value="pre">Pre-School
-                        <input type="radio" name="grade" value="1">1<sup>st</sup>
-                        <input type="radio" name="grade" value="2">2<sup>nd</sup>
-                        <input type="radio" name="grade" value="3">3<sup>rd</sup>
-                        <input type="radio" name="grade" value="4">4<sup>th</sup>
-                        <input type="radio" name="grade" value="5">5<sup>th</sup>
-                    </div>
+                    <label>Grade:</label>
+                    <label><input type="radio" name="grade" value="pre">Pre-School</label>
+                    <label><input type="radio" name="grade" value="1">1<sup>st</sup></label>
+                    <label><input type="radio" name="grade" value="2">2<sup>nd</sup></label>
+                    <label><input type="radio" name="grade" value="3">3<sup>rd</sup></label>
+                    <label><input type="radio" name="grade" value="4">4<sup>th</sup></label>
+                    <label><input type="radio" name="grade" value="5">5<sup>th</sup></label>
+
                 </div>
                 <div class="row">
-                    <div class="col-1"><label for="parent">Parent/Guardian: </label><input type="text" name="parent"
-                            id="parent"></div>
+                    <label class="col-1">Parent/Guardian: <input type="text" name="parent" id="parent"></label>
                 </div>
                 <div class="row">
-                    <div class="col-2"><label for="phone">Contact Phone: </label><input type="text" name="phone"
-                            id="phone"></div>
-                    <div class="col-2"><label for="email">Contact Email</label><input type="text" name="email"
-                            id="email"></div>
+                    <label class="col-2" for="phone">Contact Phone: <input type="text" name="phone" id="phone"></label>
+                    <label class="col-2" for="email">Contact Email: <input type="text" name="email" id="email"></label>
                 </div>
             </fieldset>
             <fieldset>
                 <legend><strong>Which elementary schools do you live near?</strong></legend>
                 <div class="row">
                     <fieldset class="col-2">
-                        <legend><strong>First closest School</strong></legend>
-                        <div class="row">
-                            <div class="col-2"><input type="radio" name="firstSchool" value="AJ Katzenmaier">AJ
-                                Katzenmaier</div>
-                            <div class="col-2"><input type="radio" name="firstSchool" value="Marjorie P Hart">Marjorie P
-                                Hart</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><input type="radio" name="firstSchool" value="Greenbay">Greenbay</div>
-                            <div class="col-2"><input type="radio" name="firstSchool" value="North Elementary">North
-                                Elementary</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><input type="radio" name="firstSchool" value="Howard A Yeager">Howard A
-                                Yeager</div>
-                            <div class="col-2"><input type="radio" name="firstSchool" value="South Elementary">South
-                                Elementary</div>
-                        </div>
-
+                        <legend><strong>First Closest School:</strong></legend>
+                        <select class="col-1" name="firstSchool" id="firstSchool" size="1">
+                            <option value="AJ Katzenmaier" selected>AJ Katzenmaier</option>
+                            <option value="Marjorie P Hart">Marjorie P Hart</option>
+                            <option value="Greenbay">Greenbay</option>
+                            <option value="North Elementary">North Elementary</option>
+                            <option value="Howard A Yeager">Howard A Yeager</option>
+                            <option value="South Elementary">South Elementary</option>
+                        </select>
                     </fieldset>
                     <fieldset class="col-2">
                         <legend><strong>Second Closest School:</strong></legend>
-                        <div class="row">
-                            <div class="col-2"><input type="radio" name="secondSchool" value="AJ Katzenmaier">AJ
-                                Katzenmaier</div>
-                            <div class="col-2"><input type="radio" name="secondSchool" value="Marjorie P Hart">Marjorie
-                                P Hart</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><input type="radio" name="secondSchool" value="Greenbay">Greenbay</div>
-                            <div class="col-2"><input type="radio" name="secondSchool" value="North Elementary">North
-                                Elementary</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><input type="radio" name="secondSchool" value="Howard A Yeager">Howard A
-                                Yeager</div>
-                            <div class="col-2"><input type="radio" name="secondSchool" value="South Elementary">South
-                                Elementary</div>
-                        </div>
+                        <select class="col-1" name="secondSchool" id="secondSchool" size="1">
+                            <option value="AJ Katzenmaier" selected>AJ Katzenmaier</option>
+                            <option value="Marjorie P Hart">Marjorie P Hart</option>
+                            <option value="Greenbay">Greenbay</option>
+                            <option value="North Elementary">North Elementary</option>
+                            <option value="Howard A Yeager">Howard A Yeager</option>
+                            <option value="South Elementary">South Elementary</option>
+                        </select>
                     </fieldset>
                 </div>
-            </fieldset>
-            <fieldset class="col-2">
-                <legend><strong>What position(s) do you normally play?</strong> (check all that apply)</legend>
-                <div class="row">
-                    <div class="col-2"><input type="checkbox" name="position" value="Forward">Forward</div>
-                    <div class="col-2"><input type="checkbox" name="position" value="Midfield">Midfield</div>
-                </div>
-                <div class="row">
-                    <div class="col-2"><input type="checkbox" name="position" value="Defense">Defense</div>
-                    <div class="col-2"><input type="checkbox" name="position" value="Goalkeeper">Goalkeeper</div>
-                </div>
+
 
             </fieldset>
-            <fieldset class="col-2">
-                <legend><strong>What position(s) do you want to play?</strong> (check all that apply)</legend>
-                <div class="row">
-                    <div class="col-2"><input type="checkbox" name="position" value="Forward">Forward</div>
-                    <div class="col-2"><input type="checkbox" name="position" value="Midfield">Midfield</div>
-                </div>
-                <div class="row">
-                    <div class="col-2"><input type="checkbox" name="position" value="Defense">Defense</div>
-                    <div class="col-2"><input type="checkbox" name="position" value="Goalkeeper">Goalkeeper</div>
-                </div>
+            <div class="row">
+                <fieldset class="col-2">
+                    <legend><strong>What position(s) do you normally play?</strong> (check all that apply)</legend>
+                    <div class="row">
+                        <label class="col-2"><input type="checkbox" name="normalPosition"
+                                value="Forward">Forward</label>
+                        <label class="col-2"><input type="checkbox" name="normalPosition"
+                                value="Midfield">Midfield</label>
+                    </div>
+                    <div class="row">
+                        <label class="col-2"><input type="checkbox" name="normalPosition"
+                                value="Defense">Defense</label>
+                        <label class="col-2"><input type="checkbox" name="normalPosition"
+                                value="Goalkeeper">Goalkeeper</label>
+                    </div>
 
-            </fieldset>
-            <input type="checkbox" name="uniform" id="uniform"><label for="uniform"><strong>Already have a
-                    uniform</strong></label>
+                </fieldset>
+                <fieldset class="col-2">
+                    <legend><strong>What position(s) do you want to play?</strong> (check all that apply)</legend>
+                    <div class="row">
+                        <label class="col-2"><input type="checkbox" name="wantedPosition"
+                                value="Forward">Forward</label>
+                        <label class="col-2"><input type="checkbox" name="wantedPosition"
+                                value="Midfield">Midfield</label>
+                    </div>
+                    <div class="row">
+                        <label class="col-2"><input type="checkbox" name="wantedPosition"
+                                value="Defense">Defense</label>
+                        <label class="col-2"><input type="checkbox" name="wantedPosition"
+                                value="Goalkeeper">Goalkeeper</label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row">
+                <fieldset class="col-4">
+                    <label class="col-1"><input type="checkbox" name="uniform" value="Already have a
+                        uniform"><strong>Already have a uniform</strong></label>
+                </fieldset>
+            </div>
             <div class="row">
                 <fieldset class="col-2">
                     <legend><strong>Jersey size</strong></legend>
                     <div class="row">
-                        <div class="col-2"><label for="jsys">Youth Small</label><input type="radio" name="jersey"
-                                id="jsys" value="Youth Small"></div>
-                        <div class="col-2"><label for="jsm">Medium</label><input type="radio" name="jersey" id="jsm"
-                                value="Medium"></div>
+                        <label class="col-2"><input type="radio" name="jersey" value="Youth Small">Youth Small</label>
+                        <label class="col-2"><input type="radio" name="jersey" value="Medium">Medium</label>
                     </div>
                     <div class="row">
-                        <div class="col-2"><label for="jsym">Youth Medium</label><input type="radio" name="jersey"
-                                id="jsym" value="Youth Medium"></div>
-                        <div class="col-2"><label for="jsl">Large</label><input type="radio" name="jersey" id="jsl"
-                                value="Large"></div>
+                        <label class="col-2"><input type="radio" name="jersey" value="Youth Medium">Youth Medium</label>
+                        <label class="col-2"><input type="radio" name="jersey" value="Large">Large</label>
                     </div>
                     <div class="row">
-                        <div class="col-2"><label for="jsyl">Youth Large</label><input type="radio" name="jersey"
-                                id="jsyl" value="Youth Large"></div>
-                        <div class="col-2"><label for="jsel">Extra-Large</label><input type="radio" name="jersey"
-                                id="jsel" value="Extra-Large"></div>
+                        <label class="col-2"><input type="radio" name="jersey" value="Youth Large">Youth Large</label>
+                        <label class="col-2"><input type="radio" name="jersey" value="Extra-Large">Extra-Large</label>
                     </div>
                     <div class="row">
-                        <div class="col-2"><label for="jss">Small</label><input type="radio" name="jersey" id="jss"
-                                value="Small"></div>
-
+                        <label class="col-2"><input type="radio" name="jersey" value="Small">Small</label>
                     </div>
                 </fieldset>
                 <fieldset class="col-2">
                     <legend><strong>Short size</strong></legend>
                     <div class="row">
-                        <div class="col-2"><label for="sys">Youth Small</label><input type="radio" name="short" id="sys" value="Youth Small"></div>
-                        <div class="col-2"><label for="sm">Medium</label><input type="radio" name="short" id="sm" value="Medium"></div>
+                        <label class="col-2"><input type="radio" name="short" value="Youth Small">Youth Small</label>
+                        <label class="col-2"><input type="radio" name="short" value="Medium">Medium</label>
                     </div>
                     <div class="row">
-                        <div class="col-2"><label for="sym">Youth Medium</label><input type="radio" name="short" id="sym" value="Youth Medium"></div>
-                        <div class="col-2"><label for="sl">Large</label><input type="radio" name="short" id="sl" value="Large"></div>
+                        <label class="col-2"><input type="radio" name="short" value="Youth Medium">Youth
+                            Medium</label>
+                        <label class="col-2"><input type="radio" name="short" value="Large">Large</label>
                     </div>
                     <div class="row">
-                        <div class="col-2"><label for="syl">Youth Large</label><input type="radio" name="short" id="syl" value="Youth Large"></div>
-                        <div class="col-2"><label for="sel">Extra-Large</label><input type="radio" name="short" id="sel" value="Extra-Large"></div>
+                        <label class="col-2"><input type="radio" name="short" value="Youth Large">Youth Large</label>
+                        <label class="col-2"><input type="radio" name="short" value="Extra-Large">Extra-Large</label>
                     </div>
                     <div class="row">
-                        <div class="col-2"><label for="ss">Small</label><input type="radio" name="short" id="ss" value="Small"></div>
-
+                        <label class="col-2"><input type="radio" name="short" value="Small">Small</label>
                     </div>
 
                 </fieldset>
             </div>
-            <!-- TODO -->
-            <!-- 
-                -METER LOS RADIO INPUT DENTRO DEL LABEL.
-                -PASAR LOS INPUT A LA IZQUIERDA
-                -METER LAS ESCUELAS EN UN SELECT
-             -->
+            <section>
+                <h3>Permission to Play</h3>
+                <p>
+                    I, the parent or guardian of the minor registrant, agree that the registrant and I will abide by all the rules of the Northside Youth Soccer League (NYSL). In recognizing the possibility of physical injury associated with soccer and in consideration for
+                    the “League” accepting the registrant for its soccer programs and activities, I hereby release, discharge, and/or otherwise indemnify NYSL, their employees and associated personnel and volunteers, including the facilities used for
+                    practices and games, against any claim by or on behalf of the registrant as a result of the registrant’s participation in the program and/or being transported to or from NYSL sponsored activities, which transportation.</p>
+                <p>
+                    By entering my name below, I hereby agree and authorize the above. In addition, by entering my name below, I also acknowledge that I have read the cancellation policy and agree to its terms.
+                </p>
+            </section>
+            <fieldset>
+                <div class="row">
+                    <label>Parent/Guardian Name:<input class="col-3" type="text" name="parentSigned"></label>
+                    <label>Date: <input class="col-5" type="text" name="dateSigned"></label>
+                </div>
+            </fieldset>
+
 
 
             <input type="submit" value="Submit">

@@ -1,5 +1,6 @@
 /* DEFINICION DE VARIABLES */
-:root{
+
+:root {
     --logo-size: 100px;
     --header-heigth: 50vh;
     --content-width: 80%;
@@ -7,6 +8,7 @@
     --nav-heigth: calc(var(--header-heigth) * 0.15);
     --bgcolor: #f1f6ff;
 }
+
 
 /* DEFINICION DE LOS MARGENES */
 
@@ -17,35 +19,41 @@
     font-family: 'Roboto', sans-serif;
 }
 
-#contenido > h2, li {
+#contenido>h2,
+li {
     margin: 5px;
 }
+
 main {
     padding: 25px;
 }
+
 body {
-    
     background-color: var(--bgcolor);
 }
+
 p {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+
 /* FORMATO DE HEADER Y SUS CHILDS */
-body > header {
+
+body>header {
     position: relative;
     top: 0;
     min-height: var(--header-heigth);
     min-width: 100%;
 }
-body > header > h1 {
+
+body>header>h1 {
     position: absolute;
-    bottom: 50px;    
+    bottom: 50px;
     right: 20px;
     text-shadow: 1px 1px 25px #22ea10;
-   
-    
 }
+
 #bgImg {
     z-index: -999;
     position: absolute;
@@ -58,7 +66,7 @@ body > header > h1 {
     background-position-y: -30px;
 }
 
-header > h2 {
+header>h2 {
     min-width: 100%;
     text-align: center;
     background-color: #033949;
@@ -68,8 +76,10 @@ header > h2 {
     padding-bottom: 2px;
 }
 
+
 /* FORMATO Y POSICION DE LOGO */
-#logo{
+
+#logo {
     z-index: 999;
     height: var(--logo-size);
     width: var(--logo-size);
@@ -78,10 +88,11 @@ header > h2 {
     position: absolute;
     top: 20px;
     left: 20px;
-
 }
 
+
 /* FORMATO DE NAV */
+
 nav {
     position: absolute;
     top: 0;
@@ -93,45 +104,44 @@ nav {
     background-color: #033949;
     height: var(--nav-heigth);
     line-height: var(--nav-heigth);
-    
 }
 
 nav ul {
     padding-left: 140px;
-
 }
 
 nav li {
     display: inline-block;
     margin: 0px 5px;
     height: var(--nav-heigth);
-    transition: background-color 0.7s;  
+    transition: background-color 0.7s;
 }
 
 nav li:hover {
     background-color: #22ea10;
-    
 }
 
-nav li > a {
+nav li>a {
     text-decoration: none;
     color: white;
     font-size: 1.25em;
 }
+
 nav li.active {
     border-bottom: #22ea10 solid 5px;
-    height: calc(var(--nav-heigth) - 5px); /*Al alto del <nav> le resto 5px para que el subrayado del link activo quede dentro del mismo <li>*/
-    
-    
+    height: calc(var(--nav-heigth) - 5px);
+    /*Al alto del <nav> le resto 5px para que el subrayado del link activo quede dentro del mismo <li>*/
 }
-nav li.active > a{
+
+nav li.active>a {
     font-weight: bold;
     /* text-shadow: 1px 2px #A3FF15;
     color: gray; */
-
 }
 
+
 /* FORMATO DE CONTENIDO */
+
 #contenido {
     position: absolute;
     width: var(--content-width);
@@ -139,20 +149,22 @@ nav li.active > a{
     top: calc(var(--header-heigth + 5vh));
 }
 
-#contenido > * > li{
+#contenido>*>li {
     display: block;
 }
 
-#contenido > p {
+#contenido>p {
     padding: 0px 15px;
 }
 
 .card {
     padding: 15px;
-    transition: box-shadow 0.7s, background-color 1s;
+    transition: box-shadow 0.5s, background-color .7s;
 }
 
-.card:hover {
+.card:hover,
+.locations tr:hover,
+.gamesSchedule tbody>tr:hover {
     /* border: #033949 1px solid; */
     box-shadow: #033949 1px 1px 10px;
     background-color: rgba(3, 57, 73, 0.1);
@@ -161,75 +173,105 @@ nav li.active > a{
 
 /* FORMATOS DE LISTAS */
 
-#rulesMain > header {
-    position:relative;
+#rulesMain>header {
+    position: relative;
     top: 25px;
     text-align: center;
     /* min-height: 0; */
 }
+
 #rulesHeader {
     text-align: center;
     margin: 20px;
 }
-ul, ol , .squarelist, .alphalist{
+
+ul,
+ol,
+.squarelist,
+.alphalist {
     margin-left: 25px;
 }
-#rulesMain > p {
+
+#rulesMain>p {
     padding: 30px;
 }
 
 .alphalist {
     list-style-type: lower-alpha;
 }
+
 .squarelist {
     list-style-type: square;
 }
-.blocklist > li {
+
+.blocklist>li {
     display: block;
 }
+
 .circlelist {
     list-style-type: circle;
 }
-#fifaregs > li {
+
+#fifaregs>li {
     margin: 10px;
 }
 
+
 /* FORMATOS VARIOS DE TEXTO */
-#events > li > h4{
+
+#events>li>h4 {
     font-style: italic;
 }
 
+
 /* FORMATOS DE TABLA */
+
 table {
-    width: 75%;   
+    width: 75%;
 }
-table, th, td {
+
+table,
+th,
+td {
     border: 0px solid black;
     border-collapse: collapse;
     text-align: center;
-  }
-
-.gamesSchedule tr:hover, .locations tr:hover  {
-    background-color: cadetblue;
 }
+
+
+/* .gamesSchedule tr:hover {
+    background-color: cadetblue;
+} */
 
 caption {
     text-align: left;
     font-weight: bold;
 }
 
-#gameInfoMain > * {
+#gameInfoMain>* {
     padding: 10px;
 }
 
-.gamesSchedule th, .gamesSchedule td {
+.gamesSchedule th,
+.gamesSchedule td {
     width: 25%;
 }
 
-.locations td{
-    width: 50%;
-    text-align: left;
+.locations {
+    width: 60%;
 }
+
+.locations td {
+    width: 50%;
+    text-align: center;
+    padding: 5px;
+    margin: 3px;
+}
+
+.locations tr {
+    transition: box-shadow 0.5s, background-color 0.5s;
+}
+
 
 /* FORMATOS DE FORM */
 
@@ -237,89 +279,105 @@ caption {
     width: 100%;
 }
 
-#registrationForm > * {
+#registrationForm>* {
     margin: 15px;
 }
 
-input[type=text] {
+input[type=text],
+select {
     padding: 5px;
     border-bottom: 1px #033949 solid;
-    background-color: transparent;    
-    min-width: 15%;
-    max-width: 100%;
-  }
+    background-color: transparent;
+}
 
-  input[type=text]:focus {
-      background-color: #0339494f;
-      color: white;
-      
-  }
+input[type=text]:focus,
+select:focus {
+    background-color: #0339494f;
+    color: white;
+    font-weight: bold;
+}
 
-  input[type=submit] {
-      background-color: #033949;
-      border: #033949 2px solid;
-      color: white;
-      text-transform: uppercase;
-      font-weight: bold;
-      padding: 7px;
-      transition: backround-color 0.7s, color 0.9s;
-  }
-  input[type=submit]:hover {
-      background-color: white;
-      color: #033949;
-  }
+input[type=submit] {
+    background-color: #033949;
+    border: #033949 2px solid;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 7px;
+    transition: backround-color 0.7s, color 0.9s;
+}
 
-  label {
-      width: 20%;
-  }
-  fieldset {    
-      width: 100%;
-      padding-top: 10px;
-      margin-left: 0;
-      margin-right: 0;
+input[type=submit]:hover {
+    background-color: white;
+    color: #033949;
+}
 
-  }
+label {
+    width: 20%;
+    display: inline-block;
+}
 
+fieldset {
+    width: 100%;
+    padding-top: 10px;
+    margin-left: 0;
+    margin-right: 0;
+    transition: box-shadow .72s;
+}
 
-  .row {
-      width: 100%;
+legend {
+    background-color: var(--bgcolor);
+    padding: 5px;
+    transition: box-shadow .72s;
+}
 
-    }
-    .row > * {
-        display: inline;
-        margin: 3%;
+fieldset:hover,
+fieldset:hover>legend {
+    box-shadow: 0px 0px 6px #033949;
+}
 
-    }
-    .col-1 {
-        width: 100%;
-    }
-        
-    .col-2 {
-      width: 50%;
-  }
+.row {
+    width: 100%;
+    margin-top: 7px;
+}
 
-  .col-4 {
-      width: 25%;
-  }
-  .col-1 input[type=text] {
-    min-width: 50%;
-  }
-  .col-2 input[type=text] {
+.row>* {
+    display: inline;
+    margin-left: 10px;
+}
+
+.col-1 {
+    width: 100%;
+}
+
+.col-2 {
+    width: 50%;
+}
+
+.col-3 {
+    width: 55%;
+}
+
+.col-4 {
+    width: 25%;
+}
+
+.col-5 {
+    width: 15%;
+}
+
+.col-1 input[type=text] {
+    min-width: 60%;
+}
+
+.col-2 input[type=text] {
     min-width: 25%;
-  }
+}
 
-  #gradeSelection  input{
-      margin-left: 15px;
-  }
+#gradeSelection input {
+    margin-left: 15px;
+}
 
-  fieldset.col-2 {
-      width: 43%;
-     
-  }
-
-  /* TODO */
-
-  /* 
-    PONER LOS LABEL COMO DISPLAY:INLINE-BLOC; Y PROBAR QUE LOS RADIO QUEDEN BIEN
-  
-  */
+fieldset.col-2 {
+    width: 43%;
+}
