@@ -1,0 +1,91 @@
+/* DEFINICION DE VARIABLES */
+:root{
+    --logo-size: 120px;
+    --header-heigth: 50vh;
+    --nav-width: 25vw;
+    --content-width: calc(100vw - var(--nav-width) * 2);
+}
+
+/* DEFINICION DE LOS MARGENES */
+
+ * {
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+}
+
+p, #contenido > h2 {
+    margin: 5px;
+}
+
+/* FORMATO DE HEADER Y SUS CHILDS */
+header {
+    position: relative;
+    top: 0;
+    min-height: var(--header-heigth);
+    min-width: 100%;
+}
+#bgImg {
+    z-index: -999;
+    position: absolute;
+    top: 0;
+    min-height: 100%;
+    min-width: 100%;
+    background: url(../img/design1_image1.jpg) center 0;
+    background-size: cover;
+    background-position-x: center;
+    background-position-y: -30px;
+}
+header > h1 {
+    position: absolute;
+    top: 0;    
+    color: white;
+    
+}
+
+header > h2 {
+    min-width: 100%;
+    text-align: center;
+    color: white;
+    background: black;
+    position: absolute;
+    bottom: 0;
+}
+
+/* FORMATO Y POSICION DE LOGO */
+#logo{
+    height: var(--logo-size);
+    width: var(--logo-size);
+    background: url('../img/nysl_logo.png');
+    background-size: cover;
+    position: absolute;
+    top: calc( var(--header-heigth) - var(--logo-size) / 2 - 17px);
+    right: 20px;
+}
+
+/* FORMATO DE NAV */
+nav {
+    
+    position: relative;
+    top: calc(var(--logo-size) / 2 + 10px );
+    max-width: var(--nav-width);
+    padding-left: 20px;
+    /* border: 1px solid black; */
+
+}
+
+nav > * > li {
+    display: block;
+}
+
+/* FORMATO DE CONTENIDO */
+#contenido {
+    position: relative;
+    max-width: var(--content-width);
+    left: 26vw;
+}
+
+/* FORMATOS VARIOS DE TEXTO */
+#events > li > h4{
+    font-style: italic;
+}
