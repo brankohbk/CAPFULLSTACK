@@ -112,11 +112,79 @@ function valorDeArray(array, index) {
 }
 valorDeArray(ages, 4);
 console.log("Exercise separator -----------------------------------||");
-
+// EJERCICIO 6: MOSTRAR LOS NUMEROS REPETIDOS DENTRO DE UN ARRAY
 function repetidos(array) {
+  var objeto = {};
   var repetidos = [];
-  array.forEach(element => {
-    // INCOMPLETOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-  });
+  // Por cada item dentro del array, pasarlo como un atributo (o key) con su correspondiente valor.
+  array.forEach(item => {
+    if (!objeto[item])
+      objeto[item] = 0;
+    objeto[item] += 1;
+  })
+
+  for (var atributo in objeto) {
+    if (objeto[atributo] > 1) {
+      repetidos.push(atributo);
+    }
+  }
+
+  return repetidos;
 
 }
+
+console.log(repetidos(ages));
+console.log("Exercise separator -----------------------------------||");
+myColor = ["Red", "Green", "White", "Black"];
+console.log(myColor.join(', '));
+console.log("Exercise separator -----------------------------------||");
+var string1 = "34423";
+
+function reverse(string) {
+  array = string.split('');
+  var reverse = [];
+  for (i = array.length; i > -1; i--) {
+    reverse.push(array[i]);
+  }
+  return reverse.join('');
+}
+
+console.log(string1);
+console.log(reverse(string1));
+console.log("Exercise separator -----------------------------------||");
+var string2 = "webmaster";
+
+function alphabetical(string) {
+  array = string.split('');
+  return array.sort().join('');
+}
+console.log(alphabetical(string2));
+console.log("Exercise separator -----------------------------------||");
+var string3 = "prince of persia";
+
+function mayuscula(string) {
+  resultado = string.split(' ').map(function(word) {
+    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }).join(' ');
+
+  return resultado;
+}
+console.log(mayuscula(string3));
+console.log("Exercise separator -----------------------------------||");
+var string4 = "Web development program";
+
+function palabraLarga(string) {
+  var str = string.split(' ');
+  var largo = 0;
+  var palabra;
+
+  for (var index = 0; index < str.length; index++) {
+    if (largo < str[index].length) {
+      largo = str[index].length;
+      palabra = str[index];
+    }
+
+  }
+  return palabra;
+}
+console.log(palabraLarga(string4));
