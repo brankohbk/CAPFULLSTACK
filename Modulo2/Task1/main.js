@@ -111,7 +111,7 @@ function valorDeArray(array, index) {
   console.log(array[index]);
 }
 valorDeArray(ages, 4);
-console.log("Exercise separator -----------------------------------||");
+console.log("Exercise separator ---------EJERCICIO 6: MOSTRAR LOS NUMEROS REPETIDOS DENTRO DE UN ARRAY---------||");
 // EJERCICIO 6: MOSTRAR LOS NUMEROS REPETIDOS DENTRO DE UN ARRAY
 function repetidos(array) {
   var objeto = {};
