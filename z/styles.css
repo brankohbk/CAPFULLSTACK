@@ -91,13 +91,16 @@ header h1 {
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
-  height: var(--mindhub-height);
+  height: calc(var(--mindhub-height) * 2);
   /* width: calc(var(--mindhub-width) * 2 + 10px); */
-  display: inline-flex;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #mindhub {
   /* position: relative; */
+  min-width: 150px;
+  min-height: 43px;
   width: var(--mindhub-width);
   height: var(--mindhub-height);
   background-image: url("logo-mindhub-blanco.png");
@@ -105,6 +108,8 @@ header h1 {
 }
 
 #gcba {
+  min-width: 150px;
+  min-height: 40px;
   width: var(--mindhub-width);
   height: calc(var(--mindhub-height) - 2px);
   background-image: url("BA2016.png");
