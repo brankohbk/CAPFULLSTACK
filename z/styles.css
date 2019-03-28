@@ -59,11 +59,18 @@
   font: 1em sans-serif;
 }
 
+ul,
+ol,
+li {
+  margin-left: 5px;
+  padding-left: 5px;
+}
+
 
 /* Header */
 
 :root {
-  --mindhub-width: 250px;
+  --mindhub-width: 20vw;
   --mindhub-height: calc(var(--mindhub-width) / 3.53);
 }
 
@@ -73,7 +80,7 @@ small {
 
 header h1 {
   position: absolute;
-  bottom: 20%;
+  bottom: 15%;
   left: 20px;
   font-size: 2.5em;
   color: white;
@@ -82,10 +89,11 @@ header h1 {
 #logos {
   position: absolute;
   top: 15px;
-  left: 30%;
-  height: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: var(--mindhub-height);
   width: calc(var(--mindhub-width) * 2 + 10px);
-  display: inline-block;
+  display: inline-flex;
 }
 
 #mindhub {
@@ -98,7 +106,15 @@ header h1 {
 
 #gcba {
   width: var(--mindhub-width);
-  height: var(--mindhub-height);
-  background-image: url("gcba.png");
+  height: calc(var(--mindhub-height) - 2px);
+  background-image: url("BA2016.png");
   background-size: contain;
+}
+
+#scroller {
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 5px;
 }
