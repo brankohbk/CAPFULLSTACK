@@ -73,8 +73,7 @@ li>a {
 
 #mainUL,
 #mainUL>li {
-  margin-top: 15px;
-  margin-left: 50px;
+  margin: 5% 5% 0% 5%;
   padding-bottom: 15px;
 }
 
