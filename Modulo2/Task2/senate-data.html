@@ -79,8 +79,12 @@
     // function renderTable(data) {
     //   renderRows(data);
     // }
+    var str = JSON.stringify(data.results);
+    var al = JSON.parse(str);
+    var al2 = JSON.stringify(al.congress);
+    alert(al2.congress);
 
-    document.getElementById("table-rows").innerHTML = JSON.stringify(data.results, null, 2);
+    document.getElementById("table-rows").innerHTML = al;
   </script>
 </body>
 
