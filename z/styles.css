@@ -92,7 +92,7 @@ header h1 {
   left: 50%;
   transform: translateX(-50%);
   height: var(--mindhub-height);
-  width: calc(var(--mindhub-width) * 2 + 10px);
+  /* width: calc(var(--mindhub-width) * 2 + 10px); */
   display: inline-flex;
 }
 
