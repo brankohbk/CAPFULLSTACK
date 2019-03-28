@@ -117,4 +117,5 @@ header h1 {
   left: 50%;
   transform: translateX(-50%);
   bottom: 5px;
+  max-width: 15%;
 }
