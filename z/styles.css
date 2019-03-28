@@ -76,19 +76,31 @@ li>a {
 #mainUL>li {
   margin-top: 15px;
   margin-left: 50px;
+  padding-bottom: 15px;
+}
+
+#mainUL h3 {
+  font-size: 1.25em;
+  color: aliceblue;
+  background-color: #808080;
+  display: inline-block;
+  padding: 3px;
 }
 
 #mainUL>li {
-  display: block;
   border-bottom: #000 1px solid;
+  display: block;
 }
 
-a:visited a:active a:link {
+a:link,
+a:visited,
+a:active {
   color: black;
 }
 
 a:hover {
-  background-color: gray;
+  /* background-color: gray; */
+  box-shadow: #808080 5px 11px 20px
 }
 
 
