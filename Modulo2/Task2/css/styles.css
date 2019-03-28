@@ -8,20 +8,36 @@ nav {
   position: relative;
   top: 0;
   width: 100%;
-  border: red 1px solid;
+  /* border: red 1px solid; */
 }
 
 nav li {
   display: inline-block;
-  background-color: #CCCCCC;
+  /* background-color: #CCCCCC; */
 }
 
 header {
   position: relative;
-  border: blue 1px solid;
+  /* border: blue 1px solid; */
 }
 
 main {
   position: relative;
-  border: green 1px solid;
+  /* border: green 1px solid; */
+}
+
+table#senate-data {
+  width: 100%;
+  border-collapse: collapse;
+  border: black solid 1px;
+}
+
+table#senate-data td tr th {
+  border-collapse: collapse;
+  border: black solid 1px;
+}
+
+table#senate-data td {
+  max-width: 20%;
+  min-width: 10%;
 }

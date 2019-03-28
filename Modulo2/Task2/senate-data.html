@@ -42,77 +42,46 @@
     <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several
       exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military
       officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Members</th>
-          <th>First name</th>
-          <th>Middle name</th>
-          <th>Last name</th>
-          <th>Party</th>
-          <th>Total votes</th>
-        </tr>
+
+    <table id="senate-data">
+      <thead id="table-headers">
+        <th>Full Name</th>
+        <th>Party</th>
+        <th>State</th>
+        <th>Seniority</th>
+        <th>Percentage of votes</th>
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Lamar</td>
-          <td></td>
-          <td>Alexander</td>
-          <td>R</td>
-          <td>657</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Kelly</td>
-          <td>null</td>
-          <td>Ayotte</td>
-          <td>R</td>
-          <td>657</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Roy</td>
-          <td></td>
-          <td>Blunt</td>
-          <td>R</td>
-          <td>657</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Barbara</td>
-          <td>null</td>
-          <td>Boxer</td>
-          <td>D</td>
-          <td>657</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Sherrod</td>
-          <td></td>
-          <td>Brown</td>
-          <td>D</td>
-          <td>657</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Richard</td>
-          <td>M.</td>
-          <td>Burr</td>
-          <td>R</td>
-          <td>657</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Tammy</td>
-          <td>null</td>
-          <td>Baldwin</td>
-          <td>D</td>
-          <td>657</td>
-        </tr>
+      <tbody id="table-rows">
       </tbody>
     </table>
   </main>
+  <script src="pro-congress-113-senate.js"></script>
+  <script>
+    // function getColumnsHtml(row) {
+    //   return row.map(function(element) {
+    //     return "<td>" + element.first_name + "</td><td>" + element.party + "</td><td>" + element.state + "</td><td>" + element.seniority + "</td><td>" + element.votes_with_party_pct + "</td>"
+    //   }).join("")
+
+    // }
+
+    // function getRowsHtml(data) {
+    //   return data.members.map(function(row, i) {
+    //     return "<tr>" + getColumnsHtml(row) + "</tr>";
+    //   }).join("");
+    // }
+
+    // function renderRows(data) {
+    //   var html = getRowsHtml(data);
+
+    //   document.getElementById("table-rows").innerHTML = html;
+    // }
+
+    // function renderTable(data) {
+    //   renderRows(data);
+    // }
+
+    document.getElementById("table-rows").innerHTML = JSON.stringify(data.results, null, 2);
+  </script>
 </body>
 
 </html>

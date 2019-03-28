@@ -118,8 +118,9 @@ function repetidos(array) {
   var repetidos = [];
   // Por cada item dentro del array, pasarlo como un atributo (o key) con su correspondiente valor.
   array.forEach(item => {
-    if (!objeto[item])
+    if (!objeto[item]) {
       objeto[item] = 0;
+    }
     objeto[item] += 1;
   })
 
@@ -134,6 +135,8 @@ function repetidos(array) {
 }
 
 console.log(repetidos(ages));
+
+
 console.log("Exercise separator -----------------------------------||");
 myColor = ["Red", "Green", "White", "Black"];
 console.log(myColor.join(', '));
