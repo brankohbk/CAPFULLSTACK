@@ -22,6 +22,7 @@
   width: 100%;
   overflow: hidden;
   background: #000;
+  z-index: -100;
 }
 
 .video-container .poster img {
@@ -35,14 +36,69 @@
   position: absolute;
   background: rgba(0, 0, 0, 0.4);
   width: 100%;
+  height: 100%;
 }
 
 .video-container video {
   position: absolute;
-  z-index: 0;
+  z-index: -10;
   bottom: 0;
 }
 
 .video-container video.fillWidth {
   width: 100%;
+}
+
+
+/* Formatos Custom */
+
+* {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font: 1em sans-serif;
+}
+
+
+/* Header */
+
+:root {
+  --mindhub-width: 250px;
+  --mindhub-height: calc(var(--mindhub-width) / 3.53);
+}
+
+small {
+  font: 1em sans-serif;
+}
+
+header h1 {
+  position: absolute;
+  bottom: 20%;
+  left: 20px;
+  font-size: 2.5em;
+  color: white;
+}
+
+#logos {
+  position: absolute;
+  top: 15px;
+  left: 30%;
+  height: 200px;
+  width: calc(var(--mindhub-width) * 2 + 10px);
+  display: inline-block;
+}
+
+#mindhub {
+  /* position: relative; */
+  width: var(--mindhub-width);
+  height: var(--mindhub-height);
+  background-image: url("logo-mindhub-blanco.png");
+  background-size: contain;
+}
+
+#gcba {
+  width: var(--mindhub-width);
+  height: var(--mindhub-height);
+  background-image: url("gcba.png");
+  background-size: contain;
 }
