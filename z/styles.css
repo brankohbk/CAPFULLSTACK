@@ -61,14 +61,13 @@
 
 ul,
 ol,
-li,
-li>a {
-  margin: 10px 10px 0px 0px;
+li {
+  margin: 20px 0px 0px 10px;
   padding-left: 5px;
-  text-decoration: none;
 }
 
 li>a {
+  text-decoration: none;
   display: inline-block;
 }
 
