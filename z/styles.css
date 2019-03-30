@@ -64,6 +64,7 @@ ol,
 li {
   margin: 20px 0px 0px 10px;
   padding-left: 5px;
+  list-style: none;
 }
 
 li>a {
@@ -151,6 +152,9 @@ header h1 {
   background-size: contain;
 }
 
+
+/* Boton para scrollear abajo. NO IMPLEMENTADO AUN */
+
 #scroller {
   color: white;
   position: absolute;
@@ -158,4 +162,41 @@ header h1 {
   transform: translateX(-50%);
   bottom: 5px;
   max-width: 15%;
+}
+
+#mainUL>li>ul li::before {
+  content: "•";
+}
+
+.pending {
+  color: red
+}
+
+.process {
+  color: yellow
+}
+
+.done {
+  color: greenyellow;
+}
+
+#mainUL>li>ul li:hover::after {
+  margin: 0px 0px 0px 5px;
+  padding: 2px;
+  background-color: #b1b1b1;
+  display: inline;
+  box-shadow: #000 5px 5px 15px;
+  border-radius: 3px;
+}
+
+.pending:hover::after {
+  content: "Not started yet.";
+}
+
+.process:hover::after {
+  content: "In process...";
+}
+
+.done:hover::after {
+  content: "Task Finished";
 }
