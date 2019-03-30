@@ -32,12 +32,16 @@ table#senate-data {
   border: black solid 1px;
 }
 
-table#senate-data td tr th {
+table#senate-data td,
+table#senate-data tr,
+table#senate-data th {
   border-collapse: collapse;
   border: black solid 1px;
 }
 
-table#senate-data td {
+table#senate-data td,
+table#senate-data th {
   max-width: 20%;
   min-width: 10%;
+  text-align: center;
 }

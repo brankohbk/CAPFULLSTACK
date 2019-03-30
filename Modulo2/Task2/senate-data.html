@@ -57,34 +57,19 @@
   </main>
   <script src="pro-congress-113-senate.js"></script>
   <script>
-    // function getColumnsHtml(row) {
-    //   return row.map(function(element) {
-    //     return "<td>" + element.first_name + "</td><td>" + element.party + "</td><td>" + element.state + "</td><td>" + element.seniority + "</td><td>" + element.votes_with_party_pct + "</td>"
-    //   }).join("")
+    var resultados = data.results[0];
+    var str = "";
+    for (let index = 0; index < resultados.members.length; index++) {
 
-    // }
+      // +++++++++++++++++++++++ AVERIGUAR CÓMO USAR ||""
+      var middleName = "";
+      if (resultados.members[index].middle_name) {
+        middleName = resultados.members[index].middle_name;
+      }
 
-    // function getRowsHtml(data) {
-    //   return data.members.map(function(row, i) {
-    //     return "<tr>" + getColumnsHtml(row) + "</tr>";
-    //   }).join("");
-    // }
-
-    // function renderRows(data) {
-    //   var html = getRowsHtml(data);
-
-    //   document.getElementById("table-rows").innerHTML = html;
-    // }
-
-    // function renderTable(data) {
-    //   renderRows(data);
-    // }
-    var str = JSON.stringify(data.results);
-    var al = JSON.parse(str);
-    var al2 = JSON.stringify(al.congress);
-    alert(al2.congress);
-
-    document.getElementById("table-rows").innerHTML = al;
+      str += '<tr><td>' + resultados.members[index].first_name + ' ' + middleName + ' ' + resultados.members[index].last_name + '</td><td>' + resultados.members[index].party + '</td><td>' + resultados.members[index].state + '</td><td>' + resultados.members[index].seniority + '</td><td>' + resultados.members[index].votes_with_party_pct + '&percnt;</td></tr>';
+    }
+    document.getElementById("table-rows").innerHTML = str;
   </script>
 </body>
 
