@@ -57,18 +57,31 @@
   </main>
   <script src="pro-congress-113-senate.js"></script>
   <script>
-    var resultados = data.results[0];
-    var str = "";
-    for (let index = 0; index < resultados.members.length; index++) {
+    var miembros = data.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
+    var str = ""; // DECLARO E INICIALIZO LA CADENA str QUE SE VA A USAR PARA EL innerHTML.
 
-      // +++++++++++++++++++++++ AVERIGUAR CÓMO USAR ||""
-      var middleName = "";
-      if (resultados.members[index].middle_name) {
-        middleName = resultados.members[index].middle_name;
-      }
+    for (let index = 0; index < miembros.length; index++) {
 
-      str += '<tr><td>' + resultados.members[index].first_name + ' ' + middleName + ' ' + resultados.members[index].last_name + '</td><td>' + resultados.members[index].party + '</td><td>' + resultados.members[index].state + '</td><td>' + resultados.members[index].seniority + '</td><td>' + resultados.members[index].votes_with_party_pct + '&percnt;</td></tr>';
+      let middleName = miembros[index].middle_name || ''; //VERIFICO QUE EL MIEMBRO TENGA NOMBRE DEL MEDIO.
+      let miembro = [miembros[index].first_name + " " + middleName + " " + miembros[index].last_name, miembros[index].party, miembros[index].state, miembros[index].seniority, miembros[index].votes_with_party_pct]; //DECLARO E INICIALIZO EL ARRAY DE miembro EN CADA ITERACION.
+      var celdas = miembro.map(datoMiembro => {
+        return `<td>${datoMiembro}</td>`;
+      });
+      str += '<tr>' + celdas.join("") + '</tr>';
+
+      // for (let index = 0; index < resultados.members.length; index++) {
+
+      //   var middleName = "";
+      //   if (resultados.members[index].middle_name) {
+      //     middleName = resultados.members[index].middle_name;
+      //   }
+
+      //   str += '<tr><td>' + resultados.members[index].first_name + ' ' + middleName + ' ' + resultados.members[index].last_name + '</td><td>' + resultados.members[index].party + '</td><td>' + resultados.members[index].state + '</td><td>' + resultados.members[index].seniority + '</td><td>' + resultados.members[index].votes_with_party_pct + '&percnt;</td></tr>';
+      // }
+
+
     }
+
     document.getElementById("table-rows").innerHTML = str;
   </script>
 </body>
