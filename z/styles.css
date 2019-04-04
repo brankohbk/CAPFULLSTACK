@@ -180,7 +180,8 @@ header h1 {
   color: greenyellow;
 }
 
-#mainUL>li>ul li:hover::after {
+
+/* #mainUL>li>ul li:hover::after {
   margin: 0px 0px 0px 5px;
   padding: 2px;
   background-color: #b1b1b1;
@@ -199,4 +200,4 @@ header h1 {
 
 .done:hover::after {
   content: "Task Finished";
-}
+} */
