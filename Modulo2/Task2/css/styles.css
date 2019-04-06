@@ -4,44 +4,33 @@ body * {
   border: 0;
 }
 
-nav {
-  position: relative;
-  top: 0;
-  width: 100%;
-  /* border: red 1px solid; */
-}
-
-nav li {
-  display: inline-block;
-  /* background-color: #CCCCCC; */
+:root {
+  --logo-width: 150px;
 }
 
 header {
-  position: relative;
-  /* border: blue 1px solid; */
-}
-
-main {
-  position: relative;
-  /* border: green 1px solid; */
-}
-
-table#senate-data {
   width: 100%;
-  border-collapse: collapse;
-  border: black solid 1px;
+  border: 1px solid red;
+  display: flex;
 }
 
-table#senate-data td,
-table#senate-data tr,
-table#senate-data th {
-  border-collapse: collapse;
-  border: black solid 1px;
+.logo {
+  width: 150px;
+  height: calc(var(--logo-width) / 2.86);
+  background-image: url("../img/logo.png");
+  background-size: cover;
+  /* position: relative; */
+  /* top: 0px; */
+  /* left: 0px; */
+  display: inline-block;
+  border: 1px solid blue;
 }
 
-table#senate-data td,
-table#senate-data th {
-  max-width: 20%;
-  min-width: 10%;
-  text-align: center;
+.contact {
+  display: inline-block;
+  /* position: relative; */
+  /* top: 50%; */
+  /* right: 5px; */
+  /* transform: translateY(-50%); */
+  border: 1px solid green;
 }
