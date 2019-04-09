@@ -4,6 +4,12 @@ body * {
   border: 0;
 }
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
 :root {
   --logo-width: 150px;
 }
@@ -33,4 +39,8 @@ header {
   /* right: 5px; */
   /* transform: translateY(-50%); */
   border: 1px solid green;
+}
+
+nav {
+  border: 1px solid yellow;
 }
