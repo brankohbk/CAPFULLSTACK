@@ -2,6 +2,10 @@
   --logo-width: 150px;
 }
 
+* {
+  font-family: 'Itim', cursive;
+}
+
 body {
   padding: 3%;
 }
@@ -64,4 +68,10 @@ nav .dropdown-item {
 nav .activo {
   background-color: #CCCCCC;
   color: #5D5D5D;
+}
+
+footer {
+  border: black 1px solid;
+  text-align: center;
+  background-color: #EEEEEE;
 }
