@@ -10,73 +10,41 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
 </head>
 
 <body>
   <header class="container-fluid">
     <div class="d-flex justify-content-between">
       <div class="logo mr-auto"></div>
-      <div class="contact flex-nowrap col-sm-2 d-inline-flex justify-content-center align-items-center">
+      <div class="contact col-xs-5  d-inline-flex justify-content-center align-items-center">
         <a href="mailto:info@tgif.net">
-          <div class="fas fa-envelope mr-3"></div>
-          <div>info@tgif.net</div>
+          <span class="fas fa-envelope mr-3"></span>
+          <span>info@tgif.net</span>
         </a>
       </div>
     </div>
+
     <nav class="container-fluid">
       <ul class="nav">
         <li class="nav-item">
           <a href="index.html" class="nav-link">
             <div class="fas fa-home"></div> HOME</a>
         </li>
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
+        <li class="nav-item dropdown ">
+          <a href="#" class="nav-link dropdown-toggle activo" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
           <div class="dropdown-menu">
-            <a href="3" class="dropdown-item">Senators</a>
+            <a href="#" class="dropdown-item activo">Senate</a>
+            <a href="house.html" class="dropdown-item">House</a>
           </div>
 
 
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-          </div>
-        </li>
+
       </ul>
     </nav>
 
   </header>
 
-
-
-  <!-- <header>
-    <div class="logo"></div>
-    <div class="contact">
-      <span class="glyphicon glyphicon-envelope"></span>
-      <span><a href="mailto:info@tgif.net">info@tgif.net</a></span>
-    </div>
-  </header>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113
-            <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="house.html">House</a></li>
-            <li class="active"><a href="#">Senate</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav> -->
 
   <!--Table container-->
   <main>
@@ -85,8 +53,8 @@
       exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military
       officers, regulatory officials, ambassadors, and other federal uniformed officers, as well as trial of federal officials impeached by the House.</p>
 
-    <table id="senate-data" class="table table-striped table-hover">
-      <thead id="table-headers">
+    <table id="senate-data" class="table table-striped table-hover table-bordered">
+      <thead class="thead-dark" id="table-headers">
 
         <th>Full Name</th>
         <th>Party</th>
@@ -104,9 +72,10 @@
   </footer>
   <script src="pro-congress-113-senate.js"></script>
   <script src="js/senate.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

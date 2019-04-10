@@ -1,46 +1,67 @@
-body * {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
-
 :root {
   --logo-width: 150px;
 }
 
+body {
+  padding: 3%;
+}
+
+main {
+  padding: 3% 0 0 0;
+}
+
 header {
   width: 100%;
-  border: 1px solid red;
   display: flex;
 }
+
+
+/* FORMATOS PARA EL HEADER */
+
+
+/* FORMATOS PARA .contact */
+
+.contact a {
+  text-decoration: underline blue;
+}
+
+
+/* FORMATO DE LOGO */
 
 .logo {
   width: 150px;
   height: calc(var(--logo-width) / 2.86);
   background-image: url("../img/logo.png");
   background-size: cover;
-  /* position: relative; */
-  /* top: 0px; */
-  /* left: 0px; */
-  display: inline-block;
-  border: 1px solid blue;
 }
 
-.contact {
-  display: inline-block;
-  /* position: relative; */
-  /* top: 50%; */
-  /* right: 5px; */
-  /* transform: translateY(-50%); */
-  border: 1px solid green;
-}
+
+/* FORMATOS DE nav */
 
 nav {
-  border: 1px solid yellow;
+  border: 1px solid black;
+  background-color: #EEEEEE;
+}
+
+nav a {
+  background-color: transparent;
+  font-weight: bold;
+  color: #0389CD;
+}
+
+nav a:hover {
+  background-color: gray;
+  color: black;
+}
+
+
+/* FORMATOS DE .dropdown */
+
+nav .dropdown-item {
+  color: #0389CD;
+}
+
+nav .activo {
+  background-color: #CCCCCC;
+  color: #5D5D5D;
 }
