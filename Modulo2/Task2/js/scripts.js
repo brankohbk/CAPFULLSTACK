@@ -1,9 +1,10 @@
-var miembros = data.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
+function llenarTabla(datos) {
+  var miembros = datos.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
 
-// USANDO TEMPLATE STRINGS Y ARROW FUNCTIONS.
+  // USANDO TEMPLATE STRINGS Y ARROW FUNCTIONS.
 
-const markup = //INICIALIZO LA VARIABLE QUE CONTENDRÁ EL STRING HTML DEL ROW.
-  ` 
+  const markup = //INICIALIZO LA VARIABLE QUE CONTENDRÁ EL STRING HTML DEL ROW.
+    ` 
       ${miembros.map(miembro => //POR CADA miembro EN EL ARRAY miembros GENERO UN ROW CON LA INFORMACION DE ESE MIEMBRO ESPECIFICO.
         `<tr>
         <td><a href="${miembro.url}" target=_blank >${miembro.first_name} ${miembro.middle_name || ''} ${miembro.last_name}</a></td>
@@ -36,3 +37,4 @@ document.getElementById("table-rows").innerHTML = markup; //INSERTO TODOS LOS RO
 // }
 
 // document.getElementById("table-rows").innerHTML = str;
+    }

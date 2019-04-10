@@ -8,28 +8,44 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>TGIF</title>
   <link rel="stylesheet" href="css/styles.css">
-
-
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
 </head>
 
 <body>
-  <nav>
-    <div>
-      <div>
-        <a href="#">TGIF</a>
+  <header class="container-fluid">
+    <div class="d-flex justify-content-between">
+      <div class="logo mr-auto"></div>
+      <div class="contact col-xs-5  d-inline-flex justify-content-center align-items-center">
+        <a href="mailto:info@tgif.net">
+          <span class="fas fa-envelope mr-3"></span>
+          <span>info@tgif.net</span>
+        </a>
       </div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li>
-          <a href="#">Congress 113</a>
-          <ul>
-            <li><a href="senate-data.html">Senate</a></li>
-            <li><a href="#">House</a></li>
-          </ul>
-        </li>
-      </ul>
     </div>
-  </nav>
+
+    <nav class="container-fluid">
+      <ul class="nav">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">
+            <div class="fas fa-home"></div> HOME</a>
+        </li>
+        <li class="nav-item dropdown ">
+          <a href="#" class="nav-link dropdown-toggle activo" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
+          <div class="dropdown-menu">
+            <a href="senate.html" class="dropdown-item ">Senate</a>
+            <a href="#" class="dropdown-item activo">House</a>
+          </div>
+
+
+        </li>
+
+      </ul>
+    </nav>
+
+  </header>
+
   <!--Table container-->
   <main>
     <h2>Congressmen</h2>
@@ -37,77 +53,36 @@
       the legislation with a two-thirds majority in each chamber). The House has some exclusive powers: the power to initiate revenue bills, to impeach officials (impeached officials are subsequently tried in the Senate), and to elect the U.S. President
       in case there is no majority in the Electoral College.</p>
     <p>Each U.S. state is represented in the House in proportion to its population as measured in the census, but every state is entitled to at least one representative. </p>
-    <table>
-      <thead>
-        <tr>
-          <th>Members</th>
-          <th>First name</th>
-          <th>Middle name</th>
-          <th>Last name</th>
-          <th>Party</th>
-          <th>Total votes</th>
-        </tr>
+    <table id="house-data" class="table table-striped table-hover">
+      <thead class="thead-dark" id="table-headers">
+
+        <th>Full Name</th>
+        <th>Party</th>
+        <th>State</th>
+        <th>Years in office</th>
+        <th>&percnt; Votes w/ Party</th>
+
       </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Robert</td>
-          <td>B.</td>
-          <td>Aderholt</td>
-          <td>R</td>
-          <td>1192</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Justin</td>
-          <td>null</td>
-          <td>Amash</td>
-          <td>R</td>
-          <td>1192</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Mark</td>
-          <td>null</td>
-          <td>Amodei</td>
-          <td>R</td>
-          <td>1192</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Alma</td>
-          <td></td>
-          <td>Adams</td>
-          <td>D</td>
-          <td>48</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Spencer</td>
-          <td>null</td>
-          <td>Bachus</td>
-          <td>R</td>
-          <td>1192</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Joe</td>
-          <td>L.</td>
-          <td>Barton</td>
-          <td>R</td>
-          <td>1192</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Xavier</td>
-          <td>null</td>
-          <td>Becerra</td>
-          <td>D</td>
-          <td>1192</td>
-        </tr>
+      <tbody id="table-rows">
       </tbody>
     </table>
   </main>
+  <footer class="footer mt-auto py-3">
+    <div class="container">
+      <span>
+            &copy; 2016 TGIF | All Rights Reserved.</span>
+    </div>
+
+  </footer>
+  <script src="pro-congress-113-house.js"></script>
+  <script src="js/scripts.js"></script>
+  <script>
+    llenarTabla(houseData);
+  </script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 </body>
 
 </html>
