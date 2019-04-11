@@ -6,21 +6,22 @@
   font-family: 'Itim', cursive;
 }
 
-body {
+
+/* body {
   padding: 3%;
-}
+} */
 
 main {
   padding: 3% 0 0 0;
 }
 
+
+/* FORMATOS PARA EL HEADER */
+
 header {
   width: 100%;
   display: flex;
 }
-
-
-/* FORMATOS PARA EL HEADER */
 
 
 /* FORMATOS PARA .contact */
@@ -71,15 +72,6 @@ nav .activo {
 }
 
 
-/* FORMATO DE footer */
-
-footer {
-  border: black 1px solid;
-  text-align: center;
-  background-color: #EEEEEE;
-}
-
-
 /* FORMATO PARA .congressImg */
 
 .congressImg {
@@ -87,4 +79,15 @@ footer {
   max-height: 200px;
   width: 20vw;
   height: 20vw;
+}
+
+
+/* FORMATO DE footer */
+
+footer {
+  border: black 1px solid;
+  text-align: center;
+  background-color: #EEEEEE;
+  padding-top: 3%;
+  border: #0389CD 1px solid;
 }
