@@ -78,3 +78,13 @@ footer {
   text-align: center;
   background-color: #EEEEEE;
 }
+
+
+/* FORMATO PARA .congressImg */
+
+.congressImg {
+  max-width: 200px;
+  max-height: 200px;
+  width: 20vw;
+  height: 20vw;
+}
