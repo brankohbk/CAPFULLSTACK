@@ -1,5 +1,5 @@
 function llenarTabla(datos) {
-  var miembros = datos.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
+  const miembros = datos.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
 
   // USANDO TEMPLATE STRINGS Y ARROW FUNCTIONS.
 
@@ -38,3 +38,10 @@ document.getElementById("table-rows").innerHTML = markup; //INSERTO TODOS LOS RO
 
 // document.getElementById("table-rows").innerHTML = str;
     }
+
+function llenarDropdownEstados(datos){
+  const miembros = datos.results[0].members;
+  let estados = miembros.map(miembro => miembro.state);
+  return estados;
+
+}
