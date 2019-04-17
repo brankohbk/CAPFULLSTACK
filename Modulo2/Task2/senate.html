@@ -15,7 +15,7 @@
 
 <body class="container">
   <header class="container-fluid">
-
+    <a name="top"></a>
     <div class="d-flex justify-content-between">
       <div class="logo mr-auto"></div>
       <div class="contact col-xs-5  d-inline-flex justify-content-center align-items-center">
@@ -50,7 +50,7 @@
 
 
   <!--Table container-->
-  <main>
+  <main class="mb-5">
     <h2>Senators</h2>
     <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several
       exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military
@@ -64,9 +64,9 @@
         Filter by Party:
       </div>
       <div class="col-6">
-        <label><input type="checkbox" aria-label=""> Democrat</label>
-        <label><input type="checkbox" aria-label=""> Independent</label>
-        <label><input type="checkbox" aria-label=""> Republican</label>
+        <label><input type="checkbox" name="party" value="D" onchange="partyFilter()" aria-label="" checked> Democrat</label>
+        <label><input type="checkbox" name="party" value="I" onchange="partyFilter()"  aria-label="" checked> Independent</label>
+        <label><input type="checkbox" name="party" value="R" onchange="partyFilter()"  aria-label="" checked> Republican</label>
       </div>
 
 
@@ -77,7 +77,7 @@
 
           <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="sr-only">Toggle Dropdown</span>
-            All
+            
           </button>
           <div class="dropdown-menu" id="stateDropdown">
             
@@ -102,11 +102,12 @@
       </tbody>
     </table>
   </main>
-  <footer class="footer fixed-bottom mt-auto py-3">
+  <footer class="footer py-3 d-flex">
     <div class="container">
       <span>
         &copy; 2016 TGIF | All Rights Reserved.</span>
     </div>
+    <div class="justify-self-right"><a href="#top">to the top</a></div>
 
   </footer>
   <script src="pro-congress-113-senate.js"></script>
@@ -114,7 +115,7 @@
   </script>
   <script>
     llenarTabla(senateData);
-    console.table(llenarDropdownEstados(senateData));
+    llenarDropdownEstados(senateData);
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
