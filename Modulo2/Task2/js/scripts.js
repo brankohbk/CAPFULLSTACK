@@ -1,3 +1,11 @@
+// AÑADO LOS eventListener.
+
+var allCheckboxes = Array.from(document.querySelectorAll('input[name=party]'));
+allCheckboxes.map(checkbox => checkbox.addEventListener('change', partyFilter));
+
+// ===============================
+// LLENO LA TABLA CON INFORMACION.
+
 function llenarTabla(datos) {
   const miembros = datos.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
 
@@ -6,7 +14,7 @@ function llenarTabla(datos) {
   const markup = //INICIALIZO LA VARIABLE QUE CONTENDRÁ EL STRING HTML DEL ROW.
     ` 
       ${miembros.map(miembro => //POR CADA miembro EN EL ARRAY miembros GENERO UN ROW CON LA INFORMACION DE ESE MIEMBRO ESPECIFICO.
-        `<tr>
+        `<tr class="party${miembro.party.toUpperCase()} state${miembro.state.toUpperCase()}">
         <td><a href="${miembro.url}" target=_blank >${miembro.first_name} ${miembro.middle_name || ''} ${miembro.last_name}</a></td>
         <td>${miembro.party}</td>
         <td>${miembro.state}</td>
@@ -20,7 +28,8 @@ document.getElementById("table-rows").innerHTML = markup; //INSERTO TODOS LOS RO
 
     }
 
-
+// ===============================
+// LLENO EL DROPDOWN CON LOS ESTADOS.
 
 function llenarDropdownEstados(datos){
   const miembros = datos.results[0].members;
@@ -38,29 +47,12 @@ document.getElementById("stateDropdown").innerHTML = markup;
  
 }
 
+// ===============================
+// FILTRO POR ESTADO (checkboxes).
+
 function partyFilter() {  
 
   let checkedBoxes = Array.from(document.querySelectorAll('input[name=party]:checked')).map(selected => selected.value);
   let rows = Array.from(document.getElementById('table-rows').querySelectorAll('tr'));
-    
-  for (let index = 0; index < rows.length; index++) {
-    rows[index].style.display='';
-    
-  }  
   
-  for (let index = 0; index < rows.length; index++) {
-    
-    let row = rows[index];
-    let cell = row.getElementsByTagName('td')[1];
-    let party = cell.textContent || cell.innerText;
-     
-      if (party.toUpperCase().indexOf() > -1) {
-            
-      } else{
-        row.style.display='none';
-      }
-        
-      }
-      
-
 }
