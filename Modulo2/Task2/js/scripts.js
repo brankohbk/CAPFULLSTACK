@@ -52,8 +52,24 @@ document.getElementById("stateDropdown").innerHTML = markup;
 
 function partyFilter() {  
 
-  let checkedBoxes = Array.from(document.querySelectorAll('input[name=party]:checked')).map(selected => selected.value);
+  let checkedBoxes = Array.from(document.querySelectorAll('input[name=party]:checked')).map(selected =>`party${selected.value.toUpperCase()}`);
   let rows = Array.from(document.getElementById('table-rows').querySelectorAll('tr'));
-  rows.map(row => Array.from(row.classList).includes("partyDisplayNone")? row.classList.toggle("partyDisplayNone") : row.classList.remove("partyDisplayNone") ); //probando condicionales
+  rows.map(row => Array.from(row.classList).includes("partyDisplayNone") ? row.classList.toggle("partyDisplayNone") : row.classList.remove("partyDisplayNone") ); //Me aseguro que muestre las rows
+  console.clear();
+  console.table(checkedBoxes);
+  // hasta acá venimos bien
 
+  // EN CADA row PREGUNTA POR CADA VALOR DEL ARRAY DE CHECKEADOS.
+  // 
+  rows.map(row => { checkedBoxes.forEach(checked => {
+                    if (Array.from(row.classList).includes(checked)) {
+                      row.classList.remove("partyDisplayNone");
+                    }
+                    else {
+                      row.classList.add("partyDisplayNone");
+                    }
+                }
+              )
+            } 
+          );
 }
