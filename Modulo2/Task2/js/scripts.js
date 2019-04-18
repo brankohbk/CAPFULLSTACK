@@ -54,5 +54,6 @@ function partyFilter() {
 
   let checkedBoxes = Array.from(document.querySelectorAll('input[name=party]:checked')).map(selected => selected.value);
   let rows = Array.from(document.getElementById('table-rows').querySelectorAll('tr'));
-  
+  rows.map(row => Array.from(row.classList).includes("partyDisplayNone")? row.classList.toggle("partyDisplayNone") : row.classList.remove("partyDisplayNone") ); //probando condicionales
+
 }
