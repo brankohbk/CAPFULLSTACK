@@ -3,6 +3,9 @@
 var allCheckboxes = Array.from(document.querySelectorAll('input[name=party]'));
 allCheckboxes.map(checkbox => checkbox.addEventListener('change', partyFilter));
 
+var allButtons = Array.from(document.querySelectorAll('button[class="dropdown-item"]'));
+allButtons.map(button => button.addEventListener('clic', stateFilter(button.value)));
+
 // ===============================
 // GENERA TABLA Y DROPDOWN DE ESTADOS.
 function renderComponents(datos) {
@@ -81,4 +84,10 @@ function partyFilter() {
               )
             } 
           );
+}
+function stateFilter(valor) {
+
+  console.log(valor);
+
+  
 }
