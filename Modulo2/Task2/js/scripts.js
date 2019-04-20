@@ -4,6 +4,15 @@ var allCheckboxes = Array.from(document.querySelectorAll('input[name=party]'));
 allCheckboxes.map(checkbox => checkbox.addEventListener('change', partyFilter));
 
 // ===============================
+// GENERA TABLA Y DROPDOWN DE ESTADOS.
+function renderComponents(datos) {
+
+  llenarDropdownEstados(datos);
+  llenarTabla(datos);
+
+}
+
+// ===============================
 // LLENO LA TABLA CON INFORMACION.
 
 function llenarTabla(datos) {
@@ -25,7 +34,6 @@ function llenarTabla(datos) {
       }
   `;
 document.getElementById("table-rows").innerHTML = markup; //INSERTO TODOS LOS ROWS EN EL ELEMENTO table-rows.
-
     }
 
 // ===============================
@@ -48,25 +56,26 @@ document.getElementById("stateDropdown").innerHTML = markup;
 }
 
 // ===============================
-// FILTRO POR ESTADO (checkboxes).
+// FILTRO POR PARTIDO (checkboxes).
 
 function partyFilter() {  
 
   let checkedBoxes = Array.from(document.querySelectorAll('input[name=party]:checked')).map(selected =>`party${selected.value.toUpperCase()}`);
   let rows = Array.from(document.getElementById('table-rows').querySelectorAll('tr'));
-  rows.map(row => Array.from(row.classList).includes("partyDisplayNone") ? row.classList.toggle("partyDisplayNone") : row.classList.remove("partyDisplayNone") ); //Me aseguro que muestre las rows
-  console.clear();
-  console.table(checkedBoxes);
-  // hasta acá venimos bien
-
+  rows.map(row => row.classList.remove("partyDisplayNone", "partyDisplay") ); //RESET DE CLASES DE DISPLAY DE LAS rows.
+  
   // EN CADA row PREGUNTA POR CADA VALOR DEL ARRAY DE CHECKEADOS.
-  // 
-  rows.map(row => { checkedBoxes.forEach(checked => {
+  
+  rows.forEach(row => { checkedBoxes.forEach(checked => {
                     if (Array.from(row.classList).includes(checked)) {
-                      row.classList.remove("partyDisplayNone");
+                      // SI ESTÁ CHECKEADO, AGREGAR CLASE PARA MOSTRAR Y BORRAR CLASE PARA OCULTAR
+                      row.classList.add("partyDisplay");
+                      row.classList.remove("partyDisplayNone");                      
                     }
-                    else {
+                    else if (!Array.from(row.classList).includes("partyDisplay")){
+                      // SI NO FUE EXPLICITAMENTE MOSTRADA MEDIANTE CHECKBOX, OCULTAR LA row                    
                       row.classList.add("partyDisplayNone");
+
                     }
                 }
               )

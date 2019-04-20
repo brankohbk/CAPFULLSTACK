@@ -102,6 +102,14 @@ footer {
   display: none;
 }
 
+.partyDisplay {
+  display: "";
+}
+
 .stateDisplayNone {
   display: none;
+}
+
+.stateDisplay {
+  display: "";
 }
