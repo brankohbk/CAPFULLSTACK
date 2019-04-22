@@ -65,8 +65,8 @@ function partyFilter() {
 
   let checkedBoxes = Array.from(document.querySelectorAll('input[name=party]:checked')).map(selected =>`party${selected.value.toUpperCase()}`);
   let rows = Array.from(document.getElementById('table-rows').querySelectorAll('tr'));
-  rows.map(row => row.classList.remove("partyDisplayNone", "partyDisplay") ); //RESET DE CLASES DE DISPLAY DE LAS rows.
-  
+  rows.forEach(row => {row.classList.remove("partyDisplay"); row.classList.add("partyDisplayNone");}); //RESET DE CLASES DE DISPLAY DE LAS rows.
+
   // EN CADA row PREGUNTA POR CADA VALOR DEL ARRAY DE CHECKEADOS.
   
   rows.forEach(row => { checkedBoxes.forEach(checked => {
@@ -84,6 +84,7 @@ function partyFilter() {
               )
             } 
           );
+
 }
 function stateFilter(valor) {
 
