@@ -30,6 +30,17 @@ function partyFilter(parties, memberlist) {
   parties.forEach(party => {
     aux = memberlist.filter(member => member.party == party);
     filtered.push(...aux);
+    // ORDENO LOS FILTRADOS POR APELLIDO.
+    filtered.sort(function(a, b) {
+      if (a.last_name > b.last_name) {
+        return 1;
+      }
+      if (a.last_name < b.last_name) {
+        return -1;
+      }
+      // a must be equal to b
+      return 0;
+    });
   })
 
   return filtered;
@@ -48,7 +59,7 @@ function llenarTabla(miembros, elementoHTML) {
     ` 
         ${miembros.map(miembro => //POR CADA miembro EN EL ARRAY miembros GENERO UN ROW CON LA INFORMACION DE ESE MIEMBRO ESPECIFICO.
           `<tr>
-          <td><a href="${miembro.url}" target=_blank >${miembro.first_name} ${miembro.middle_name || ''} ${miembro.last_name}</a></td>
+          <td><a href="${miembro.url}" target=_blank >${miembro.last_name}, ${miembro.first_name} ${miembro.middle_name || ''}</a></td>
           <td>${miembro.party}</td>
           <td>${miembro.state}</td>
           <td>${miembro.seniority}</td>
