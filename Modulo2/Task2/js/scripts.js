@@ -4,6 +4,7 @@
 // SELECCIONO EL ORIGEN DE LOS DATOS EN CRUDO. SI houseData NO ESTÁ DEFINIDO, USA senateData.
 var rawData = typeof houseData !== 'undefined' ? houseData : senateData;
 var members = rawData.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
+var state = "";
 
 // ===============================
 // AÑADO LOS eventListener.
@@ -17,13 +18,35 @@ function renderComponents() {
 
   llenarDropdownEstados(members);
 
-  llenarTabla(partyFilter(checkedBoxes, members), "table-rows");
+  llenarTabla(partyFilter(checkedBoxes, stateFilter(state, members)), "table-rows");
+
+}
+
+// ===============================
+// SELECCIONA EL ESTADO
+function selectState(select) {
+  state = select;
+  renderComponents();
+}
+
+// ===============================
+// FILTRO POR ESTADO (dropdown).
+function stateFilter(state, memberlist) {
+  let estado = state;
+  if (estado !== "") {
+    let filtered = [];
+    let aux = [];
+    aux = memberlist.filter(member => member.state == estado);
+    filtered.push(...aux);
+    return filtered;
+  }
+  return memberlist;
+
 
 }
 
 // ===============================
 // FILTRO POR PARTIDO (checkboxes).
-
 function partyFilter(parties, memberlist) {
   let filtered = [];
   let aux = [];
@@ -46,14 +69,11 @@ function partyFilter(parties, memberlist) {
   return filtered;
 }
 
-
-
 // ===============================
 // LLENO LA TABLA CON INFORMACION.
-
 function llenarTabla(miembros, elementoHTML) {
 
-  //   // USANDO TEMPLATE STRINGS Y ARROW FUNCTIONS.
+  // USANDO TEMPLATE STRINGS Y ARROW FUNCTIONS.
 
   const markup = //INICIALIZO LA VARIABLE QUE CONTENDRÁ EL STRING HTML DEL ROW.
     ` 
@@ -71,17 +91,17 @@ function llenarTabla(miembros, elementoHTML) {
   document.getElementById(elementoHTML).innerHTML = markup; //INSERTO TODOS LOS ROWS EN EL ELEMENTO table-rows.
 
       }
+
 // ===============================
 // LLENO EL DROPDOWN CON LOS ESTADOS.
-
 function llenarDropdownEstados(miembros) {
   let estados = miembros.map(miembro => miembro.state);
   let estadosUnicos = [...new Set(estados)].sort(); // "..."= el resto de los elementos, "new Set()"=es un valor único del array pasado por parametro. 
 
   const markup =
-    ` <button class="dropdown-item" id="stateButton">All States</button>
+    ` <button class="dropdown-item" id="stateButton" onclick="selectState(this.value)" value="">All States</button>
       ${estadosUnicos.map(estado => 
-        `<button class="dropdown-item" id="stateButton" type="button" value="${estado}">${estado}</button>
+        `<button class="dropdown-item" id="stateButton" type="button" onclick="selectState(this.value)" value="${estado}">${estado}</button>
         `).join('')
       }
   `;
