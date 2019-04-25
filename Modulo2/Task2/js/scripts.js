@@ -5,6 +5,7 @@
 var rawData = typeof houseData !== 'undefined' ? houseData : senateData;
 var members = rawData.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
 var state = "";
+var dictionary = abbreviations[0];
 
 // ===============================
 // AÑADO LOS eventListener.
@@ -97,14 +98,15 @@ function llenarTabla(miembros, elementoHTML) {
 function llenarDropdownEstados(miembros) {
   let estados = miembros.map(miembro => miembro.state);
   let estadosUnicos = [...new Set(estados)].sort(); // "..."= el resto de los elementos, "new Set()"=es un valor único del array pasado por parametro. 
-
-  const markup =
-    ` <button class="dropdown-item" id="stateButton" onclick="selectState(this.value)" value="">All States</button>
-      ${estadosUnicos.map(estado => 
-        `<button class="dropdown-item" id="stateButton" type="button" onclick="selectState(this.value)" value="${estado}">${estado}</button>
-        `).join('')
-      }
-  `;
+  let fullState="";
+  // SE AGREGÓ DICCIONARIO DE ABREVIACIONES DE LOS ESTADOS.
+  let markup =` <button class="dropdown-item" id="stateButton" onclick="selectState(this.value)" value="">All States</button>`;
+   estadosUnicos.forEach(estado => {
+     fullState= abbreviations.filter(element => element.abbreviation == estado).map(element => element.name);
+     markup += `<button class="dropdown-item" id="stateButton" type="button" onclick="selectState(this.value)" value="${estado}">${fullState}</button>`
+    } 
+     
+        );
 document.getElementById("stateDropdown").innerHTML = markup; 
  
 }
