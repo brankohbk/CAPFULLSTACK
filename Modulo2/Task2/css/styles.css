@@ -6,11 +6,6 @@
   font-family: 'Itim', cursive;
 }
 
-body,
-html {
-  height: 100%;
-}
-
 main {
   padding: 3% 0 0 0;
 }
@@ -96,20 +91,4 @@ footer {
   height: auto;
   max-height: 200px;
   overflow-x: hidden;
-}
-
-.partyDisplayNone {
-  display: none;
-}
-
-.partyDisplay {
-  display: "";
-}
-
-.stateDisplayNone {
-  display: none;
-}
-
-.stateDisplay {
-  display: "";
 }
