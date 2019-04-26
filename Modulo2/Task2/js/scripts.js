@@ -1,6 +1,23 @@
 "use strict"
 
 // ===============================
+// MUESTRA UN "TO THE TOP" AL SCROLLEAR.
+let upper = document.getElementById("toTop");
+
+var myScrollFunc = function() {
+  var y = window.scrollY;
+  if (y >= 100) {
+    upper.className = "toTop show"
+  } else {
+    upper.className = "toTop hide"
+  }
+};
+
+window.addEventListener("scroll", myScrollFunc);
+
+
+
+// ===============================
 // SELECCIONO EL ORIGEN DE LOS DATOS EN CRUDO. SI houseData NO ESTÁ DEFINIDO, USA senateData.
 var rawData = typeof houseData !== 'undefined' ? houseData : senateData;
 var members = rawData.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.

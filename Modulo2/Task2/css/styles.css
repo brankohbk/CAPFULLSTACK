@@ -92,3 +92,34 @@ footer {
   max-height: 200px;
   overflow-x: hidden;
 }
+
+.toTop {
+  font-size: 2em;
+  position: fixed;
+  bottom: 15px;
+  transition: 0.75s all;
+}
+
+.toTop:hover {
+  font-size: 3em;
+}
+
+.toTop a,
+.toTop a:active,
+.toTop a:visited {
+  color: #0389CD;
+}
+
+.toTop a:hover {
+  color: blue;
+}
+
+.hide {
+  opacity: 0;
+  right: -100%;
+}
+
+.show {
+  opacity: 1;
+  right: 3vw;
+}
