@@ -114,12 +114,12 @@ footer {
   color: blue;
 }
 
-.hide {
+.hideTopper {
   opacity: 0;
   right: -100%;
 }
 
-.show {
+.showTopper {
   opacity: 1;
   right: 3vw;
 }

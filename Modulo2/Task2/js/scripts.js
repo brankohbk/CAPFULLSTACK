@@ -7,9 +7,9 @@ let upper = document.getElementById("toTop");
 var myScrollFunc = function() {
   var y = window.scrollY;
   if (y >= 100) {
-    upper.className = "toTop show"
+    upper.className = "toTop showTopper"
   } else {
-    upper.className = "toTop hide"
+    upper.className = "toTop hideTopper"
   }
 };
 
