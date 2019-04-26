@@ -29,7 +29,8 @@
       <ul class="nav">
         <li class="nav-item">
           <a href="index.html" class="nav-link">
-            <div class="fas fa-home"></div> HOME</a>
+            <div class="fas fa-home"></div> HOME
+          </a>
         </li>
         <li class="nav-item dropdown ">
           <a href="#" class="nav-link dropdown-toggle activo" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
@@ -64,14 +65,13 @@
         <label><input type="checkbox" name="party" value="R" aria-label="" checked> Republican</label>
       </div>
       <div class="col ml-auto">
-        <label>Filter by State: 
-
-          <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <label>Filter by State:
+          <span id="state"></span>
+          <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="sr-only">Toggle Dropdown</span>
-            
           </button>
           <div class="dropdown-menu" id="stateDropdown">
-            
           </div>
         </label>
       </div>

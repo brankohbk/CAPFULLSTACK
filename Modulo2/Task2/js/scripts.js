@@ -22,6 +22,7 @@ window.addEventListener("scroll", myScrollFunc);
 var rawData = typeof houseData !== 'undefined' ? houseData : senateData;
 var members = rawData.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
 var state = "";
+var actualState = "All States";
 var dictionary = abbreviations[0];
 
 // ===============================
@@ -43,7 +44,9 @@ function renderComponents() {
 // ===============================
 // SELECCIONA EL ESTADO
 function selectState(select) {
-  state = select;
+  let str = select.split(',');
+  state = str[0] || "";
+  actualState = str[1] || "All States";
   renderComponents();
 }
 
@@ -120,10 +123,13 @@ function llenarDropdownEstados(miembros) {
   let markup =` <button class="dropdown-item" id="stateButton" onclick="selectState(this.value)" value="">All States</button>`;
    estadosUnicos.forEach(estado => {
      fullState= abbreviations.filter(element => element.abbreviation == estado).map(element => element.name);
-     markup += `<button class="dropdown-item" id="stateButton" type="button" onclick="selectState(this.value)" value="${estado}">${fullState}</button>`
+     markup += `<button class="dropdown-item" id="stateButton" type="button" onclick="selectState(this.value)" value="${estado},${fullState}">${fullState}</button>`
     } 
      
         );
-document.getElementById("stateDropdown").innerHTML = markup; 
+
+document.getElementById("stateDropdown").innerHTML = markup; //DIBUJA EL dropdown
+document.getElementById("state").innerHTML = actualState; //ESCRIBE EL NOMBRE DEL ESTADO AL LADO DEL dropdown
+
  
 }
