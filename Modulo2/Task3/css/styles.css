@@ -3,7 +3,7 @@
 }
 
 * {
-  font-family: 'Itim', cursive;
+  font-family: 'Philosopher', cursive;
 }
 
 main {
@@ -107,11 +107,11 @@ footer {
 .toTop a,
 .toTop a:active,
 .toTop a:visited {
-  color: #0389CD;
+  color: rgba(3, 138, 205, 0.603);
 }
 
 .toTop a:hover {
-  color: blue;
+  color: #0389CD;
 }
 
 .hideTopper {
@@ -122,4 +122,11 @@ footer {
 .showTopper {
   opacity: 1;
   right: 3vw;
+}
+
+#state {
+  font-weight: bold;
+  border-left: #0389CD 7px solid;
+  background-color: #DEDEDE;
+  text-align: center;
 }

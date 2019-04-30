@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Philosopher" rel="stylesheet">
 </head>
 
 <body class="container">
@@ -34,13 +34,25 @@
           </a>
         </li>
         <li class="nav-item dropdown ">
-          <a href="#" class="nav-link dropdown-toggle activo" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
+          <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
           <div class="dropdown-menu">
-            <a href="#" class="dropdown-item activo">Senate</a>
+            <a href="senate.html" class="dropdown-item ">Senate</a>
             <a href="house.html" class="dropdown-item">House</a>
           </div>
-
-
+        </li>
+        <li class="nav-item dropdown ">
+          <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <div class="dropdown-menu">
+            <a href="attendance-senate.html" class="dropdown-item ">Senate</a>
+            <a href="attendance-house.html" class="dropdown-item">House</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown ">
+          <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Party Loyalty</a>
+          <div class="dropdown-menu">
+            <a href="loyalty-senate.html" class="dropdown-item ">Senate</a>
+            <a href="loyalty-house.html" class="dropdown-item">House</a>
+          </div>
         </li>
 
       </ul>
@@ -59,8 +71,8 @@
 
     </div>
 
-    <div class="input-group container-fluid d-flex justify-content-between">
-      <div class="col-2">
+    <div class="input-group container-fluid d-flex justify-content-between mb-2">
+      <div class="col-3 col-md-2 flex-shrink-1">
         Filter by Party:
       </div>
       <div class="col-6">
@@ -68,22 +80,16 @@
         <label><input type="checkbox" name="party" value="I" aria-label="" checked> Independent</label>
         <label><input type="checkbox" name="party" value="R" aria-label="" checked> Republican</label>
       </div>
-
-
-
-
-      <div class="col ml-auto">
-        <label>Filter by State: 
-          <span id="state"></span>
-
-          <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="sr-only">Toggle Dropdown</span>
-            
-          </button>
-          <div class="dropdown-menu" id="stateDropdown">
-            
-          </div>
-        </label>
+      <div class="col ml-auto d-flex flex-wrap">
+        <div class="col-12 justify-content-center"><label>Filter by State:
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" id="stateDropdown">
+        </div>
+        </label></div>
+        <div class="flex-grow-1" id="state"></div>
       </div>
     </div>
 

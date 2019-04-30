@@ -6,11 +6,12 @@ let upper = document.getElementById("toTop");
 
 var myScrollFunc = function() {
   var y = window.scrollY;
-  if (y >= 100) {
+  if (y >= 220) {
     upper.className = "toTop showTopper"
   } else {
     upper.className = "toTop hideTopper"
   }
+  console.log(y);
 };
 
 window.addEventListener("scroll", myScrollFunc);
@@ -19,11 +20,13 @@ window.addEventListener("scroll", myScrollFunc);
 
 // ===============================
 // SELECCIONO EL ORIGEN DE LOS DATOS EN CRUDO. SI houseData NO ESTÁ DEFINIDO, USA senateData.
-var rawData = typeof houseData !== 'undefined' ? houseData : senateData;
-var members = rawData.results[0].members; //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
+var rawData = typeof houseData !== 'undefined' ? houseData : typeof senateData !== 'undefined' ? senateData : "";
+var members = "";
+if (rawData !== "") { members = rawData.results[0].members; } //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
 var state = "";
 var actualState = "All States";
-var dictionary = abbreviations[0];
+var dictionary = "";
+if (typeof abbreviations !== 'undefined') { dictionary = abbreviations[0]; }
 
 // ===============================
 // AÑADO LOS eventListener.
