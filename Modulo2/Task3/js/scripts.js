@@ -11,7 +11,6 @@ var myScrollFunc = function() {
   } else {
     upper.className = "toTop hideTopper"
   }
-  console.log(y);
 };
 
 window.addEventListener("scroll", myScrollFunc);
@@ -34,14 +33,20 @@ var allCheckboxes = Array.from(document.querySelectorAll('input[name=party]'));
 allCheckboxes.forEach(checkbox => checkbox.addEventListener('change', renderComponents));
 
 // ===============================
-// GENERA TABLA Y DROPDOWN DE ESTADOS.
+// LLENA EL Dropdown CON LOS ESTADOS
+llenarDropdownEstados(members);
+
+// ===============================
+// GENERA TABLA Y ESCONDE DROPDOWN DE ESTADOS.
 function renderComponents() {
+
+  document.getElementById("state").innerHTML = actualState; //ESCRIBE EL NOMBRE DEL ESTADO AL LADO DEL dropdown
+
+  var ddmenu = document.querySelector('#stateDropdown');
+  ddmenu.classList.remove('show');
+
   var checkedBoxes = Array.from(document.querySelectorAll('input[name=party]:checked')).map(selected => selected.value.toUpperCase());
-
-  llenarDropdownEstados(members);
-
   llenarTabla(partyFilter(checkedBoxes, stateFilter(state, members)), "table-rows");
-
 }
 
 // ===============================
@@ -132,7 +137,4 @@ function llenarDropdownEstados(miembros) {
         );
 
 document.getElementById("stateDropdown").innerHTML = markup; //DIBUJA EL dropdown
-document.getElementById("state").innerHTML = actualState; //ESCRIBE EL NOMBRE DEL ESTADO AL LADO DEL dropdown
-
- 
 }

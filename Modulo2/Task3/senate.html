@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <nav class="container-fluid">
+    <nav id="navbar" class="container-fluid">
       <ul class="nav">
         <li class="nav-item">
           <a href="index.html" class="nav-link">
@@ -41,7 +41,7 @@
           </div>
         </li>
         <li class="nav-item dropdown ">
-          <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <a href="senate.html" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
           <div class="dropdown-menu">
             <a href="attendance-senate.html" class="dropdown-item ">Senate</a>
             <a href="attendance-house.html" class="dropdown-item">House</a>
@@ -63,6 +63,13 @@
 
   <!--Table container-->
   <main class="mb-5">
+    <nav id="breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Congress 113</li>
+        <li class="breadcrumb-item active" aria-current="page">Senate</li>
+      </ol>
+    </nav>
     <h2>Senators</h2>
     <p>First convened in 1789, the composition and powers of the Senate are established in Article One of the U.S. Constitution. Each state is represented by two senators, regardless of population, who serve staggered six-year terms. The Senate has several
       exclusive powers not granted to the House, including consenting to treaties as a precondition to their ratification and consenting to or confirming appointments of Cabinet secretaries, federal judges, other federal executive officials, military
@@ -94,7 +101,7 @@
     </div>
 
 
-    <table id="senate-data" class="table table-striped table-hover">
+    <table id="senate-data" class="table table-striped table-hover members">
       <thead class="thead-dark" id="table-headers">
 
         <th>Full Name</th>

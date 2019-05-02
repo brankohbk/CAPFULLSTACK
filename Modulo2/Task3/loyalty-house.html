@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <nav class="container-fluid">
+    <nav id="navbar" class="container-fluid">
       <ul class="nav">
         <li class="nav-item">
           <a href="index.html" class="nav-link">
@@ -34,14 +34,14 @@
           </a>
         </li>
         <li class="nav-item dropdown ">
-          <a href="senate.html" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
+          <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Congress 113</a>
           <div class="dropdown-menu">
-            <a href="#" class="dropdown-item ">Senate</a>
+            <a href="senate.html" class="dropdown-item ">Senate</a>
             <a href="house.html" class="dropdown-item">House</a>
           </div>
         </li>
         <li class="nav-item dropdown ">
-          <a href="#" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
+          <a href="senate.html" class="nav-link dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Attendance</a>
           <div class="dropdown-menu">
             <a href="attendance-senate.html" class="dropdown-item ">Senate</a>
             <a href="attendance-house.html" class="dropdown-item">House</a>
@@ -63,6 +63,13 @@
 
   <!--Table container-->
   <main class="mb-5">
+    <nav id="breadcrumb" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Party Loyalty</li>
+        <li class="breadcrumb-item active" aria-current="page">House</li>
+      </ol>
+    </nav>
     <article class="d-flex flex-wrap">
       <section class="col-md-6 col-12">
         <h2>Party Loyalty</h2>
@@ -70,8 +77,8 @@
       </section>
       <section class="col-md-6 col-12">
         <h2>Senate at a glance</h2>
-        <table>
-          <thead>
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark" id="table-headers">
             <tr>
               <th>Party</th>
               <th>Number of Reps</th>
@@ -102,9 +109,10 @@
     <hr>
     <article class="d-flex flex-wrap">
       <section class="col-md-6 col-12">
-        <h2>Least Loyal (Bottom 10% of Party)</h2>
-        <table>
-          <thead>
+        <h2>Least Loyal</h2>
+        <h3>(Bottom 10% of Party)</h3>
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark" id="table-headers">
             <tr>
               <th>Name</th>
               <th>Number Party Votes</th>
@@ -147,9 +155,10 @@
 
       </section>
       <section class="col-md-6 col-12">
-        <h2>Most Loyal (Top 10% of Party)</h2>
-        <table>
-          <thead>
+        <h2>Most Loyal</h2>
+        <h3>(Top 10% of Party)</h3>
+        <table class="table table-striped table-hover">
+          <thead class="thead-dark" id="table-headers">
             <tr>
               <th>Name</th>
               <th>Number Party Votes</th>
