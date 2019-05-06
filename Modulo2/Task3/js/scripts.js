@@ -153,34 +153,3 @@ function llenarTabla(miembros, elementoHTML) {
   document.getElementById(elementoHTML).innerHTML = markup; //DIBUJA EL dropdown
 }
 }
-
-// ===============================
-// CUENTO LA CANTIDAD DE MIEMBROS POR PARTIDO
-function contar() {  
-  statistics[0].number_of_democrats = democrats.length;
-  statistics[0].number_of_independents = independents.length;
-  statistics[0].number_of_republicans = republicans.length;
-  statistics[0].total= democrats.length + independents.length + republicans.length;
-}
-
-// ===============================
-// CALCULAR VOTOS CON EL PARTIDO.
-function votesParty(array) {
-  let average = array.reduce(function (acum,value) {
-    return (acum + value.votes_with_party_pct);
-  },0)/array.length;
-  return average.toFixed(2);
-}
-
-// ===============================
-// FUNCIONES DE ESTADISTICAS.
-function allStatistics(array) {
-  //Genero las listas de miembros de cada partido. 
-  democrats = array.filter(member => member.party === "D");
-  independents = array.filter(member => member.party === "I");
-  republicans = array.filter(member => member.party === "R");
-  contar();
-  statistics[0].votes_with_party_democrats = votesParty(democrats);
-  statistics[0].votes_with_party_independents = votesParty(independents);
-  statistics[0].votes_with_party_republicans = votesParty(republicans);
-}

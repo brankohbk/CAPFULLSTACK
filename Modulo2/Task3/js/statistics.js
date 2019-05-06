@@ -1,4 +1,4 @@
-var statistics = [{
+let statistics = [{
   "number_of_democrats": 0,
   "number_of_independents": 0,
   "number_of_republicans": 0,
@@ -7,3 +7,61 @@ var statistics = [{
   "votes_with_party_independents": 0,
   "votes_with_party_republicans": 0
 }];
+
+function renderTables() {
+  allStatistics(members);
+  renderPartyVotes(statistics[0], 'partyVotesTable');
+}
+
+// ===============================
+// CUENTO LA CANTIDAD DE MIEMBROS POR PARTIDO
+function count() {
+  statistics[0].number_of_democrats = democrats.length;
+  statistics[0].number_of_independents = independents.length;
+  statistics[0].number_of_republicans = republicans.length;
+  statistics[0].total = democrats.length + independents.length + republicans.length;
+}
+
+// ===============================
+// CALCULAR VOTOS CON EL PARTIDO.
+function votesParty(array) {
+  const average = array.reduce(function(acum, value) {
+    return (acum + value.votes_with_party_pct);
+  }, 0) / array.length;
+  return average.toFixed(2);
+}
+
+// ===============================
+// FUNCIONES DE ESTADISTICAS.
+function allStatistics(array) {
+  //Genero las listas de miembros de cada partido. 
+  democrats = array.filter(member => member.party === "D");
+  independents = array.filter(member => member.party === "I");
+  republicans = array.filter(member => member.party === "R");
+  count();
+  statistics[0].votes_with_party_democrats = votesParty(democrats);
+  statistics[0].votes_with_party_independents = votesParty(independents);
+  statistics[0].votes_with_party_republicans = votesParty(republicans);
+}
+
+function renderPartyVotes(data, htmlElement) {
+  let markup = ``;
+  markup += `<tr>
+  <td>Republican</td>
+  <td>${data.number_of_republicans}</td>
+  <td>${data.votes_with_party_republicans} &percnt;</td>
+</tr>
+<tr>
+  <td>Democrat</td>
+  <td>${data.number_of_democrats}</td>
+  <td>${data.votes_with_party_democrats} &percnt;</td>
+</tr>
+<tr>
+  <td>Independent</td>
+  <td>${data.number_of_independents}</td>
+  <td>${data.votes_with_party_independents} &percnt;</td>
+</tr>`;
+  if (htmlElement !== 'null') {
+    document.getElementById(htmlElement).innerHTML = markup;
+  };
+}
