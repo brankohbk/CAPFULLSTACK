@@ -76,7 +76,7 @@
         <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
       </section>
       <section class="col-md-6 col-12">
-        <h2>Senate at a glance</h2>
+        <h2>Congress at a glance</h2>
         <table class="table table-striped table-hover">
           <thead class="thead-dark" id="table-headers">
             <tr>
@@ -85,22 +85,8 @@
               <th>% Voted with Prty</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Republican</td>
-              <td>--</td>
-              <td>--</td>
-            </tr>
-            <tr>
-              <td>Democrat</td>
-              <td>--</td>
-              <td>--</td>
-            </tr>
-            <tr>
-              <td>Independent</td>
-              <td>--</td>
-              <td>--</td>
-            </tr>
+          <tbody id="partyVotesTable">
+
           </tbody>
         </table>
 
@@ -217,13 +203,12 @@
 
   <div id="toTop" class="toTop hideTopper"><a href="#top"><i class="fa fa-arrow-circle-up"></i></a></div>
 
-  <script src="js/pro-congress-113-senate.js"></script>
+  <script src="js/pro-congress-113-house.js"></script>
   <script src="js/abbs.js"></script>
   <script src="js/statistics.js"></script>
   <script src="js/scripts.js"></script>
   <script>
-    allStatistics(members);
-    // renderComponents();
+    renderTables();
   </script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

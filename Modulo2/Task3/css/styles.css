@@ -10,6 +10,10 @@ main {
   padding: 3% 0 0 0;
 }
 
+p {
+  text-align: justify;
+}
+
 
 /* FORMATOS PARA EL HEADER */
 
@@ -135,4 +139,5 @@ footer {
   -webkit-box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
   -moz-box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
   box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
+  text-align: center;
 }
