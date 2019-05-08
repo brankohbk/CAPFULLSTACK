@@ -20,6 +20,8 @@ window.addEventListener("scroll", myScrollFunc);
 // ===============================
 // SELECCIONO EL ORIGEN DE LOS DATOS EN CRUDO.
 // Si houseData NO ESTÁ DEFINIDO, USA senateData.
+
+
 var rawData = typeof houseData !== 'undefined' ? houseData : typeof senateData !== 'undefined' ? senateData : "";
 var members = "";
 //APUNTO AL ARRAY members DENTRO DE results DEL JSON.
