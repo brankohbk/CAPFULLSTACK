@@ -19,14 +19,22 @@ var statistics = {
 
 var chamber = typeof houseData !== 'undefined' ? "house" : typeof senateData !== 'undefined' ? "senate" : "";
 
+// ===============================
+// LLENO LAS TABLAS.
 function renderTables() {
-  allStatistics(members);
-  renderPartyVotes(statistics, 'partyVotesTable');
+  allStatistics(members); //Calcula todas las estadisticas solicitadas.
+  renderPartyVotes(statistics, 'partyVotesTable'); //Llena la tabla de datos generales.
 
-  renderLoyal(statistics[chamber + "_most_loyal"], "mostLoyalTable");
-  renderLoyal(statistics[chamber + "_least_loyal"], "leastLoyalTable");
+  //Consulta qué tabla existe en el documento actual y en base a la respuesta ejecuta las funciones de render de "Loyalty" o "Attendance".
+  let table = document.getElementById('mostEngagedTable') || document.getElementById('mostLoyalTable');
 
-
+  if (table.id === 'mostEngagedTable') {
+    render('attendance', statistics[chamber + "_most_engaged"], "mostEngagedTable");
+    render('attendance', statistics[chamber + "_least_engaged"], "leastEngagedTable");
+  } else if (table.id === 'mostLoyalTable') {
+    render('loyalty', statistics[chamber + "_most_loyal"], "mostLoyalTable");
+    render('loyalty', statistics[chamber + "_least_loyal"], "leastLoyalTable");
+  }
 }
 
 // ===============================
@@ -63,8 +71,8 @@ function allStatistics(array) {
 
   loyalty(array, chamber, "least");
   loyalty(array, chamber, "most");
-
-
+  attendance(array, chamber, "least");
+  attendance(array, chamber, "most");
 
 }
 
@@ -96,16 +104,17 @@ function loyalty(data, chamber, mostOrleast) {
   let retrievePercentage = 10;
   let order = "";
   let aux = [];
-  let membersToDisplay = Math.round((sorted.length) * retrievePercentage / 100); //Se busca el indice del miembro de acuerdo al porcentaje solicitado por ell enunciado.
+  let membersToDisplay = Math.round((sorted.length) * retrievePercentage / 100); //Se busca el indice del miembro de acuerdo al porcentaje solicitado por el enunciado.
   let option = mostOrleast;
   if (option === "most") {
     order = "most_"
-    let limit = sorted.length - membersToDisplay - 1;
+    let limit = sorted.length - membersToDisplay;
     let limitVotesPercent = sorted[limit].votes_with_party_pct; //guardo el valor del porcentaje de votos del miembro de referencia.
     aux = sorted.filter(member => member.votes_with_party_pct >= limitVotesPercent); //busco en todo el array los miembros que tengan MAYOR o igual porcentaje de votos.
-  } else {
+    aux.sort((x, y) => { return y.votes_with_party_pct - x.votes_with_party_pct; }); //Ordeno de mayor a menor por porcentaje de votos.
+  } else if (option === "least") {
     order = "least_"
-    let limit = membersToDisplay;
+    let limit = membersToDisplay - 1; // Como el array empieza en 0, tengo que restar 1 posición al limite.
     let limitVotesPercent = sorted[limit].votes_with_party_pct; //guardo el valor del porcentaje de votos del miembro de referencia.
     aux = sorted.filter(member => member.votes_with_party_pct <= limitVotesPercent); //busco en todo el array los miembros que tengan MAYOR o igual porcentaje de votos.
   }
@@ -113,20 +122,61 @@ function loyalty(data, chamber, mostOrleast) {
   statistics[chamberName + order + "loyal"] = aux; //guardo el array como valor del atributo del objeto "statistics" de acuerdo a la cámara que está evaluando.
 }
 
-function renderLoyal(data, htmlElement) {
-  markup = `
+
+
+function attendance(data, chamber, mostOrleast) {
+  let sorted = data.sort((x, y) => { return x.missed_votes - y.missed_votes; }); //Se ordenan los datos por porcentaje de votos.
+  let retrievePercentage = 10;
+  let order = "";
+  let aux = [];
+  let membersToDisplay = Math.round((sorted.length) * retrievePercentage / 100); //Se busca el indice del miembro de acuerdo al porcentaje solicitado por el enunciado.
+  let option = mostOrleast;
+  if (option === "least") {
+    order = "least_"
+    let limit = sorted.length - membersToDisplay;
+    let limitVotesPercent = sorted[limit].missed_votes; //guardo el valor del porcentaje de votos del miembro de referencia.
+    aux = sorted.filter(member => member.missed_votes >= limitVotesPercent); //busco en todo el array los miembros que tengan MAYOR o igual porcentaje de votos.
+    aux.sort((x, y) => { return y.missed_votes - x.missed_votes; }); //Ordeno de mayor a menor por porcentaje de votos.
+  } else if (option === "most") {
+    order = "most_"
+    let limit = membersToDisplay - 1; // Como el array empieza en 0, tengo que restar 1 posición al limite.
+    let limitVotesPercent = sorted[limit].missed_votes; //guardo el valor del porcentaje de votos del miembro de referencia.
+    aux = sorted.filter(member => member.missed_votes <= limitVotesPercent); //busco en todo el array los miembros que tengan MAYOR o igual porcentaje de votos.
+  }
+  let chamberName = chamber === "senate" ? "senate_" : "house_"; //se declara en base al JSON que se está evaluando.
+  statistics[chamberName + order + "engaged"] = aux; //guardo el array como valor del atributo del objeto "statistics" de acuerdo a la cámara que está evaluando.
+}
+
+
+
+function render(statisticsType, data, htmlElement) {
+  let statistics = statisticsType;
+  if (statistics === 'attendance') {
+
+    markup = `
     ${data.map(miembro =>
       `<tr>
           <td><a href="${miembro.url}" target=_blank >${miembro.last_name}, ${miembro.first_name} ${miembro.middle_name || ''}</a></td>
-          <td>${(miembro.total_votes * miembro.votes_with_party_pct / 100).toFixed(0)} / ${miembro.total_votes  /*Del TOTAL de votos, calcula cuántos fueron a su partido.*/}</td>
-          <td>${miembro.votes_with_party_pct} &percnt;</td>
+          <td>${ miembro.missed_votes } / ${miembro.total_votes}</td>
+          <td>${miembro.missed_votes_pct} &percnt;</td>
           </tr>`
           ).join('')}
   `;
-  
- if (htmlElement !== 'null') {
+  } else if(statistics === 'loyalty'){
+    
+      markup = `
+            ${data.map(miembro =>
+              `<tr>
+                  <td><a href="${miembro.url}" target=_blank >${miembro.last_name}, ${miembro.first_name} ${miembro.middle_name || ''}</a></td>
+                  <td>${(miembro.total_votes * miembro.votes_with_party_pct / 100).toFixed(0)} / ${miembro.total_votes  /*Del TOTAL de votos, calcula cuántos fueron a su partido.*/}</td>
+                  <td>${miembro.votes_with_party_pct.toFixed(2)} &percnt;</td>
+                  </tr>`
+                  ).join('')}
+          `;
+  }
       
-   document.getElementById(htmlElement).innerHTML = markup;
- }
-
-}
+     if (htmlElement !== 'null') {
+          
+       document.getElementById(htmlElement).innerHTML = markup;
+     }
+    }
