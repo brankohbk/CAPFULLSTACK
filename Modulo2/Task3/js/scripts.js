@@ -11,6 +11,7 @@ var myScrollFunc = function() {
   } else {
     upper.className = "toTop hideTopper"
   }
+
 };
 
 window.addEventListener("scroll", myScrollFunc);
