@@ -1,5 +1,5 @@
 Vue.component('navbar', {
-  template: `      <header class="container-fluid">
+  template: `      <header class="container-fluid" id="header">
   <a name="top"></a>
   <div class="d-flex justify-content-between">
     <div class="logo mr-auto"></div>

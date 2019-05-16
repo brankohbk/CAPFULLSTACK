@@ -20,13 +20,19 @@ window.addEventListener("scroll", myScrollFunc);
 
 // ===============================
 // SELECCIONO EL ORIGEN DE LOS DATOS EN CRUDO.
-// Si houseData NO ESTÁ DEFINIDO, USA senateData.
 
+let rawData = [];
+fetch('https://api.propublica.org/congress/v1/115/senate/members.json', { headers: { 'X-API-Key': '9TpSPs9WWEJazoq0YrySUhmSOrnlhRA9jR4XlnSz' } })
+  .then(response => {
+    return response.json();
+  })
+  .then(myJson => {
+    rawData.push(myJson);
+  });
 
-var rawData = typeof houseData !== 'undefined' ? houseData : typeof senateData !== 'undefined' ? senateData : "";
-var members = "";
-//APUNTO AL ARRAY members DENTRO DE results DEL JSON.
-if (rawData !== "") { members = rawData.results[0].members; }
+// var rawData = typeof houseData !== 'undefined' ? houseData : typeof senateData !== 'undefined' ? senateData : "";
+console.log(rawData);
+var members = rawData[0].results[0].members;
 // Inicializo los estados seleccionados y busco las abreviaciones en el diccionario.
 var ddmenu = document.querySelector('#stateDropdown');
 var state = "";
