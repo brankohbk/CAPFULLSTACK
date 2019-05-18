@@ -133,15 +133,17 @@ function llenarTabla(miembros, elementoHTML) {
 
 // ===============================
 // SELECCIONO EL ORIGEN DE LOS DATOS EN CRUDO.
-const promiseModifiers={ headers: { 'X-API-Key': '9TpSPs9WWEJazoq0YrySUhmSOrnlhRA9jR4XlnSz' } }
+const promiseModifiers={ headers: { 'X-API-Key': '9TpSPs9WWEJazoq0YrySUhmSOrnlhRA9jR4XlnSz' } };
+
 let dataPromise = fetch(promiseURL, promiseModifiers);
 dataPromise
   .then(response => response.json())
   .then(myJson => {
       members = myJson.results[0].members;
+      
       // ===============================
       // LLENA EL Dropdown CON LOS ESTADOS
       llenarDropdownEstados(members, "stateDropdown");
       renderComponents();
-
-});
+})
+.catch(err => `Couldn't retrieve info. please, check this error: ${err}`);

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Exchange Rates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container" id="app">
+    <h1>PRUEBA VUE JSON</h1>
+    <table class="table">
+      <tr>
+        <th>Currency</th>
+        <th>Full Name</th>
+        <th>Rate</th>
+      </tr>
+      <tr v-for="(value, key) in rateData.rates">
+        <td>{{key}}</td>
+        <td>{{names[key]}}</td>
+        <td>{{value}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="main.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
