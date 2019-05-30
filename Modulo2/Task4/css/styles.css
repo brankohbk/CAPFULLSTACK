@@ -1,142 +1,159 @@
 :root {
-  --logo-width: 150px;
+    --logo-width: 150px;
 }
 
 * {
-  font-family: 'Philosopher', cursive;
+    font-family: 'Philosopher', cursive;
 }
 
 main {
-  padding: 3% 0 0 0;
+    padding: 3% 0 0 0;
 }
 
 p {
-  text-align: justify;
+    text-align: justify;
 }
 
 
 /* FORMATOS PARA EL HEADER */
 
 #header {
-  padding: 0 0 0 0;
+    padding: 0 0 0 0;
 }
 
 
 /* FORMATOS PARA .contact */
 
 .contact a {
-  text-decoration: underline blue;
+    text-decoration: underline blue;
 }
 
 
 /* FORMATO DE LOGO */
 
 .logo {
-  width: 150px;
-  height: calc(var(--logo-width) / 2.86);
-  background-image: url("../img/logo.png");
-  background-size: cover;
+    width: 150px;
+    height: calc(var(--logo-width) / 2.86);
+    background-image: url("../img/logo.png");
+    background-size: cover;
 }
 
 
 /* FORMATOS DE #navbar */
 
 #navbar {
-  border: 1px solid black;
-  background-color: #EEEEEE;
+    border: 1px solid black;
+    background-color: #EEEEEE;
 }
 
 #navbar a {
-  background-color: transparent;
-  font-weight: bold;
-  color: #0389CD;
+    background-color: transparent;
+    font-weight: bold;
+    color: #0389CD;
 }
 
 #navbar a:hover {
-  background-color: gray;
-  color: black;
+    background-color: gray;
+    color: black;
 }
 
 
 /* FORMATOS DE .dropdown */
 
 #navbar .dropdown-item {
-  color: #0389CD;
+    color: #0389CD;
 }
 
 #navbar .activo {
-  background-color: #CCCCCC;
-  color: #5D5D5D;
+    background-color: #CCCCCC;
+    color: #5D5D5D;
 }
 
 
 /* FORMATO PARA .congressImg */
 
 .congressImg {
-  max-width: 200px;
-  max-height: 200px;
-  width: 20vw;
-  height: 20vw;
+    max-width: 200px;
+    max-height: 200px;
+    width: 20vw;
+    height: 20vw;
 }
 
 
 /* FORMATO DE footer */
 
 footer {
-  border: black 1px solid;
-  text-align: center;
-  background-color: #EEEEEE;
-  padding-top: 3%;
-  border: #0389CD 1px solid;
+    border: black 1px solid;
+    text-align: center;
+    background-color: #EEEEEE;
+    padding-top: 3%;
+    border: #0389CD 1px solid;
 }
 
 #stateDropdown {
-  height: auto;
-  max-height: 200px;
-  overflow-x: hidden;
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }
 
 .toTop {
-  font-size: 3.5em;
-  position: fixed;
-  bottom: 15px;
-  transition: 0.75s all;
+    font-size: 3.5em;
+    position: fixed;
+    bottom: 15px;
+    transition: 0.75s all;
 }
 
 .toTop:hover {
-  font-size: 4.5em;
+    font-size: 4.5em;
 }
 
 .toTop a,
 .toTop a:active,
 .toTop a:visited {
-  color: rgba(3, 138, 205, 0.603);
+    color: rgba(3, 138, 205, 0.603);
 }
 
 .toTop a:hover {
-  color: #0389CD;
+    color: #0389CD;
 }
 
 .hideTopper {
-  opacity: 0;
-  right: -100%;
+    opacity: 0;
+    right: -100%;
 }
 
 .showTopper {
-  opacity: 1;
-  right: 3vw;
+    opacity: 1;
+    right: 3vw;
 }
 
 #state {
-  font-weight: bold;
-  border-left: #0389CD 7px solid;
-  background-color: #DEDEDE;
-  text-align: center;
+    font-weight: bold;
+    border-left: #0389CD 7px solid;
+    background-color: #DEDEDE;
+    text-align: center;
 }
 
 .table {
-  -webkit-box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
-  -moz-box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
-  box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
-  text-align: center;
+    -webkit-box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
+    -moz-box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
+    box-shadow: 5px 8px 20px 0px rgba(3, 137, 205, 1);
+    text-align: center;
+}
+
+
+/* VUE TRANSITION EFFECTS */
+
+.rowTransition {
+    transition: all 0.4s;
+}
+
+.membersTable-enter,
+.membersTable-leave-to {
+    opacity: 0;
+    transform: translateX(100px);
+}
+
+.membersTable-leave-active {
+    position: absolute;
 }
