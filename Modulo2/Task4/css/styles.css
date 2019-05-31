@@ -161,7 +161,7 @@ footer {
 .checkGroup * {
   border-radius: 6px;
   display: inline-block;
-  padding: 1px 7px;
+  padding: 1px 5px;
   border: solid 1px transparent;
 }
 
