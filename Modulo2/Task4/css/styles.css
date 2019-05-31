@@ -158,31 +158,16 @@ footer {
   position: absolute;
 }
 
-
-/* .highlight * {
-  background-color: rgba(3, 138, 205, 0.548);
-
-} */
-
-.highlight * {
-  animation: pulse 2.75s infinite;
+.checkGroup * {
   border-radius: 6px;
   display: inline-block;
   padding: 1px 7px;
+  border: solid 1px transparent;
 }
 
-
-/* @keyframes pulse {
-  0% {
-    background-color: rgba(3, 138, 205, 0.25);
-  }
-  50% {
-    background-color: #FFFFFF;
-  }
-  100% {
-    background-color: rgba(3, 138, 205, 0.25);
-  }
-} */
+.highlight * {
+  animation: pulse 2.75s infinite;
+}
 
 @keyframes pulse {
   0% {
