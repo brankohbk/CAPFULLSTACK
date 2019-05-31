@@ -166,11 +166,13 @@ footer {
 
 .highlight * {
   animation: pulse 2.75s infinite;
-  border-radius: 5px;
-  padding: 3px;
+  border-radius: 6px;
+  display: inline-block;
+  padding: 1px 7px;
 }
 
-@keyframes pulse {
+
+/* @keyframes pulse {
   0% {
     background-color: rgba(3, 138, 205, 0.25);
   }
@@ -179,5 +181,20 @@ footer {
   }
   100% {
     background-color: rgba(3, 138, 205, 0.25);
+  }
+} */
+
+@keyframes pulse {
+  0% {
+    border: 1px solid rgba(3, 138, 205, 0.5);
+    background-color: rgba(3, 138, 205, 0.1);
+  }
+  50% {
+    border: 1px solid #FFFFFF;
+    background-color: #FFFFFF;
+  }
+  100% {
+    border: 1px solid rgba(3, 138, 205, 0.5);
+    background-color: rgba(3, 138, 205, 0.1);
   }
 }
