@@ -1,5 +1,5 @@
 let app = new Vue({
-  el: '#app',
+  el: '#membersFilter',
   data: {
     members: [],
     selectedParties: ['D', 'I', 'R'],
@@ -43,6 +43,34 @@ let app = new Vue({
 
 });
 
+let statistics = new Vue({
+  data: {
+    members: [],
+    "number_of_democrats": 0,
+    "number_of_independents": 0,
+    "number_of_republicans": 0,
+    "total": 0,
+    "votes_with_party_democrats": 0,
+    "votes_with_party_independents": 0,
+    "votes_with_party_republicans": 0,
+    "senate_least_loyal": [],
+    "house_least_loyal": [],
+    "senate_most_loyal": [],
+    "house_most_loyal": [],
+    "senate_least_engaged": [],
+    "house_least_engaged": [],
+    "senate_most_engaged": [],
+    "house_most_engaged": []
+  },
+  methods: {
+
+  },
+  computed: {
+
+  }
+
+
+});
 
 
 
@@ -53,6 +81,7 @@ dataPromise
   .then(response => response.json())
   .then(myJson => {
     app.members = myJson.results[0].members;
+
 
     // Filtra los estados del JSON para armar el dropdown.
     let estados = app.members.map(miembro => miembro.state);

@@ -15,7 +15,7 @@
 </head>
 
 <body class="container">
-  <div id="app">
+  <div id="membersFilter">
     <header class="container-fluid" id="header">
       <a name="top"></a>
       <div class="d-flex justify-content-between">
@@ -84,10 +84,10 @@
         <div class="col-3 col-md-2 flex-shrink-1">
           Filter by Party:
         </div>
-        <div class="col-6 checkGroup" :class='emptyParties'>
-          <label @click='partySelect'><input type="checkbox" name="party" value="D" aria-label="" checked> Democrat</label>
-          <label @click='partySelect'><input type="checkbox" name="party" value="I" aria-label="" checked> Independent</label>
-          <label @click='partySelect'><input type="checkbox" name="party" value="R" aria-label="" checked> Republican</label>
+        <div class="col-6 checkGroup">
+          <label :class='emptyParties' @click='partySelect'><input type="checkbox" name="party" value="D" aria-label="" checked> Democrat</label>
+          <label :class='emptyParties' @click='partySelect'><input type="checkbox" name="party" value="I" aria-label="" checked> Independent</label>
+          <label :class='emptyParties' @click='partySelect'><input type="checkbox" name="party" value="R" aria-label="" checked> Republican</label>
         </div>
         <div class="col ml-auto d-flex flex-wrap">
           <div class="col-12 justify-content-center"><label>Filter by State:
@@ -145,12 +145,10 @@
 
   </div>
   </div>
-  <!-- <script src="js/pro-congress-113-senate.js"></script> -->
   <script>
     const promiseURL = 'https://api.propublica.org/congress/v1/113/senate/members.json';
   </script>
   <script src="js/abbs.js"></script>
-  <!-- <script src="js/scripts.js"></script> -->
   <script src="js/app.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

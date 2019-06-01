@@ -165,7 +165,7 @@ footer {
   border: solid 1px transparent;
 }
 
-.highlight * {
+.highlight {
   animation: pulse 2.75s infinite;
 }
 
