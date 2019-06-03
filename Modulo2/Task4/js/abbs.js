@@ -1,4 +1,4 @@
-var abbreviations = [{
+app.abbs = [{
     "name": "Alabama",
     "abbreviation": "AL"
   },

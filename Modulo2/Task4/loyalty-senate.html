@@ -14,7 +14,7 @@
 </head>
 
 <body class="container">
-  <div id="statistics">
+  <div id="statisticsApp">
 
 
     <header class="container-fluid" id="header">
@@ -88,7 +88,23 @@
                 <th>% Voted with Prty</th>
               </tr>
             </thead>
-            <tbody id="partyVotesTable">
+            <tbody>
+              <tr>
+                <td>Democrats</td>
+                <td>{{number_of_democrats}} </td>
+                <td>{{votes_with_party_democrats}} &percnt;</td>
+              </tr>
+              <tr>
+                <td>Republicans</td>
+                <td>{{number_of_republicans}} </td>
+                <td>{{votes_with_party_republicans}} &percnt;</td>
+              </tr>
+              <tr>
+                <td>Independents</td>
+                <td>{{number_of_independents}} </td>
+                <td>{{votes_with_party_independents}} &percnt;</td>
+              </tr>
+
 
             </tbody>
           </table>
@@ -108,8 +124,12 @@
                 <th>% Party Votes</th>
               </tr>
             </thead>
-            <tbody id="leastLoyalTable">
-
+            <tbody>
+              <tr v-for='member in senate_least_loyal'>
+                <td><a :href=member.url target="_blank">{{member.last_name}}, {{member.first_name}} {{member.middle_name}}</a></td>
+                <td>{{partyVotes(member)}} </td>
+                <td>{{member.votes_with_party_pct}} &percnt;</td>
+              </tr>
             </tbody>
           </table>
 
@@ -126,6 +146,11 @@
               </tr>
             </thead>
             <tbody id="mostLoyalTable">
+              <tr v-for='member in senate_most_loyal'>
+                <td><a :href=member.url target="_blank">{{member.last_name}}, {{member.first_name}} {{member.middle_name}}</a></td>
+                <td>{{partyVotes(member)}} </td>
+                <td>{{member.votes_with_party_pct}} &percnt;</td>
+              </tr>
 
             </tbody>
           </table>
@@ -146,14 +171,15 @@
   <!-- END OF APP -->
   <script>
     const promiseURL = 'https://api.propublica.org/congress/v1/113/senate/members.json';
+    var chamber = 'senate';
   </script>
-  <!-- <script src="js/statistics.js"></script>
-  <script src="js/scripts.js"></script> -->
+  <script src="js/vue.min.js"></script>
+  <script src="js/app.js"></script>
 
+  <script src="js/scripts.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <script src="js/vue.min.js"></script>
 </body>
 
 </html>
