@@ -140,27 +140,7 @@ function allStatistics(array) {
 
 }
 
-function renderPartyVotes(data, htmlElement) {
-  let markup = ``;
-  markup += `<tr>
-  <td>Republican</td>
-  <td>${data.number_of_republicans}</td>
-  <td>${data.votes_with_party_republicans} &percnt;</td>
-  </tr>
-  <tr>
-  <td>Democrat</td>
-  <td>${data.number_of_democrats}</td>
-  <td>${data.votes_with_party_democrats} &percnt;</td>
-  </tr>
-  <tr>
-  <td>Independent</td>
-  <td>${data.number_of_independents}</td>
-  <td>${data.votes_with_party_independents} &percnt;</td>
-  </tr>`;
-  if (htmlElement !== 'null') {
-    document.getElementById(htmlElement).innerHTML = markup;
-  };
-}
+
 let options;
 
 function loyalty(data, chamber, mostOrleast) {
@@ -211,37 +191,3 @@ function attendance(data, chamber, mostOrleast) {
   let chamberName = chamber === "senate" ? "senate_" : "house_"; //se declara en base al JSON que se está evaluando.
   statistics[chamberName + order + "engaged"] = aux; //guardo el array como valor del atributo del objeto "statistics" de acuerdo a la cámara que está evaluando.
 }
-
-
-
-function render(statisticsType, data, htmlElement) {
-  let statistics = statisticsType;
-  if (statistics === 'attendance') {
-
-    markup = `
-    ${data.map(miembro =>
-      `<tr>
-          <td><a href="${miembro.url}" target=_blank >${miembro.last_name}, ${miembro.first_name} ${miembro.middle_name || ''}</a></td>
-          <td>${ miembro.missed_votes } / ${miembro.total_votes}</td>
-          <td>${miembro.missed_votes_pct} &percnt;</td>
-          </tr>`
-          ).join('')}
-  `;
-  } else if(statistics === 'loyalty'){
-    
-      markup = `
-            ${data.map(miembro =>
-              `<tr>
-                  <td><a href="${miembro.url}" target=_blank >${miembro.last_name}, ${miembro.first_name} ${miembro.middle_name || ''}</a></td>
-                  <td>${(miembro.total_votes * miembro.votes_with_party_pct / 100).toFixed(0)} / ${miembro.total_votes  /*Del TOTAL de votos, calcula cuántos fueron a su partido.*/}</td>
-                  <td>${miembro.votes_with_party_pct.toFixed(2)} &percnt;</td>
-                  </tr>`
-                  ).join('')}
-          `;
-  }
-      
-     if (htmlElement !== 'null') {
-          
-       document.getElementById(htmlElement).innerHTML = markup;
-     }
-    }
