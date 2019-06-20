@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Welcome to Firebase Hosting</title>
 
   <!-- update the version number as needed -->
   <script defer src="/__/firebase/6.2.0/firebase-app.js"></script>
@@ -16,26 +15,76 @@
   <!-- initialize the SDK after all desired features are loaded -->
   <script defer src="/__/firebase/init.js"></script>
 
+  <title>NYSL - Schedule LIVE! &#x26BD; </title>
+  <!-- WEBAPP CONFIG -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- CUSTOM FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Graduate&display=swap" rel="stylesheet">
+  <!-- BOOTSTRAP & CUSTOM CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
 
 </head>
 
 <body>
+  <!-- APP START -->
+  <div id="app">
+    <header class="navbar fixed-top d-flex container-fluid flex-nowrap ">
+      <img src="img/logo.png" id="logo" alt="">
+      <div id="title">
+        <h1>
+          NYSL - Schedule LIVE! <span class="spin">&#x26BD;</span>
+        </h1>
 
+        <h2>{{title}}</h2>
+      </div>
+    </header>
+    <main class="d-flex justify-content-center">
+      <div id="selectedInfoContainer" class="col-10 d-flex justify-content-center">
+        <div class="accordion col-12" id="dates">
+          <div class="card">
+            <div class="card-header">SEPTEMBER</div>
+          </div>
 
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link col-12" type="button" data-toggle="collapse" data-target="#date0901">
+                      9/01
+                    </button>
+              </h2>
+            </div>
+            <div id="date0901" class="collapse" data-parent="#dates">
+              <div class="card-body">
+                <ul>
+                  <li>
+                    U1 and U4 AJ Katzenmaier 9:30 a.m.
+                  </li>
+                  <li>
+                    U3 and U2 Greenbay 1:00 p.m
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
+        </div>
 
-      try {
-        let app = firebase.app();
-        let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-        document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-      } catch (e) {
-        console.error(e);
-        document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-      }
-    });
-  </script>
+      </div>
+    </main>
+    <footer class="footer d-flex container-fluid justify-content-around">
+      <div>Home</div>
+      <div><span class="pulse">Today</span></div>
+      <div>&#9776;</div>
+    </footer>
+    <!-- END OF APP -->
+  </div>
+  <script src="js/jquery-3.3.1.slim.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/vue.min.js"></script>
+  <script src="js/app.js"></script>
 </body>
 
 </html>

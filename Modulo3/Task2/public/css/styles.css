@@ -1,0 +1,115 @@
+:root {
+  --petroleo: #1c5364;
+  --verdeClaro: #1eff00b9;
+  --celeste: #498294;
+}
+
+body {
+  font-family: 'graduate', cursive;
+}
+
+h1 {
+  font-size: 2.5vh;
+}
+
+h2 {
+  text-align: justify;
+  font-size: 2vh;
+}
+
+#app {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+header,
+footer {
+  font-family: 'Alfa Slab One', cursive;
+  box-shadow: 0px 2px 12px var(--verdeClaro);
+  width: 100%;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  height: 15vh;
+  background-color: #498294;
+}
+
+header>* {
+  padding: 2px;
+  flex-grow: 1, 4;
+  text-align: center;
+}
+
+#logo {
+  height: 10vh;
+  width: 10vh;
+  margin: 2px;
+}
+
+main {
+  position: relative;
+  padding-top: 17vh;
+  overflow: auto;
+  width: 100%;
+  padding-bottom: 11vh;
+  background-color: var(--petroleo);
+  height: 100vh;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 10vh;
+  background-color: #498294;
+}
+
+footer>* {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+footer>*:active {
+  box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
+}
+
+#selectedInfoContainer {
+  /* border: 1px solid; */
+  background-color: rgba(240, 255, 255, 0.308);
+}
+
+
+/* ANIMACIONES */
+
+.pulse {
+  opacity: 0;
+  animation: 2.5s pulse infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.spin {
+  /* animation: spin 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite; MUY BUENO, PERO PARECE UN LOADING*/
+  animation: spin 5s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
