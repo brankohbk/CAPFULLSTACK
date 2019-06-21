@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- update the version number as needed -->
-  <script defer src="/__/firebase/6.2.0/firebase-app.js"></script>
+  <!-- <script defer src="/__/firebase/6.2.0/firebase-app.js"></script> -->
   <!-- include only the Firebase features as you need -->
-  <script defer src="/__/firebase/6.2.0/firebase-auth.js"></script>
-  <script defer src="/__/firebase/6.2.0/firebase-database.js"></script>
+  <!-- <script defer src="/__/firebase/6.2.0/firebase-auth.js"></script> -->
+  <!-- <script defer src="/__/firebase/6.2.0/firebase-database.js"></script>
   <script defer src="/__/firebase/6.2.0/firebase-messaging.js"></script>
-  <script defer src="/__/firebase/6.2.0/firebase-storage.js"></script>
+  <script defer src="/__/firebase/6.2.0/firebase-storage.js"></script> -->
   <!-- initialize the SDK after all desired features are loaded -->
-  <script defer src="/__/firebase/init.js"></script>
+  <!-- <script defer src="/__/fisrebase/init.js"></script> -->
 
   <title>NYSL - Schedule LIVE! &#x26BD; </title>
   <!-- WEBAPP CONFIG -->
@@ -42,40 +42,29 @@
       </div>
     </header>
     <main class="d-flex justify-content-center">
-      <div id="selectedInfoContainer" class="col-10 d-flex justify-content-center">
-        <div class="accordion col-12" id="dates">
-          <div class="card">
-            <div class="card-header">SEPTEMBER</div>
-          </div>
+      <div id="teams" class="infoContainer col-12 d-flex justify-content-center">
 
-          <div class="card">
-            <div class="card-header" id="headingOne">
-              <h2 class="mb-0">
-                <button class="btn btn-link col-12" type="button" data-toggle="collapse" data-target="#date0901">
-                      9/01
-                    </button>
-              </h2>
-            </div>
-            <div id="date0901" class="collapse" data-parent="#dates">
-              <div class="card-body">
-                <ul>
-                  <li>
-                    U1 and U4 AJ Katzenmaier 9:30 a.m.
-                  </li>
-                  <li>
-                    U3 and U2 Greenbay 1:00 p.m
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+        <ul class="list-group list-group-flush col-12 d-flex">
+          <li v-for='team in teams' @click='teamFilter(team)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">{{team}}<span>&GreaterGreater; </span>
+          </li>
+        </ul>
 
-        </div>
 
+        <!-- END OF #teams -->
+      </div>
+
+      <div id="teamFiltered" class="infoContainer d-none col-12 justify-content-center">
+        <ul class="list-group list-group-flush col-12 d-flex">
+          <li v-for='match in filteredMatches' class="list-group-item d-flex flex-fill align-items-center justify-content-between">
+            <span v-for='value in match'> {{value}} </span>
+          </li>
+        </ul>
+
+        <!-- EN OF #teamFiltered -->
       </div>
     </main>
     <footer class="footer d-flex container-fluid justify-content-around">
-      <div>Home</div>
+      <div @click='homeScreen'>Home</div>
       <div><span class="pulse">Today</span></div>
       <div>&#9776;</div>
     </footer>
