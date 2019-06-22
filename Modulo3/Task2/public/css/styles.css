@@ -24,6 +24,9 @@ h2 {
 header h2 {
   font-size: 3vh;
   transform: skew(-18deg);
+}
+
+.selectedInfo {
   text-shadow: 12px 12px 12px var(--verdeClaro);
 }
 

@@ -58,11 +58,11 @@
         <div v-for='match in filteredMatches' class="card flex-fill m-1 col-12">
           <div class="card-header ">
             <h1>
-              <span class="clickable" @click='globalFilter("teamA",match.teamA)'>
-                {{match.teamA}} 
+              <span class="clickable" @click='teamFilter(match.teams[0])'>
+                {{match.teams[0]}} 
               </span> VS.
-              <span class="clickable" @click='globalFilter("teamB",match.teamB)'>
-                {{match.teamB}}
+              <span class="clickable" @click='teamFilter(match.teams[1])'>
+                {{match.teams[1]}}
               </span>
             </h1>
           </div>
@@ -70,13 +70,13 @@
             <div class="col-8">
 
               <p>
-                <span class="clickable" @click="globalFilter('date',match.date)">
+                <span class="clickable" @click="dateFilter(match.date)">
 
                     {{match.date}} <br> {{match.time}}
                   </span>
               </p>
               <p>
-                <span class="clickable" @click="globalFilter('location',match.location)">
+                <span class="clickable" @click="locationFilter(match.location)">
                     {{match.location}}
                   </span>
               </p>

@@ -2,121 +2,104 @@ let nysl = new Vue({
   el: '#app',
   data: {
     matches: [{
-        "date": "2019-09-01",
-        "teamA": "U1",
-        "teamB": "U4",
+        "date": "1/9/2019",
+        "teams": ['U1', 'U4'],
         "location": "AJ Katzenmaier",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-09-01",
-        "teamA": "U3",
-        "teamB": "U2",
+        "date": "1/9/2019",
+        "teams": ['U3', 'U2'],
         "location": "Greenbay",
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-09-08",
-        "teamA": "U5",
-        "teamB": "U6",
+        "date": "8/9/2019",
+        "teams": ['U5', 'U6'],
         "location": "Howard A Yeager",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-09-08",
-        "teamA": "U6",
-        "teamB": "U1",
+        "date": "8/9/2019",
+        "teams": ['U6', 'U1'],
         "location": "Marjorie P Hart",
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-09-15",
-        "teamA": "U2",
-        "teamB": "U4",
+        "date": "15/9/2019",
+        "teams": ['U2', 'U4'],
         "location": "North",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-09-15",
-        "teamA": "U3",
-        "teamB": "U5",
+        "date": "15/9/2019",
+        "teams": ['U3', 'U5'],
         "location": "AJ Katzenmaier",
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-09-22",
-        "teamA": "U1",
-        "teamB": "U3",
+        "date": "22/9/2019",
+        "teams": ['U1', 'U3'],
         "location": "South",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-09-22",
-        "teamA": "U2",
-        "teamB": "U6",
+        "date": "22/9/2019",
+        "teams": ['U2', 'U6'],
         "location": "Howard A Yeager",
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-09-29",
-        "teamA": "U4",
-        "teamB": "U5",
+        "date": "29/9/2019",
+        "teams": ['U4', 'U5'],
         "location": "Greenbay",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-10-06",
-        "teamA": "U2",
-        "teamB": "U5",
+        "date": "6/10/2019",
+        "teams": ['U2', 'U5'],
         "location": "Marjorie P Hart",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-10-06",
-        "teamA": "U1",
-        "teamB": "U6",
+        "date": "6/10/2019",
+        "teams": ['U1', 'U6'],
         "location": "South",
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-10-13",
-        "teamA": "U3",
-        "teamB": "U4",
+        "date": "13/10/2019",
+        "teams": ['U3', 'U4'],
         "location": "Howard A Yeager",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-10-13",
-        "teamA": "U5",
-        "teamB": "U1",
+        "date": "13/10/2019",
+        "teams": ['U5', 'U1'],
         "location": "Greenbay",
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-10-20",
-        "teamA": "U6",
-        "teamB": "U3",
+        "date": "20/10/2019",
+        "teams": ['U6', 'U3'],
         "location": "North",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-10-20",
-        "teamA": "U2",
-        "teamB": "U4",
+        "date": "20/10/2019",
+        "teams": ['U2', 'U4'],
         "location": "Marjorie P Hart",
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-10-27",
-        "teamA": "U3",
-        "teamB": "U1",
+        "date": "27/10/2019",
+        "teams": ['U3', 'U1'],
         "location": "AJ Katzenmaier",
         "time": "9:30 a.m."
       },
       {
-        "date": "2019-10-27",
-        "teamA": "U5",
-        "teamB": "U6",
+        "date": "27/10/2019",
+        "teams": ['U5', 'U6'],
         "location": "Howard A Yeager",
         "time": "1:00 p.m."
       }
@@ -138,7 +121,7 @@ let nysl = new Vue({
       this.title = 'Please select your team';
     },
     teamFilter: function(team) {
-      this.filteredMatches = this.matches.filter(match => (match.teamA === team || match.teamB === team));
+      this.filteredMatches = this.matches.filter(match => (match.teams[0] === team || match.teams[1] === team));
       this.hideShowDivs("filtered");
       this.title = "Matches for team " + team;
     },
@@ -156,15 +139,20 @@ let nysl = new Vue({
     },
 
     globalFilter: function(attribute, param) {
-      this.filteredMatches = this.matches.filter(match => param === match[attribute]);
+
+      this.filteredMatches = this.matches.filter(
+
+      );
+
       this.hideShowDivs("filtered");
+      console.log(this.filteredMatches);
 
     },
 
   },
   computed: {
     teams: function() {
-      let aux = this.matches.map(match => match.teamA);
+      let aux = this.matches.map(match => match.teams[0] && match.teams[1]);
       let teams = [...new Set(aux)].sort();
       return teams;
     },
