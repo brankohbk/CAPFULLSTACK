@@ -42,7 +42,7 @@
       </div>
     </header>
     <main class="d-flex justify-content-center">
-      <div id="teams" class="infoContainer col-12 d-flex justify-content-center">
+      <div id="teams" class="infoContainer d-flex" v-bind:class='infoContainerClasslist'>
 
         <ul class="list-group list-group-flush col-12 d-flex">
           <li v-for='team in teams' @click='teamFilter(team)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">{{team}}<span>&GreaterGreater; </span>
@@ -53,18 +53,40 @@
         <!-- END OF #teams -->
       </div>
 
-      <div id="teamFiltered" class="infoContainer d-none col-12 justify-content-center">
-        <ul class="list-group list-group-flush col-12 d-flex">
-          <li v-for='match in filteredMatches' class="list-group-item d-flex flex-fill align-items-center justify-content-between">
-            <span v-for='value in match'> {{value}} </span>
-          </li>
-        </ul>
+      <div id="teamFiltered" class="infoContainer d-none flex-wrap" v-bind:class='infoContainerClasslist'>
 
-        <!-- EN OF #teamFiltered -->
+        <div v-for='match in filteredMatches' class="card flex-fill my-1 py-2">
+          <div class="card-header ">
+            <h1>
+              {{match.teamA}} VS {{match.teamB}}
+            </h1>
+          </div>
+          <div class="card-body d-inline-flex">
+            <div class="col-8">
+
+              <p>
+                {{match.date}} <br> {{match.time}}
+              </p>
+              <p>
+                {{match.location}}
+              </p>
+            </div>
+            <div id="gmapsIcon" class="col-4">
+
+            </div>
+
+
+
+          </div>
+        </div>
+
+
+
+        <!-- END OF #teamFiltered -->
       </div>
     </main>
     <footer class="footer d-flex container-fluid justify-content-around">
-      <div @click='homeScreen'>Home</div>
+      <div @click='showTeams'>Home</div>
       <div><span class="pulse">Today</span></div>
       <div>&#9776;</div>
     </footer>

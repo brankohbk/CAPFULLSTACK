@@ -123,6 +123,7 @@ let nysl = new Vue({
     ],
     title: 'Please select your team',
     filteredMatches: [],
+    infoContainerClasslist: 'col-12 justify-content-center',
   },
   methods: {
     teamFilter: function(team) {
@@ -132,13 +133,15 @@ let nysl = new Vue({
       infoContainers.map(element => element.classList.add('d-none'));
       document.getElementById('teamFiltered').classList.remove('d-none');
       document.getElementById('teamFiltered').classList.add('d-flex');
+      this.title = "Matches for team " + team;
     },
-    homeScreen: function() {
+    showTeams: function() {
       let infoContainers = Array.from(document.getElementsByClassName('infoContainer'));
       infoContainers.map(element => element.classList.remove('d-flex'));
       infoContainers.map(element => element.classList.add('d-none'));
       document.getElementById('teams').classList.remove('d-none');
       document.getElementById('teams').classList.add('d-flex');
+      this.title = 'Please select your team';
     }
 
   },
