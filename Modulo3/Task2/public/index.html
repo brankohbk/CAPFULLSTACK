@@ -53,22 +53,32 @@
         <!-- END OF #teams -->
       </div>
 
-      <div id="teamFiltered" class="infoContainer d-none flex-wrap" v-bind:class='infoContainerClasslist'>
+      <div id="filtered" class="infoContainer d-none flex-wrap" v-bind:class='infoContainerClasslist'>
 
-        <div v-for='match in filteredMatches' class="card flex-fill my-1 py-2">
+        <div v-for='match in filteredMatches' class="card flex-fill m-1 col-12">
           <div class="card-header ">
             <h1>
-              {{match.teamA}} VS {{match.teamB}}
+              <span class="clickable" @click='globalFilter("teamA",match.teamA)'>
+                {{match.teamA}} 
+              </span> VS.
+              <span class="clickable" @click='globalFilter("teamB",match.teamB)'>
+                {{match.teamB}}
+              </span>
             </h1>
           </div>
           <div class="card-body d-inline-flex">
             <div class="col-8">
 
               <p>
-                {{match.date}} <br> {{match.time}}
+                <span class="clickable" @click="globalFilter('date',match.date)">
+
+                    {{match.date}} <br> {{match.time}}
+                  </span>
               </p>
               <p>
-                {{match.location}}
+                <span class="clickable" @click="globalFilter('location',match.location)">
+                    {{match.location}}
+                  </span>
               </p>
             </div>
             <div id="gmapsIcon" class="col-4">

@@ -100,11 +100,11 @@ footer>*:active {
 
 /* ESTILOS DE CARD */
 
-.card
+
 /* ANIMACIONES */
 
 .pulse {
-  opacity: 1;
+  opacity: 0;
   animation: 2.5s pulse infinite;
 }
 

@@ -126,23 +126,40 @@ let nysl = new Vue({
     infoContainerClasslist: 'col-12 justify-content-center',
   },
   methods: {
-    teamFilter: function(team) {
-      this.filteredMatches = this.matches.filter(match => (match.teamA === team || match.teamB === team));
+    hideShowDivs: function(shown) {
       let infoContainers = Array.from(document.getElementsByClassName('infoContainer'));
       infoContainers.map(element => element.classList.remove('d-flex'));
       infoContainers.map(element => element.classList.add('d-none'));
-      document.getElementById('teamFiltered').classList.remove('d-none');
-      document.getElementById('teamFiltered').classList.add('d-flex');
-      this.title = "Matches for team " + team;
+      document.getElementById(shown).classList.remove('d-none');
+      document.getElementById(shown).classList.add('d-flex');
     },
     showTeams: function() {
-      let infoContainers = Array.from(document.getElementsByClassName('infoContainer'));
-      infoContainers.map(element => element.classList.remove('d-flex'));
-      infoContainers.map(element => element.classList.add('d-none'));
-      document.getElementById('teams').classList.remove('d-none');
-      document.getElementById('teams').classList.add('d-flex');
+      this.hideShowDivs("teams");
       this.title = 'Please select your team';
-    }
+    },
+    teamFilter: function(team) {
+      this.filteredMatches = this.matches.filter(match => (match.teamA === team || match.teamB === team));
+      this.hideShowDivs("filtered");
+      this.title = "Matches for team " + team;
+    },
+    dateFilter: function(date) {
+      this.filteredMatches = this.matches.filter(match => date === match.date);
+      this.hideShowDivs("filtered");
+      this.title = "Matches scheduled on " + date;
+    },
+    locationFilter: function(location) {
+
+      this.filteredMatches = this.matches.filter(match => location === match.location);
+      this.hideShowDivs("filtered");
+      this.title = "Matches played on " + location + " stadium";
+
+    },
+
+    globalFilter: function(attribute, param) {
+      this.filteredMatches = this.matches.filter(match => param === match[attribute]);
+      this.hideShowDivs("filtered");
+
+    },
 
   },
   computed: {
