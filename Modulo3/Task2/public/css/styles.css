@@ -18,7 +18,7 @@ h1 {
 }
 
 h2 {
-  text-align: justify;
+  text-align: center;
 }
 
 header h2 {
@@ -26,7 +26,7 @@ header h2 {
   transform: skew(-18deg);
 }
 
-.selectedInfo {
+.filter {
   text-shadow: 12px 12px 12px var(--verdeClaro);
 }
 
@@ -39,7 +39,6 @@ header h2 {
 header,
 footer {
   font-family: 'Alfa Slab One', cursive;
-  box-shadow: 0px 2px 22px var(--verdeClaro);
   width: 100%;
 }
 
@@ -47,7 +46,7 @@ header {
   position: fixed;
   top: 0;
   height: 15vh;
-  background-color: #498294;
+  background-color: var(--celeste);
 }
 
 header>* {
@@ -68,8 +67,9 @@ main {
   overflow: auto;
   width: 100%;
   padding-bottom: 11vh;
-  background-color: var(--petroleo);
+  /* background-color: var(--petroleo); */
   min-height: 100vh;
+  background-image: linear-gradient(to top right, #185A9D, #43CEA2)
 }
 
 footer {
@@ -77,6 +77,7 @@ footer {
   bottom: 0;
   height: 10vh;
   background-color: #498294;
+  box-shadow: 0px 2px 22px var(--verdeClaro);
 }
 
 footer>* {
@@ -88,10 +89,6 @@ footer>* {
 
 footer>*:active {
   box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
-}
-
-#selectedInfoContainer {
-  background-color: rgba(240, 255, 255, 0.308);
 }
 
 #gmapsIcon {
