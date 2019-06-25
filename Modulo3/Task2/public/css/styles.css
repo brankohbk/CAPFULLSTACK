@@ -3,6 +3,7 @@
   --verdeClaro: #1eff00b9;
   --celeste: #498294;
   --fontColor: #2e2e2e;
+  --clickable: rgba(0, 0, 0, 0.459);
 }
 
 * {
@@ -87,18 +88,37 @@ footer>* {
   justify-content: center;
 }
 
-footer>*:active {
+footer>*:active,
+.clickable:active {
   box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
 }
 
 #gmapsIcon {
-  background-image: url('../img/Google-Maps-New-Icon.png');
+  background-image: url('../img/gMapsicon.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
+v-cloak {
+  display: none;
+}
+
+.clickable {
+  display: inline-block;
+  padding: 2px;
+  border-bottom: 1px solid var(--clickable);
+  border-right: 2px solid var(--clickable);
+  border-bottom-right-radius: 18px;
+}
+
 
 /* ESTILOS DE CARD */
+
+.card {
+  background-color: rgba(255, 255, 255, 0.445);
+  border-radius: 0px;
+  box-shadow: 1px 1px 1px 2px var(--petroleo);
+}
 
 
 /* ANIMACIONES */

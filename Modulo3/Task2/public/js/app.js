@@ -128,6 +128,31 @@ let nysl = new Vue({
         "time": "1:00 p.m."
       }
     ],
+    locations: [{
+        "stadium": "AJ Katzenmaier",
+        "gmap": "https://www.google.com/maps?ll=41.900292,-87.62905&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=24+W+Walton+St+Chicago,+IL+60610+USA"
+      },
+      {
+        "stadium": "Greenbay",
+        "gmap": "https://maps.google.com/maps?ll=41.913802,-87.637839&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=1734%20N%20Orleans%20St%20Chicago%2C%20IL%2060614%20USA"
+      },
+      {
+        "stadium": "Howard A Yeager",
+        "gmap": "https://www.google.com/maps/place/2245+N+Southport+Ave,+Chicago,+IL+60614,+USA/@41.923265,-87.662926,14z/data=!4m5!3m4!1s0x880fd2e37f9b8d2d:0x62ad8b907dd755d6!8m2!3d41.9232646!4d-87.6629259?hl=en-US"
+      },
+      {
+        "stadium": "Marjorie P Hart",
+        "gmap": "https://maps.google.com/maps?ll=41.929578,-87.645898&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2625%20N%20Orchard%20St%20Chicago%2C%20IL%2060614%20USA"
+      },
+      {
+        "stadium": "North",
+        "gmap": "https://maps.google.com/maps?ll=41.907062,-87.646275&z=16&t=m&hl=en-US&gl=US&mapclient=embed"
+      },
+      {
+        "stadium": "South",
+        "gmap": "https://maps.google.com/maps?ll=41.919777,-87.651367&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2101%20N%20Fremont%20St%20Chicago%2C%20IL%2060614%20USA"
+      }
+    ],
     title: 'Please select your team',
     filter: '',
     filteredMatches: [],

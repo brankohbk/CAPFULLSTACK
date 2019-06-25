@@ -32,7 +32,7 @@
 <body>
   <!-- APP START -->
   <div id="app">
-    <header class="navbar fixed-top d-flex container-fluid flex-nowrap ">
+    <header v-cloak class="navbar fixed-top d-flex container-fluid flex-nowrap ">
       <img src="img/logo.png" id="logo" alt="">
       <div id="title">
         <h1>
@@ -42,7 +42,7 @@
         <h2>{{title}} <br> <span class="filter">{{filter}}</span> </h2>
       </div>
     </header>
-    <main class="d-flex justify-content-center">
+    <main v-cloak class="d-flex justify-content-center">
       <div id="teams" class="infoContainer d-flex" v-bind:class='infoContainerClasslist'>
 
         <ul class="list-group list-group-flush col-12 d-flex">
@@ -57,7 +57,7 @@
       <div id="filtered" class="infoContainer d-none flex-wrap" v-bind:class='infoContainerClasslist'>
 
         <div v-for='match in filteredMatches' class="card flex-fill col-12 m-1 p-0">
-          <div class="card-header ">
+          <div class="card-header text-center">
             <h1>
               <span class="clickable" @click='globalFilter(match.teamA)'>
                 {{match.teamA}} 
@@ -86,7 +86,7 @@
       </div>
     </main>
     <footer class="footer d-flex container-fluid justify-content-around">
-      <div @click='showTeams'>Home</div>
+      <div @click='showTeams'>Teams</div>
       <div @click='globalFilter()'><span class="pulse">ALL</span></div>
       <div>&#9776;</div>
     </footer>
