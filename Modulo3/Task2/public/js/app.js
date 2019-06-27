@@ -153,9 +153,15 @@ let nysl = new Vue({
         "gmap": "https://maps.google.com/maps?ll=41.919777,-87.651367&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2101%20N%20Fremont%20St%20Chicago%2C%20IL%2060614%20USA"
       }
     ],
-    title: 'Please select your team',
+    titles: {
+      home: "NYSL - Schedule LIVE! ",
+      teams: 'Please select your team',
+      stadiums: 'Please select a stadium',
+    },
+    title: '',
     filter: '',
     filteredMatches: [],
+    category: '',
     infoContainerClasslist: 'col-12 justify-content-center',
   },
   methods: {
@@ -166,17 +172,25 @@ let nysl = new Vue({
       document.getElementById(shown).classList.remove('d-none');
       document.getElementById(shown).classList.add('d-flex');
     },
-    showTeams: function() {
-      this.hideShowDivs("teams");
-      this.title = 'Please select your team';
+    showSection: function(section) {
+      this.hideShowDivs(section);
+      this.title = this.titles[section];
       this.filter = '';
     },
 
+    selectCategory: function(selection) {
+      this.category = selection;
+      this.hideShowDivs("category");
+      var section = selection;
+      this.title = this.titles[section];
+
+    },
     globalFilter: function(value) {
       if (typeof(value) === 'undefined') {
         this.filteredMatches = this.matches;
+        this.title = "ALL matches";
+        this.filter = '';
       } else {
-
         this.filteredMatches = this.matches.filter(
           match => {
             for (const key in match) {
@@ -186,9 +200,9 @@ let nysl = new Vue({
             }
           }
         );
+        this.title = "All matches for:";
+        this.filter = value;
       }
-      this.title = "Filtered by";
-      this.filter = value;
       this.hideShowDivs("filtered");
     },
 
@@ -198,6 +212,16 @@ let nysl = new Vue({
       let aux = this.matches.map(match => match.teamA || match.teamB);
       let teams = [...new Set(aux)].sort();
       return teams;
+    },
+    stadiums: function() {
+      let aux = this.matches.map(match => match.location);
+      let stadiums = [...new Set(aux)].sort();
+      return stadiums;
+    },
+    dates: function() {
+      let aux = this.matches.map(match => match.date);
+      let dates = [...new Set(aux)].sort();
+      return dates;
     },
 
   }

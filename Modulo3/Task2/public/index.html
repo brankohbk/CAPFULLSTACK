@@ -36,25 +36,57 @@
       <img src="img/logo.png" id="logo" alt="">
       <div id="title">
         <h1>
-          NYSL - Schedule LIVE! <span class="spin">&#x26BD;</span>
+          {{title}} <span class='spin'>&#x26BD;</span>
         </h1>
 
-        <h2>{{title}} <br> <span class="filter">{{filter}}</span> </h2>
+        <h2><span class="filter">{{filter}}</span> </h2>
       </div>
     </header>
     <main v-cloak class="d-flex justify-content-center">
-      <div id="teams" class="infoContainer d-flex" v-bind:class='infoContainerClasslist'>
+      <div id="home" class="infoContainer d-flex" v-bind:class='infoContainerClasslist'>
+        <div class="card-deck">
+          <div class="card sectionCard" @click='selectCategory(teams)'>
+            <div class="card-body">
+              <h5 class="card-title">TEAMS</h5>
+              <p class="card-text">Touch here to select a team and see all matches where they play.</p>
+            </div>
 
+          </div>
+          <div class="card sectionCard" @click='selectCategory(dates)'>
+            <div class="card-body">
+              <h5 class="card-title">DATES</h5>
+              <p class="card-text">Choose one date and see all matches played on that day.</p>
+              <small>All games take place on saturday</small>
+            </div>
+
+          </div>
+
+          <div class="card sectionCard" @click='selectCategory(stadiums)'>
+            <div class="card-body">
+              <h5 class="card-title">LOCATIONS</h5>
+              <p class="card-text">Touch here to select a stadium and see all matches played in it.</p>
+              <small>
+
+                You can also see it's address on Google Maps.
+              </small>
+            </div>
+          </div>
+        </div>
+        <!-- END OF #home -->
+      </div>
+
+
+
+      <div id="category" class="infoContainer d-none" :class='infoContainerClasslist'>
         <ul class="list-group list-group-flush col-12 d-flex">
-          <li v-for='team in teams' @click='globalFilter(team)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">{{team}}<span>&GreaterGreater; </span>
+          <li v-for='item in category' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">{{item}}<span>&GreaterGreater; </span>
           </li>
         </ul>
 
-
-        <!-- END OF #teams -->
+        <!-- END OF #category -->
       </div>
 
-      <div id="filtered" class="infoContainer d-none flex-wrap" v-bind:class='infoContainerClasslist'>
+      <div id="filtered" class="infoContainer  d-none flex-wrap" v-bind:class='infoContainerClasslist'>
 
         <div v-for='match in filteredMatches' class="card flex-fill col-12 m-1 p-0">
           <div class="card-header text-center">
@@ -86,8 +118,9 @@
       </div>
     </main>
     <footer class="footer d-flex container-fluid justify-content-around">
-      <div @click='showTeams'>Teams</div>
-      <div @click='globalFilter()'><span class="pulse">ALL</span></div>
+      <div @click='showSection("home")'>Home</div>
+      <div @click='selectCategory(teams)'>Teams</div>
+      <div @click='globalFilter()'>ALL matches</div>
       <div>&#9776;</div>
     </footer>
     <!-- END OF APP -->
@@ -98,4 +131,4 @@
   <script src="js/app.js"></script>
 </body>
 
-</html>
+</html

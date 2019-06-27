@@ -68,7 +68,6 @@ main {
   overflow: auto;
   width: 100%;
   padding-bottom: 11vh;
-  /* background-color: var(--petroleo); */
   min-height: 100vh;
   background-image: linear-gradient(to top right, #185A9D, #43CEA2)
 }
@@ -89,7 +88,8 @@ footer>* {
 }
 
 footer>*:active,
-.clickable:active {
+.clickable:active,
+.sectionCard:active {
   box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
 }
 
@@ -99,15 +99,17 @@ footer>*:active,
   background-repeat: no-repeat;
 }
 
-v-cloak {
+[v-cloak] {
   display: none;
 }
 
 .clickable {
   display: inline-block;
-  padding: 2px;
-  border-bottom: 1px solid var(--clickable);
-  border-right: 2px solid var(--clickable);
+  padding: 5px;
+  border-top: 1px solid var(--clickable);
+  border-right: 3px solid var(--clickable);
+  border-bottom: 3px solid var(--clickable);
+  border-left: 1px solid var(--clickable);
   border-bottom-right-radius: 18px;
 }
 
@@ -115,9 +117,19 @@ v-cloak {
 /* ESTILOS DE CARD */
 
 .card {
-  background-color: rgba(255, 255, 255, 0.445);
+  background-color: rgba(183, 0, 255, 0.048);
   border-radius: 0px;
   box-shadow: 1px 1px 1px 2px var(--petroleo);
+}
+
+.card * {
+  color: white;
+}
+
+.card-img-top {
+  width: 29%;
+  height: 29%;
+  justify-self: center
 }
 
 
