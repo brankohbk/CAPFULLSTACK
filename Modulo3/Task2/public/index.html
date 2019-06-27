@@ -6,15 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" sizes="196x196" href="img/icon.png" type="image/x-icon">
 
-  <!-- update the version number as needed -->
-  <!-- <script defer src="/__/firebase/6.2.0/firebase-app.js"></script> -->
-  <!-- include only the Firebase features as you need -->
-  <!-- <script defer src="/__/firebase/6.2.0/firebase-auth.js"></script> -->
-  <!-- <script defer src="/__/firebase/6.2.0/firebase-database.js"></script>
-  <script defer src="/__/firebase/6.2.0/firebase-messaging.js"></script>
-  <script defer src="/__/firebase/6.2.0/firebase-storage.js"></script> -->
-  <!-- initialize the SDK after all desired features are loaded -->
-  <!-- <script defer src="/__/fisrebase/init.js"></script> -->
+
 
   <title>NYSL - Schedule LIVE! &#x26BD; </title>
   <!-- WEBAPP CONFIG -->
@@ -44,80 +36,75 @@
       </div>
     </header>
     <main v-cloak class="d-flex justify-content-center">
-      <transition name="fade" mode="out-in">
-        <div v-if='showDiv === "home"' id="home" class="infoContainer" v-bind:class='infoContainerClasslist'>
-          <div class="card-deck">
-            <div class="card sectionCard" @click='selectCategory("teams")'>
-              <div class="card-body">
-                <h5 class="card-title">TEAMS &#x1F455; </h5>
-                <p class="card-text">Touch here to select a team and see all matches where they play.</p>
-              </div>
 
-            </div>
-            <div class="card sectionCard" @click='selectCategory("dates")'>
-              <div class="card-body">
-                <h5 class="card-title">DATES &#x1F4C5; </h5>
-                <p class="card-text">Choose one date and see all matches played on that day.</p>
-                <small>All games take place on saturday</small>
-              </div>
-
+      <div v-if='showDiv === "home"' id="home" class="infoContainer" v-bind:class='infoContainerClasslist'>
+        <div class="card-deck">
+          <div class="card sectionCard" @click='selectCategory("teams")'>
+            <div class="card-body">
+              <h5 class="card-title">TEAMS &#x1F455; </h5>
+              <p class="card-text">Touch here to select a team and see all matches where they play.</p>
             </div>
 
-            <div class="card sectionCard" @click='selectCategory("stadiums")'>
-              <div class="card-body">
-                <h5 class="card-title">LOCATIONS &#x1F3DF; </h5>
-                <p class="card-text">Touch here to select a stadium and see all matches played in it.</p>
-                <small>
+          </div>
+          <div class="card sectionCard" @click='selectCategory("dates")'>
+            <div class="card-body">
+              <h5 class="card-title">DATES &#x1F4C5; </h5>
+              <p class="card-text">Choose one date and see all matches played on that day.</p>
+              <small>All games take place on saturday</small>
+            </div>
+
+          </div>
+
+          <div class="card sectionCard" @click='selectCategory("stadiums")'>
+            <div class="card-body">
+              <h5 class="card-title">LOCATIONS &#x1F3DF; </h5>
+              <p class="card-text">Touch here to select a stadium and see all matches played in it.</p>
+              <small>
                     You can also see it's address on Google Maps.
                     </small>
-              </div>
             </div>
           </div>
-          <!-- END OF #home -->
         </div>
-      </transition>
-      <transition name="fade" mode="out-in">
-        <div v-if='showDiv === "category"' id="category" class="infoContainer" :class='infoContainerClasslist'>
-          <ul class="list-group list-group-flush col-12 d-flex">
-            <li v-for='item in category' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">{{item}}<span>&GreaterGreater; </span>
-            </li>
-          </ul>
-          <!-- END OF #category -->
-        </div>
-      </transition>
-      <transition name="fade" mode="out-in">
-        <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer  flex-wrap" v-bind:class='infoContainerClasslist'>
-          <div v-for='match in filteredMatches' class="card flex-fill col-12 m-1 p-0">
-            <div class="card-header text-center">
-              <h1>
-                <span class="clickable" @click='globalFilter(match.teamA)'>
+        <!-- END OF #home -->
+      </div>
+      <div v-if='showDiv === "category"' id="category" class="infoContainer" :class='infoContainerClasslist'>
+        <ul class="list-group list-group-flush col-12 d-flex">
+          <li v-for='item in category' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">{{item}}<span>&GreaterGreater; </span>
+          </li>
+        </ul>
+        <!-- END OF #category -->
+      </div>
+      <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer  flex-wrap" v-bind:class='infoContainerClasslist'>
+        <div v-for='match in filteredMatches' class="card flex-fill col-12 m-1 p-0">
+          <div class="card-header text-center">
+            <h1>
+              <span class="clickable" @click='globalFilter(match.teamA)'>
                     {{match.teamA}} 
                   </span> <em>VS.</em>
-                <span class="clickable" @click='globalFilter(match.teamB)'>
+              <span class="clickable" @click='globalFilter(match.teamB)'>
                     {{match.teamB}}
                   </span>
-              </h1>
-            </div>
-            <div class="card-body d-inline-flex">
-              <div class="col-8">
-                <p class="clickable" @click="globalFilter(match.date)">
-                  {{match.date}} <br> {{match.time}}
-                </p>
-                <p class="clickable" @click="globalFilter(match.location)">
-                  {{match.location}}
-                </p>
-              </div>
-              <a target="_blank" :href='locations[match.location]'>
-                <div id="gmapsIcon" class="col-4">
-                  <img src="img/gMapsicon.png" alt="">
-                </div>
-              </a>
-            </div>
-            <!-- END OF CARD -->
+            </h1>
           </div>
-          <!-- END OF #filtered -->
+          <div class="card-body d-inline-flex">
+            <div class="col-8">
+              <p class="clickable" @click="globalFilter(match.date)">
+                {{match.date}} <br> {{match.time}}
+              </p>
+              <p class="clickable" @click="globalFilter(match.location)">
+                {{match.location}}
+              </p>
+            </div>
+            <a target="_blank" :href='locations[match.location]'>
+              <div id="gmapsIcon" class="col-4">
+                <img src="img/gMapsicon.png" alt="">
+              </div>
+            </a>
+          </div>
+          <!-- END OF CARD -->
         </div>
-      </transition>
+        <!-- END OF #filtered -->
+      </div>
     </main>
     <footer class="footer d-flex container-fluid justify-content-around">
       <div @click='showSection("home")'>Home</div>
