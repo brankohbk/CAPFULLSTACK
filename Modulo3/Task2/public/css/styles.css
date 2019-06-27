@@ -93,14 +93,6 @@ footer>*:active,
   box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
 }
 
-
-/* #gmapsIcon {
-  display: block;
-  background-image: url('../img/gMapsicon.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-} */
-
 #gmapsIcon img {
   width: 100px;
   height: 100px;

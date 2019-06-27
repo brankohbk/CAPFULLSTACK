@@ -163,7 +163,6 @@ let nysl = new Vue({
     selectCategory: function(selection) {
 
       this.category = this[selection];
-      // this.hideShowDivs("category");
       this.title = this.titles[selection];
       this.showDiv = "category";
 
@@ -187,7 +186,6 @@ let nysl = new Vue({
         this.title = "All matches for:";
         this.filter = value;
       }
-      // this.hideShowDivs("filtered");
       this.showDiv = "filtered"
     },
 
