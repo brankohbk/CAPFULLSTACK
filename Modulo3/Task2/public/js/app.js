@@ -128,61 +128,45 @@ let nysl = new Vue({
         "time": "1:00 p.m."
       }
     ],
-    locations: [{
-        "stadium": "AJ Katzenmaier",
-        "gmap": "https://www.google.com/maps?ll=41.900292,-87.62905&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=24+W+Walton+St+Chicago,+IL+60610+USA"
-      },
-      {
-        "stadium": "Greenbay",
-        "gmap": "https://maps.google.com/maps?ll=41.913802,-87.637839&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=1734%20N%20Orleans%20St%20Chicago%2C%20IL%2060614%20USA"
-      },
-      {
-        "stadium": "Howard A Yeager",
-        "gmap": "https://www.google.com/maps/place/2245+N+Southport+Ave,+Chicago,+IL+60614,+USA/@41.923265,-87.662926,14z/data=!4m5!3m4!1s0x880fd2e37f9b8d2d:0x62ad8b907dd755d6!8m2!3d41.9232646!4d-87.6629259?hl=en-US"
-      },
-      {
-        "stadium": "Marjorie P Hart",
-        "gmap": "https://maps.google.com/maps?ll=41.929578,-87.645898&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2625%20N%20Orchard%20St%20Chicago%2C%20IL%2060614%20USA"
-      },
-      {
-        "stadium": "North",
-        "gmap": "https://maps.google.com/maps?ll=41.907062,-87.646275&z=16&t=m&hl=en-US&gl=US&mapclient=embed"
-      },
-      {
-        "stadium": "South",
-        "gmap": "https://maps.google.com/maps?ll=41.919777,-87.651367&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2101%20N%20Fremont%20St%20Chicago%2C%20IL%2060614%20USA"
-      }
-    ],
+    locations: {
+      "AJ Katzenmaier": "https://www.google.com/maps?ll=41.900292,-87.62905&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=24+W+Walton+St+Chicago,+IL+60610+USA",
+      "Greenbay": "https://maps.google.com/maps?ll=41.913802,-87.637839&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=1734%20N%20Orleans%20St%20Chicago%2C%20IL%2060614%20USA",
+      "Howard A Yeager": "https://www.google.com/maps/place/2245+N+Southport+Ave,+Chicago,+IL+60614,+USA/@41.923265,-87.662926,14z/data=!4m5!3m4!1s0x880fd2e37f9b8d2d:0x62ad8b907dd755d6!8m2!3d41.9232646!4d-87.6629259?hl=en-US",
+      "Marjorie P Hart": "https://maps.google.com/maps?ll=41.929578,-87.645898&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2625%20N%20Orchard%20St%20Chicago%2C%20IL%2060614%20USA",
+      "North": "https://maps.google.com/maps?ll=41.907062,-87.646275&z=16&t=m&hl=en-US&gl=US&mapclient=embed",
+      "South": "https://maps.google.com/maps?ll=41.919777,-87.651367&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2101%20N%20Fremont%20St%20Chicago%2C%20IL%2060614%20USA"
+    },
+
     titles: {
       home: "NYSL - Schedule LIVE! ",
-      teams: 'Please select your team',
-      stadiums: 'Please select a stadium',
+      teams: 'Please select your TEAM',
+      stadiums: 'Please select a STADIUM',
+      dates: 'Please select a DATE'
     },
-    title: '',
+    title: "NYSL - Schedule LIVE! ",
     filter: '',
     filteredMatches: [],
     category: '',
+    showDiv: 'home',
     infoContainerClasslist: 'col-12 justify-content-center',
   },
   methods: {
-    hideShowDivs: function(shown) {
-      let infoContainers = Array.from(document.getElementsByClassName('infoContainer'));
-      infoContainers.map(element => element.classList.remove('d-flex'));
-      infoContainers.map(element => element.classList.add('d-none'));
-      document.getElementById(shown).classList.remove('d-none');
-      document.getElementById(shown).classList.add('d-flex');
-    },
+
     showSection: function(section) {
-      this.hideShowDivs(section);
+
+      this.showDiv = section;
       this.title = this.titles[section];
       this.filter = '';
+
     },
 
     selectCategory: function(selection) {
-      this.category = selection;
-      this.hideShowDivs("category");
-      var section = selection;
-      this.title = this.titles[section];
+
+      this.category = this[selection];
+      // this.hideShowDivs("category");
+      this.title = this.titles[selection];
+      this.showDiv = "category";
+
 
     },
     globalFilter: function(value) {
@@ -203,7 +187,8 @@ let nysl = new Vue({
         this.title = "All matches for:";
         this.filter = value;
       }
-      this.hideShowDivs("filtered");
+      // this.hideShowDivs("filtered");
+      this.showDiv = "filtered"
     },
 
   },

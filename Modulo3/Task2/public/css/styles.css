@@ -93,10 +93,17 @@ footer>*:active,
   box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
 }
 
-#gmapsIcon {
+
+/* #gmapsIcon {
+  display: block;
   background-image: url('../img/gMapsicon.png');
   background-size: contain;
   background-repeat: no-repeat;
+} */
+
+#gmapsIcon img {
+  width: 100px;
+  height: 100px;
 }
 
 [v-cloak] {
@@ -111,6 +118,17 @@ footer>*:active,
   border-bottom: 3px solid var(--clickable);
   border-left: 1px solid var(--clickable);
   border-bottom-right-radius: 18px;
+}
+
+em {
+  margin: 0px 5px;
+  border-radius: 1em;
+  display: inline-flex;
+  padding: 1px 15px;
+  background-image: linear-gradient(to right, transparent 50%, brown 50%);
+  background-position: 0;
+  background-size: 200%;
+  animation: emphasize 3s infinite;
 }
 
 
@@ -130,6 +148,14 @@ footer>*:active,
   width: 29%;
   height: 29%;
   justify-self: center
+}
+
+
+/* ESTILOS DE .list-group */
+
+.list-group * {
+  background-color: rgba(183, 0, 255, 0.048);
+  color: white;
 }
 
 
@@ -161,5 +187,14 @@ footer>*:active,
 @keyframes spin {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes emphasize {
+  50% {
+    background-position: -100%;
+  }
+  100% {
+    background-position: -200%;
   }
 }
