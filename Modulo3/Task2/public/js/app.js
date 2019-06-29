@@ -121,7 +121,7 @@ let nysl = new Vue({
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-06-23",
+        "date": "2019-06-28",
         "teamA": "U5",
         "teamB": "U6",
         "location": "Howard A Yeager",
@@ -206,6 +206,22 @@ let nysl = new Vue({
       let dates = [...new Set(aux)].sort();
       return dates;
     },
+
+    today: function() {
+      var day = new Date();
+      var dd = String(day.getDate()).padStart(2, '0');
+      var mm = String(day.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = day.getFullYear();
+      day = yyyy + '-' + mm + '-' + dd;
+      return day;
+
+
+    },
+    todayMatches: function() {
+
+      return this.matches.filter(match => match.date === this.today);
+
+    }
 
   }
 

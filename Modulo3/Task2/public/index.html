@@ -13,7 +13,7 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <!-- CUSTOM FONTS -->
-  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Graduate&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Graduate:300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
   <!-- BOOTSTRAP & CUSTOM CSS -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/styles.css">
@@ -52,16 +52,12 @@
               <p class="card-text">Choose one date and see all matches played on that day.</p>
               <small>All games take place on saturday</small>
             </div>
-
           </div>
-
           <div class="card sectionCard" @click='selectCategory("stadiums")'>
             <div class="card-body">
               <h5 class="card-title">LOCATIONS &#x1F3DF; </h5>
-              <p class="card-text">Touch here to select a stadium and see all matches played in it.</p>
-              <small>
-                    You can also see it's address on Google Maps.
-                    </small>
+              <p class="card-text">Touch here to select a stadium and see all matches played on it.</p>
+              <small>You can also see it's address touching the Google Maps icon.</small>
             </div>
           </div>
         </div>
@@ -75,12 +71,18 @@
         <!-- END OF #category -->
       </div>
       <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer  flex-wrap" v-bind:class='infoContainerClasslist'>
-        <div v-for='match in filteredMatches' class="card flex-fill col-12 m-1 p-0">
+        <div v-if='filteredMatches.length === 0' class="card flex-fill col-12 mx-1 my-2 p-0">
+
+
+          NO HAY NADA, MACHO
+        </div>
+        <div v-else v-for='match in filteredMatches' class="card flex-fill col-12 mx-1 my-2 p-0">
+
           <div class="card-header text-center">
             <h1>
               <span class="clickable" @click='globalFilter(match.teamA)'>
                     {{match.teamA}} 
-                  </span> <em>VS.</em>
+                  </span> <span class="versus">VS.</span>
               <span class="clickable" @click='globalFilter(match.teamB)'>
                     {{match.teamB}}
                   </span>
@@ -103,13 +105,15 @@
           </div>
           <!-- END OF CARD -->
         </div>
+
         <!-- END OF #filtered -->
       </div>
+
     </main>
     <footer class="footer d-flex container-fluid justify-content-around">
-      <div @click='showSection("home")'>Home</div>
-      <div @click='globalFilter()'>ALL matches</div>
-      <div>&#9776;</div>
+      <div @click='showSection("home")'> &#x1F3E0; Home</div>
+      <div @click='globalFilter()'> &#x26BD; ALL matches</div>
+      <div @click='globalFilter(today)'> &#x1F4C5; <span v-if='todayMatches.length > 0' class="badge badge-danger pulse">{{todayMatches.length}}</span> Today</div>
     </footer>
     <!-- END OF APP -->
   </div>
