@@ -121,7 +121,7 @@ let nysl = new Vue({
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-06-28",
+        "date": "2019-06-29",
         "teamA": "U5",
         "teamB": "U6",
         "location": "Howard A Yeager",

@@ -72,9 +72,23 @@
       </div>
       <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer  flex-wrap" v-bind:class='infoContainerClasslist'>
         <div v-if='filteredMatches.length === 0' class="card flex-fill col-12 mx-1 my-2 p-0">
+          <div class="card-header text-center">
+
+            OOPS... &#x1F937;
+          </div>
+          <div class="card-body">
+
+            <div class="card-text">
+              <p>We couldn't find anything for the serch criteria
+                <span class="backgroundSlide"> {{filter}}  </span>.</p>
+              </p>
+              <small>Please, go back and select another option.</small>
 
 
-          NO HAY NADA, MACHO
+            </div>
+
+          </div>
+
         </div>
         <div v-else v-for='match in filteredMatches' class="card flex-fill col-12 mx-1 my-2 p-0">
 
@@ -113,7 +127,7 @@
     <footer class="footer d-flex container-fluid justify-content-around">
       <div @click='showSection("home")'> &#x1F3E0; Home</div>
       <div @click='globalFilter()'> &#x26BD; ALL matches</div>
-      <div @click='globalFilter(today)'> &#x1F4C5; <span v-if='todayMatches.length > 0' class="badge badge-danger pulse">{{todayMatches.length}}</span> Today</div>
+      <div @click='globalFilter(today)'><span v-if='todayMatches.length === 0'>&#x1F4C5;</span><span v-else class="badge badge-danger pulse">{{todayMatches.length}}</span> Today</div>
     </footer>
     <!-- END OF APP -->
   </div>
@@ -123,4 +137,4 @@
   <script src="js/app.js"></script>
 </body>
 
-</html
+</html>
