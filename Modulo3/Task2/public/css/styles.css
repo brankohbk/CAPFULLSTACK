@@ -3,7 +3,9 @@
   --verdeClaro: #1eff00b9;
   --celeste: #498294;
   --fontColor: #2e2e2e;
-  --clickable: rgba(0, 0, 0, 0.459);
+  --clickable: rgba(0, 0, 0, 0.575);
+  --highlight: brown;
+  --versus: brown;
 }
 
 * {
@@ -14,21 +16,9 @@ body {
   font-family: 'graduate', cursive;
 }
 
-h1 {
-  font-size: 2.5vh;
-}
-
-h2 {
-  text-align: center;
-}
-
-header h2 {
-  font-size: 3vh;
-  transform: skew(-18deg);
-}
-
 .filter {
-  text-shadow: 12px 12px 12px var(--verdeClaro);
+  text-shadow: 5px 5px 10px var(--verdeClaro);
+  color: rgb(255, 255, 255);
 }
 
 #app {
@@ -69,7 +59,7 @@ header>* {
 
 main {
   position: relative;
-  padding-top: 17vh;
+  padding-top: 15vh;
   overflow: auto;
   width: 100%;
   padding-bottom: 11vh;
@@ -83,6 +73,7 @@ footer {
   height: 10vh;
   background-color: #498294;
   box-shadow: 0px -2px 30px 1px var(--verdeClaro);
+  font-weight: lighter;
 }
 
 footer>* {
@@ -110,6 +101,7 @@ footer>*:active,
   border-bottom: 3px solid var(--clickable);
   border-left: 1px solid var(--clickable);
   border-bottom-right-radius: 18px;
+  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.356);
 }
 
 .versus {
@@ -117,7 +109,7 @@ footer>*:active,
   border-radius: 1em;
   display: inline-flex;
   padding: 1px 15px;
-  background-color: brown;
+  background-color: var(--versus);
 }
 
 
@@ -134,7 +126,6 @@ footer>*:active,
 .card {
   background-color: rgba(183, 0, 255, 0.048);
   border-radius: 0px;
-  box-shadow: 1px 1px 10px 2px var(--petroleo);
   margin: 10px 0px;
 }
 
@@ -142,12 +133,19 @@ footer>*:active,
   color: white;
 }
 
+.sectionCard {
+  box-shadow: 1px 1px 10px 2px var(--petroleo);
+}
+
 
 /* ESTILOS DE .list-group */
 
 .list-group * {
-  background-color: rgba(183, 0, 255, 0.048);
   color: white;
+}
+
+.list-group>* {
+  background-color: rgba(183, 0, 255, 0.048);
 }
 
 
@@ -183,7 +181,7 @@ footer>*:active,
 }
 
 .backgroundSlide {
-  background-image: linear-gradient(to right, transparent 50%, brown 50%);
+  background: linear-gradient(to right, transparent 50%, var(--highlight) 50%);
   background-position: 0;
   background-size: 200%;
   animation: backgroundSlide 3s infinite;

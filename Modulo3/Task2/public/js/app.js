@@ -121,32 +121,58 @@ let nysl = new Vue({
         "time": "1:00 p.m."
       },
       {
-        "date": "2019-06-29",
+        "date": "2019-07-01",
         "teamA": "U5",
         "teamB": "U6",
         "location": "Howard A Yeager",
         "time": "1:00 p.m."
       }
     ],
+
     locations: {
-      "AJ Katzenmaier": "https://www.google.com/maps?ll=41.900292,-87.62905&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=24+W+Walton+St+Chicago,+IL+60610+USA",
-      "Greenbay": "https://maps.google.com/maps?ll=41.913802,-87.637839&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=1734%20N%20Orleans%20St%20Chicago%2C%20IL%2060614%20USA",
-      "Howard A Yeager": "https://www.google.com/maps/place/2245+N+Southport+Ave,+Chicago,+IL+60614,+USA/@41.923265,-87.662926,14z/data=!4m5!3m4!1s0x880fd2e37f9b8d2d:0x62ad8b907dd755d6!8m2!3d41.9232646!4d-87.6629259?hl=en-US",
-      "Marjorie P Hart": "https://maps.google.com/maps?ll=41.929578,-87.645898&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2625%20N%20Orchard%20St%20Chicago%2C%20IL%2060614%20USA",
-      "North": "https://maps.google.com/maps?ll=41.907062,-87.646275&z=16&t=m&hl=en-US&gl=US&mapclient=embed",
-      "South": "https://maps.google.com/maps?ll=41.919777,-87.651367&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2101%20N%20Fremont%20St%20Chicago%2C%20IL%2060614%20USA"
+      "AJ Katzenmaier": {
+        "map": "https://www.google.com/maps?ll=41.900292,-87.62905&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=24+W+Walton+St+Chicago,+IL+60610+USA",
+        "address": "24 W. Walton St., Chicago, IL 60610"
+      },
+      "Greenbay": {
+        "map": "https://maps.google.com/maps?ll=41.913802,-87.637839&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=1734%20N%20Orleans%20St%20Chicago%2C%20IL%2060614%20USA",
+        "address": "1734 N. Orleans St., Chicago, IL 60614"
+      },
+      "Howard A Yeager": {
+        "map": "https://www.google.com/maps/place/2245+N+Southport+Ave,+Chicago,+IL+60614,+USA/@41.923265,-87.662926,14z/data=!4m5!3m4!1s0x880fd2e37f9b8d2d:0x62ad8b907dd755d6!8m2!3d41.9232646!4d-87.6629259?hl=en-US",
+        "address": "2245 N. Southport Ave., Chicago, IL 60614"
+      },
+      "Marjorie P Hart": {
+        "map": "https://maps.google.com/maps?ll=41.929578,-87.645898&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2625%20N%20Orchard%20St%20Chicago%2C%20IL%2060614%20USA",
+        "address": "2625 N. Orchard St., Chicago, IL 60614"
+      },
+      "North": {
+        "map": "https://maps.google.com/maps?ll=41.907062,-87.646275&z=16&t=m&hl=en-US&gl=US&mapclient=embed",
+        "address": "1409 N. Ogden Ave., Chicago, IL 60610"
+      },
+      "South": {
+        "map": "https://maps.google.com/maps?ll=41.919777,-87.651367&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=2101%20N%20Fremont%20St%20Chicago%2C%20IL%2060614%20USA",
+        "address": "2101 N. Fremont St., Chicago, IL 60614"
+      },
     },
 
     titles: {
-      home: "NYSL - Schedule LIVE! ",
+      home: "",
       teams: 'Please select your TEAM',
       stadiums: 'Please select a STADIUM',
       dates: 'Please select a DATE'
     },
-    title: "NYSL - Schedule LIVE! ",
+    subtitles: {
+      home: "",
+      teams: 'All matches for TEAM',
+      stadiums: 'All matches played on STADIUM',
+      dates: 'All matches played on '
+    },
+    title: "",
     filter: '',
     filteredMatches: [],
-    category: '',
+    categoryData: '',
+    actualCategory: '',
     showDiv: 'home',
     infoContainerClasslist: 'col-12 justify-content-center',
   },
@@ -161,10 +187,25 @@ let nysl = new Vue({
     },
 
     selectCategory: function(selection) {
-
-      this.category = this[selection];
+      this.categoryData = this[selection];
+      this.actualCategory = selection;
       this.title = this.titles[selection];
       this.showDiv = "category";
+
+
+    },
+    goBack: function() {
+      // Si ya se había seleccionado una categoria (estadio|| equipo|| fecha), vuelve a esa categoria.
+      // Si no está seleccionada la categoría, vuelve al home
+
+      if (this.actualCategory) {
+        var sel = this.actualCategory;
+        this.selectCategory(sel);
+        this.filter = '';
+        this.actualCategory = '';
+      } else {
+        this.showSection("home");
+      }
 
 
     },
@@ -184,6 +225,7 @@ let nysl = new Vue({
           }
         );
         this.title = "All matches for:";
+        // this.title = this.subtitles[this.actualCategory];
         this.filter = value;
       }
       this.showDiv = "filtered"
