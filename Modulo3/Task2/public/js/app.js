@@ -127,13 +127,6 @@ let nysl = new Vue({
         "location": "Howard A Yeager",
         "time": "1:00 p.m."
       },
-      {
-        "date": "2019-07-03",
-        "teamA": "U5",
-        "teamB": "U6",
-        "location": "Howard A Yeager",
-        "time": "1:00 p.m."
-      },
     ],
 
     locations: {
@@ -164,57 +157,54 @@ let nysl = new Vue({
     },
 
     titles: {
-      home: "",
-      teams: 'Please select your TEAM',
-      stadiums: 'Please select a STADIUM',
-      dates: 'Please select a DATE'
-    },
-    subtitles: {
-      home: "",
-      teams: 'All matches for TEAM',
-      stadiums: 'All matches played on STADIUM',
-      dates: 'All matches played on '
+      "home": "",
+      "filtered": "All matches for:",
+      "categoryOptions": {
+        "teams": 'Please select your TEAM',
+        "stadiums": 'Please select a STADIUM',
+        "dates": 'Please select a DATE'
+      },
     },
     title: "",
     filter: '',
+    actualCategory: '',
     filteredMatches: [],
     categoryData: '',
-    actualCategory: '',
     showDiv: 'home',
     infoContainerClasslist: 'col-12 justify-content-center',
+    history: [],
   },
   methods: {
 
     showSection: function(section) {
-
       this.showDiv = section;
-      this.title = this.titles[section];
-      this.filter = '';
+      let titleSelector;
+      // si la seccion seleccionada es "categoryOptions", muestra
+      section === "categoryOptions" ?
+        this.title = this.titles[section][this.actualCategory] :
+        this.title = this.titles[section];
 
+      if (this.history[this.history.length - 1] != section) {
+        this.history.push(section);
+      }
+      console.log(section, titleSelector, this.titles[titleSelector], this.title);
     },
 
     selectCategory: function(selection) {
       this.categoryData = this[selection];
       this.actualCategory = selection;
-      this.title = this.titles[selection];
-      this.showDiv = "category";
-
-
+      this.showSection("categoryOptions");
     },
     goBack: function() {
-      // Si ya se había seleccionado una categoria (estadio|| equipo|| fecha), vuelve a esa categoria.
-      // Si no está seleccionada la categoría, vuelve al home
-
-      if (this.actualCategory) {
-        var sel = this.actualCategory;
-        this.selectCategory(sel);
-        this.filter = '';
-        this.actualCategory = '';
+      if (this.history.length > 1) {
+        this.history.pop();
+        var ultimoindice = this.history.length - 1;
+        var section = this.history[ultimoindice];
+        this.showSection(section);
       } else {
+        this.history.pop();
         this.showSection("home");
       }
-
-
     },
     globalFilter: function(value) {
       if (typeof(value) === 'undefined') {
@@ -231,11 +221,9 @@ let nysl = new Vue({
             }
           }
         );
-        this.title = "All matches for:";
-        // this.title = this.subtitles[this.actualCategory];
         this.filter = value;
       }
-      this.showDiv = "filtered"
+      this.showSection("filtered");
     },
 
   },

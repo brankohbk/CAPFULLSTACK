@@ -31,7 +31,7 @@
       <h5 v-if='title !=""' id='subtitle' class="d-flex mb-3 flex-wrap justify-content-center">
         <div class="col-12 text-left">{{title}}
         </div>
-        <div class="filter col-12 text-right"> {{filter}}</div>
+        <div v-if='showDiv === "filtered"' class="filter col-12 text-right"> {{filter}}</div>
         <!-- END OF #subtitle -->
       </h5>
       <div id="content">
@@ -60,7 +60,7 @@
           </div>
           <!-- END OF #home -->
         </div>
-        <div v-if='showDiv === "category"' id="category" class="infoContainer" :class='infoContainerClasslist'>
+        <div v-if='showDiv === "categoryOptions"' id="categoryOptions" class="infoContainer" :class='infoContainerClasslist'>
           <ul class="list-group list-group-flush col-12 d-flex">
             <li v-for='item in categoryData' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">
               <div class="d-flex-row">
@@ -75,7 +75,7 @@
               </div>
             </li>
           </ul>
-          <!-- END OF #category -->
+          <!-- END OF #categoryOptions -->
         </div>
         <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer flex-wrap" v-bind:class='infoContainerClasslist'>
           <div v-if='filteredMatches.length === 0' class="card flex-fill col-12 mx-1 my-2 p-0">
