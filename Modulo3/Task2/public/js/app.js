@@ -128,7 +128,6 @@ let nysl = new Vue({
         "time": "1:00 p.m."
       },
     ],
-
     locations: {
       "AJ Katzenmaier": {
         "map": "https://www.google.com/maps?ll=41.900292,-87.62905&z=14&t=m&hl=en-US&gl=AR&mapclient=embed&q=24+W+Walton+St+Chicago,+IL+60610+USA",
@@ -155,7 +154,6 @@ let nysl = new Vue({
         "address": "2101 N. Fremont St., Chicago, IL 60614"
       },
     },
-
     titles: {
       "home": "",
       "filtered": "All matches for:",
@@ -175,46 +173,51 @@ let nysl = new Vue({
     history: [],
   },
   methods: {
-
+    selectCategory: function(selection) {
+      // carga el array "categoryData" con la propiedad computada teams||dates||stadiums .
+      this.categoryData = this[selection];
+      // Carga la seleccion realizada en actualCategory para ser utilizada, cuando se ingrese en teams||dates||stadiums.
+      this.actualCategory = selection;
+      // Muestra la seccion donde se verán todos los elementos de teams||dates||stadiums.
+      this.showSection("categoryOptions");
+    },
     showSection: function(section) {
       this.showDiv = section;
-      let titleSelector;
-      // si la seccion seleccionada es "categoryOptions", muestra
+      // si la seccion seleccionada es "categoryOptions", muestra el titulo correspondiente a la categoria seleccionada.
       section === "categoryOptions" ?
         this.title = this.titles[section][this.actualCategory] :
         this.title = this.titles[section];
-
+      // si la ultima seccion visitada no es la misma a la que se está accediendo, agrega la seccion al historial.
       if (this.history[this.history.length - 1] != section) {
         this.history.push(section);
       }
-      console.log(section, titleSelector, this.titles[titleSelector], this.title);
-    },
-
-    selectCategory: function(selection) {
-      this.categoryData = this[selection];
-      this.actualCategory = selection;
-      this.showSection("categoryOptions");
     },
     goBack: function() {
+      // si el historial tiene más de 1 seccion visitada, elimina la actual y va a la anterior.
       if (this.history.length > 1) {
         this.history.pop();
         var ultimoindice = this.history.length - 1;
         var section = this.history[ultimoindice];
         this.showSection(section);
       } else {
+        // si el historial tiene 1 elemento o menos, por defecto carga "home".
         this.history.pop();
         this.showSection("home");
       }
     },
     globalFilter: function(value) {
+      // si no se le pasa ningun parametro, muestra todos los partidos.
       if (typeof(value) === 'undefined') {
         this.filteredMatches = this.matches;
         this.title = "ALL matches";
         this.filter = '';
       } else {
         this.filteredMatches = this.matches.filter(
+          // por cada partido ->
           match => {
+            // por cada key en el partido ->
             for (const key in match) {
+              // evalúa si el valor de la key es igual al filtro pasado por parametro.
               if (match[key] === value) {
                 return true;
               }
@@ -225,25 +228,27 @@ let nysl = new Vue({
       }
       this.showSection("filtered");
     },
-
   },
   computed: {
+    // Los equipos son extraídos de todos los partidos y pasados a un array con valores únicos.
     teams: function() {
       let aux = this.matches.map(match => match.teamA || match.teamB);
       let teams = [...new Set(aux)].sort();
       return teams;
     },
+    // Los nombres de los estadios son extraídos de todos los partidos y pasados a un array con valores únicos.
     stadiums: function() {
       let aux = this.matches.map(match => match.location);
       let stadiums = [...new Set(aux)].sort();
       return stadiums;
     },
+    // Las fechas donde en que se juegan los partidos son extraídas de todos los partidos y pasados a un array con valores únicos.
     dates: function() {
       let aux = this.matches.map(match => match.date);
       let dates = [...new Set(aux)].sort();
       return dates;
     },
-
+    // Averigua la fecha actual.
     today: function() {
       var day = new Date();
       var dd = String(day.getDate()).padStart(2, '0');
@@ -251,15 +256,10 @@ let nysl = new Vue({
       var yyyy = day.getFullYear();
       day = yyyy + '-' + mm + '-' + dd;
       return day;
-
-
     },
+    // Filtra todos los partidos de la fecha actual.
     todayMatches: function() {
-
       return this.matches.filter(match => match.date === this.today);
-
     }
-
   }
-
 });

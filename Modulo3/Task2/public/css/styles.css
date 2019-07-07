@@ -85,7 +85,8 @@ footer>* {
 
 footer>*:active,
 .clickable:active,
-.sectionCard:active {
+.sectionCard:active,
+#gmapsIcon img:active {
   box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
 }
 
@@ -121,6 +122,10 @@ footer>*:active,
   box-shadow: 12px 12px 50px 1px var(--petroleo);
   background-color: transparent;
   border-radius: 2em;
+}
+
+.contact__body {
+  font-size: 0.75em;
 }
 
 .card {
