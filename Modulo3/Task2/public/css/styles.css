@@ -124,8 +124,12 @@ footer>*:active,
   border-radius: 2em;
 }
 
-.contact__body {
-  font-size: 0.75em;
+.card-body {
+  font-size: 0.75rem;
+}
+
+.card-body a {
+  text-decoration: underline dashed;
 }
 
 .card {
