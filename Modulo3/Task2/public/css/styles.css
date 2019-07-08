@@ -34,7 +34,7 @@ footer {
 }
 
 header {
-  position: fixed;
+  position: relative;
   top: 0;
   height: 15vh;
   background-color: var(--celeste);
@@ -60,11 +60,16 @@ header>* {
 main {
   position: relative;
   padding-top: 15vh;
-  overflow: auto;
+  overflow: hidden;
   width: 100%;
   padding-bottom: 11vh;
   min-height: 100vh;
   background-image: linear-gradient(to top right, #185A9D, #43CEA2)
+}
+
+#content {
+  border: 1px solid;
+  overflow: scroll;
 }
 
 footer {
@@ -90,8 +95,12 @@ footer>*:active,
   box-shadow: inset var(--petroleo) 1px 1px 12px 0px;
 }
 
-[v-cloak] {
+[v-cloak] * {
   display: none;
+}
+
+[v-cloak]::before {
+  content: "loading...";
 }
 
 .clickable {
@@ -102,7 +111,7 @@ footer>*:active,
   border-bottom: 3px solid var(--clickable);
   border-left: 1px solid var(--clickable);
   border-bottom-right-radius: 18px;
-  box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.356);
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.356);
 }
 
 .versus {
@@ -136,6 +145,7 @@ footer>*:active,
   background-color: rgba(183, 0, 255, 0.048);
   border-radius: 0px;
   margin: 10px 0px;
+  /* width: 40%; */
 }
 
 .card * {
@@ -155,6 +165,35 @@ footer>*:active,
 
 .list-group>* {
   background-color: rgba(183, 0, 255, 0.048);
+}
+
+#landscapeMap {
+  /* position: fixed; */
+  top: 1vh;
+  right: 0;
+  border: #185A9D 1px solid;
+  height: 73vh;
+}
+
+
+/* ORIENTACION */
+
+@media (orientation:landscape) {
+  .hide-on-landscape {
+    display: none;
+  }
+  .show-on-landscape {
+    display: block;
+  }
+}
+
+@media (orientation:portrait) {
+  .hide-on-portrait {
+    display: none;
+  }
+  .show-on-portrait {
+    display: block;
+  }
 }
 
 

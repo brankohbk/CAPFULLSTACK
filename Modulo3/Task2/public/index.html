@@ -27,14 +27,14 @@
         </h4>
       </div>
     </header>
-    <main class="d-flex-column justify-content-center">
-      <h5 v-if='title !=""' id='subtitle' class="d-flex mb-3 flex-wrap justify-content-center">
-        <div class="col-12 text-left">{{title}}
-        </div>
-        <div v-if='showDiv === "filtered"' class="filter col-12 text-right"> {{filter}}</div>
-        <!-- END OF #subtitle -->
-      </h5>
-      <div id="content">
+    <main v-cloak class="d-flex col-12 justify-content-between">
+      <div id="content" class="d-flex-column flex-fill">
+        <h5 v-if='title !=""' id='subtitle' class="d-flex mb-3 flex-wrap justify-content-center">
+          <div class="col-12 text-left">{{title}}
+          </div>
+          <div v-if='showDiv === "filtered"' class="filter col-12 text-right"> {{filter}}</div>
+          <!-- END OF #subtitle -->
+        </h5>
 
         <div v-if='showDiv === "home"' id="home" class="infoContainer" v-bind:class='infoContainerClasslist'>
           <div class="card-deck">
@@ -75,7 +75,7 @@
           </div>
           <!-- END OF #home -->
         </div>
-        <div v-if='showDiv === "categoryOptions"' id="categoryOptions" class="infoContainer" :class='infoContainerClasslist'>
+        <div v-if='showDiv === "categoryOptions"' id="categoryOptions" class="infoContainer col-12" :class='infoContainerClasslist'>
           <ul class="list-group list-group-flush col-12 d-flex">
             <li v-for='item in categoryData' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">
               <div class="d-flex-row">
@@ -92,7 +92,7 @@
           </ul>
           <!-- END OF #categoryOptions -->
         </div>
-        <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer flex-wrap" v-bind:class='infoContainerClasslist'>
+        <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer col-xs-6 flex-wrap" v-bind:class='infoContainerClasslist'>
           <div v-if='filteredMatches.length === 0' class="card flex-fill col-12 mx-1 my-2 p-0">
             <div class="card-header text-center">
               OOPS... &#x1F937;
@@ -122,11 +122,11 @@
                   {{match.date}} <br> {{match.time}}
                 </p>
                 <p class="clickable" @click="globalFilter(match.location)">
-                  {{match.location}}
+                  {{match.location}} <br> <small><em>{{locations[match.location].address}}</em></small>
                 </p>
               </div>
               <a target="_blank" :href='locations[match.location].map'>
-                <div id="gmapsIcon" class="col-4">
+                <div id="gmapsIcon" class="col-4 hide-on-landscape">
                   <img src="img/gMapsicon.png" alt="">
                 </div>
               </a>
@@ -138,11 +138,15 @@
         </div>
         <!-- END OF #content -->
       </div>
+      <div v-cloak v-if='showDiv === "filtered" && filteredMatches.length > 0' id="landscapeMap" class="col-6 hide-on-portrait show-on-landscape">
+        asadasdasdasdasdsad
+        <!-- END OF #landscapeMap -->
+      </div>
     </main>
     <footer class="footer d-flex container-fluid justify-content-around ">
       <div @click='showSection("home")'> &#x1F3E0; Home</div>
       <!-- <div @click='globalFilter()'> &#x26BD; ALL matches</div> -->
-      <div @click='globalFilter(today)'><span v-if='todayMatches.length === 0'>&#x1F4C5;</span><span v-else class="badge badge-danger pulse">{{todayMatches.length}}</span> Today</div>
+      <div v-cloak @click='globalFilter(today)'><span v-if='todayMatches.length === 0'>&#x1F4C5;</span><span v-else class="badge badge-danger pulse">{{todayMatches.length}}</span> Today</div>
       <div @click='goBack()'>
         <h3>
           &#x1F519;
