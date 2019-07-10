@@ -68,8 +68,8 @@ main {
 }
 
 #content {
-  border: 1px solid;
-  overflow: scroll;
+  overflow: auto;
+  height: 73vh;
 }
 
 footer {
@@ -168,10 +168,7 @@ footer>*:active,
 }
 
 #landscapeMap {
-  /* position: fixed; */
-  top: 1vh;
   right: 0;
-  border: #185A9D 1px solid;
   height: 73vh;
 }
 
