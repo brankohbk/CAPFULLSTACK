@@ -125,11 +125,14 @@
                   {{match.location}} <br> <small><em>{{locations[match.location].address}}</em></small>
                 </p>
               </div>
-              <a target="_blank" :href='locations[match.location].map'>
-                <div id="gmapsIcon" class="col-4 hide-on-landscape">
+              <a target="_blank" :href='locations[match.location].map' class="hide-on-landscape">
+                <div id="gmapsIcon" class="col-4">
                   <img src="img/gMapsicon.png" alt="">
                 </div>
               </a>
+              <div @click='selectStadium(match.location)' class="hide-on-portrait">
+                &GreaterGreater;
+              </div>
             </div>
             <!-- END OF CARD -->
           </div>
@@ -139,7 +142,7 @@
         <!-- END OF #content -->
       </div>
       <div v-cloak v-if='showDiv === "filtered" && filteredMatches.length > 0' id="landscapeMap" class="col-6 hide-on-portrait show-on-landscape">
-        asadasdasdasdasdsad
+        <iframe v-if="selectedStadium != ''" :src="locations[selectedStadium].embeded" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
         <!-- END OF #landscapeMap -->
       </div>
     </main>
