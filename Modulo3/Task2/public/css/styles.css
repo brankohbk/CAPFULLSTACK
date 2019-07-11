@@ -126,8 +126,8 @@ footer>*:active,
 /* ESTILOS DE CARD */
 
 #gmapsIcon img {
-  max-width: 90px;
-  max-height: 90px;
+  max-width: 5rem;
+  max-height: 5rem;
   box-shadow: 12px 12px 50px 1px var(--petroleo);
   background-color: transparent;
   border-radius: 2em;
@@ -145,7 +145,6 @@ footer>*:active,
   background-color: rgba(183, 0, 255, 0.048);
   border-radius: 0px;
   margin: 10px 0px;
-  /* width: 40%; */
 }
 
 .card * {
@@ -170,6 +169,7 @@ footer>*:active,
 #landscapeMap {
   right: 0;
   height: 73vh;
+  border-left: #185A9D 1px solid;
 }
 
 

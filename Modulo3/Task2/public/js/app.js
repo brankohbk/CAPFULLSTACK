@@ -206,6 +206,7 @@ let nysl = new Vue({
     goBack: function() {
       // si el historial tiene más de 1 seccion visitada, elimina la actual y va a la anterior.
       if (this.history.length > 1) {
+        this.selectedStadium = "";
         this.history.pop();
         var ultimoindice = this.history.length - 1;
         var section = this.history[ultimoindice];

@@ -4,9 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" sizes="196x196" href="img/icon.png" type="image/x-icon">
+  <!-- <link rel="shortcut icon" sizes="196x196" href="img/icon.png" type="image/x-icon"> -->
   <title>NYSL - Schedule LIVE! &#x26BD; </title>
   <!-- WEBAPP CONFIG -->
+  <link rel="manifest" href="manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <!-- CUSTOM FONTS -->
@@ -116,7 +117,7 @@
               </span>
               </h6>
             </div>
-            <div class="card-body d-inline-flex">
+            <div @click='selectStadium(match.location)' class="card-body d-inline-flex">
               <div class="col-8">
                 <p class="clickable" @click="globalFilter(match.date)">
                   {{match.date}} <br> {{match.time}}
@@ -130,8 +131,10 @@
                   <img src="img/gMapsicon.png" alt="">
                 </div>
               </a>
-              <div @click='selectStadium(match.location)' class="hide-on-portrait">
-                &GreaterGreater;
+              <div class="hide-on-portrait">
+                <h1>
+                  &GreaterGreater;
+                </h1>
               </div>
             </div>
             <!-- END OF CARD -->
@@ -141,8 +144,13 @@
         </div>
         <!-- END OF #content -->
       </div>
-      <div v-cloak v-if='showDiv === "filtered" && filteredMatches.length > 0' id="landscapeMap" class="col-6 hide-on-portrait show-on-landscape">
-        <iframe v-if="selectedStadium != ''" :src="locations[selectedStadium].embeded" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+      <div v-cloak v-if='showDiv === "filtered" && filteredMatches.length > 0 && selectedStadium != ""' id="landscapeMap" class="col-6 hide-on-portrait show-on-landscape">
+        <div v-if="selectedStadium != ''">
+          <p> {{selectedStadium}} -</p>
+          <p> <small> {{locations[selectedStadium].address}} </small>
+          </p>
+          <iframe :src="locations[selectedStadium].embeded" width="400" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
         <!-- END OF #landscapeMap -->
       </div>
     </main>
@@ -162,6 +170,18 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/vue.min.js"></script>
   <script src="js/app.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      console.log("Will the service worker register?");
+      navigator.serviceWorker.register('service-worker.js')
+        .then(function(reg) {
+          console.log("Yes, it did.");
+        }).catch(function(err) {
+          console.log("No it didn't. This happened:", err)
+        });
+    }
+  </script>
 </body>
 
 </html>

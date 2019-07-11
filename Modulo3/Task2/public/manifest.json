@@ -1,0 +1,13 @@
+{
+  "short_name": "NYSL Schedule",
+  "name": "NYSL Schedule LIVE!",
+  "theme_color": "#4A90E2",
+  "background_color": "#F7F8F9",
+  "display": "standalone",
+  "icons": [{
+    "src": "img/icon.png",
+    "type": "image/png",
+    "sizes": "196x196"
+  }],
+  "start_url": "index.html"
+}
