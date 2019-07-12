@@ -1,4 +1,4 @@
-importScripts('cache-polyfill.js');
+importScripts('js/cache-polyfill.js');
 
 // Este service worker cachea todos los recursos para no generar trafico en la red y convierte a la PWA en instalable
 self.addEventListener('install', function(e) {
