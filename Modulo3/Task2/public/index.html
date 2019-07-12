@@ -1,187 +1,196 @@
 <!DOCTYPE html>
-<html>
+<html lang="EN">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="shortcut icon" sizes="196x196" href="img/icon.png" type="image/x-icon"> -->
-    <title>NYSL - Schedule LIVE! &#x26BD; </title>
-    <!-- WEBAPP CONFIG -->
-    <link rel="manifest" href="manifest.json">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <!-- CUSTOM FONTS -->
-    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Graduate:200,300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
-    <!-- BOOTSTRAP & CUSTOM CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="utf-8">
+  <meta name="theme-color" content="#1c5364" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" sizes="196x196" href="img/icon.png" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="196x196" href="img/icon.png" type="image/x-icon">
+  <title>NYSL - Schedule LIVE! &#x26BD; </title>
+  <!-- WEBAPP CONFIG -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- CUSTOM FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One|Graduate:200,300,300i,400,400i,700,700i&display=swap" rel="stylesheet">
+  <!-- BOOTSTRAP & CUSTOM CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <!-- APP START -->
-    <div id="app">
-        <header class=" fixed-top d-flex container-fluid flex-nowrap justify-content-between align-items-center">
-            <img src="img/logo.png" id="logo" alt="">
-            <div id="title" class="justify-text-left">
-                <h4>
-                    NYSL - Schedule LIVE!
-                </h4>
+  <!-- APP START -->
+  <div id="app">
+    <header class=" fixed-top d-flex container-fluid flex-nowrap justify-content-between align-items-center">
+      <img src="img/logo.png" id="logo" alt="">
+      <div id="title" class="justify-text-left">
+        <h4>
+          NYSL - Schedule LIVE!
+        </h4>
+      </div>
+    </header>
+    <main v-cloak class="d-flex col-12 justify-content-between">
+      <div id="content" class="d-flex-column flex-fill">
+        <h5 v-if='title !=""' id='subtitle' class="d-flex mb-3 flex-wrap justify-content-center">
+          <div class="col-12 text-left">{{title}}
+          </div>
+          <div v-if='showDiv === "filtered"' class="filter col-12 text-right"> {{filter}}</div>
+          <!-- END OF #subtitle -->
+        </h5>
+
+        <div v-if='showDiv === "home"' id="home" class="infoContainer" v-bind:class='infoContainerClasslist'>
+          <div class="card-deck">
+            <div class="card sectionCard" @click='selectCategory("teams")'>
+              <div class="card-body">
+                <h5 class="card-title">TEAMS &#x1F455; </h5>
+                <p class="card-text">Select a team and see all matches where they play.</p>
+              </div>
             </div>
-        </header>
-        <main v-cloak class="d-flex col-12 justify-content-between">
-            <div id="content" class="d-flex-column flex-fill">
-                <h5 v-if='title !=""' id='subtitle' class="d-flex mb-3 flex-wrap justify-content-center">
-                    <div class="col-12 text-left">{{title}}
-                    </div>
-                    <div v-if='showDiv === "filtered"' class="filter col-12 text-right"> {{filter}}</div>
-                    <!-- END OF #subtitle -->
+            <div class="card sectionCard" @click='selectCategory("dates")'>
+              <div class="card-body">
+                <h5 class="card-title">DATES &#x1F4C5; </h5>
+                <p class="card-text">Choose one date and see all matches played on that day.</p>
+                <small>* All games take place on saturday</small>
+              </div>
+            </div>
+            <div class="card sectionCard" @click='selectCategory("stadiums")'>
+              <div class="card-body">
+                <h5 class="card-title">LOCATIONS &#x1F3DF; </h5>
+                <p class="card-text">Select a stadium and see all matches played on it.</p>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title">
+                  CONTACT
                 </h5>
+              </div>
+              <div class="card-body contact__body">
+                <p>Please direct all questions to:</p>
+                <p>Michael Randall, League Coordinator</p>
+                <p>&#x1F4DE; : <a href="tel:+1-630-690-8132">+1 (630) 690-8132</a></p>
+                <p>&#x2709; : <a href="mailto:michael.randall@chisoccer.org">michael.randall@chisoccer.org</a></p>
+              </div>
+            </div>
 
-                <div v-if='showDiv === "home"' id="home" class="infoContainer" v-bind:class='infoContainerClasslist'>
-                    <div class="card-deck">
-                        <div class="card sectionCard" @click='selectCategory("teams")'>
-                            <div class="card-body">
-                                <h5 class="card-title">TEAMS &#x1F455; </h5>
-                                <p class="card-text">Select a team and see all matches where they play.</p>
-                            </div>
-                        </div>
-                        <div class="card sectionCard" @click='selectCategory("dates")'>
-                            <div class="card-body">
-                                <h5 class="card-title">DATES &#x1F4C5; </h5>
-                                <p class="card-text">Choose one date and see all matches played on that day.</p>
-                                <small>* All games take place on saturday</small>
-                            </div>
-                        </div>
-                        <div class="card sectionCard" @click='selectCategory("stadiums")'>
-                            <div class="card-body">
-                                <h5 class="card-title">LOCATIONS &#x1F3DF; </h5>
-                                <p class="card-text">Select a stadium and see all matches played on it.</p>
-                            </div>
-                        </div>
+          </div>
+          <!-- END OF #home -->
+        </div>
+        <div v-if='showDiv === "categoryOptions"' id="categoryOptions" class="infoContainer col-12" :class='infoContainerClasslist'>
+          <ul class="list-group list-group-flush col-12 d-flex">
+            <li v-for='item in categoryData' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">
+              <div class="d-flex-row">
+                <p>{{item}}</p>
+                <p v-if='locations[item]'>
+                  <small>{{locations[item].address}}</small>
+                </p>
+              </div>
+              <div>
+                &GreaterGreater;
 
-                        <div class="card ">
-                            <div class="card-header">
-                                <h5 class="card-title">
-                                    CONTACT
-                                </h5>
-                            </div>
-                            <div class="card-body contact__body">
-                                <p>Please direct all questions to:</p>
-                                <p>Michael Randall, League Coordinator</p>
-                                <p>&#x1F4DE; : <a href="tel:+1-630-690-8132">+1 (630) 690-8132</a></p>
-                                <p>&#x2709; : <a href="mailto:michael.randall@chisoccer.org">michael.randall@chisoccer.org</a></p>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- END OF #home -->
-                </div>
-                <div v-if='showDiv === "categoryOptions"' id="categoryOptions" class="infoContainer col-12" :class='infoContainerClasslist'>
-                    <ul class="list-group list-group-flush col-12 d-flex">
-                        <li v-for='item in categoryData' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">
-                            <div class="d-flex-row">
-                                <p>{{item}}</p>
-                                <p v-if='locations[item]'>
-                                    <small>{{locations[item].address}}</small>
-                                </p>
-                            </div>
-                            <div>
-                                &GreaterGreater;
-
-                            </div>
-                        </li>
-                    </ul>
-                    <!-- END OF #categoryOptions -->
-                </div>
-                <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer col-xs-6 flex-wrap" v-bind:class='infoContainerClasslist'>
-                    <div v-if='filteredMatches.length === 0' class="card flex-fill col-12 mx-1 my-2 p-0">
-                        <div class="card-header text-center">
-                            OOPS... &#x1F937;
-                        </div>
-                        <div class="card-body">
-                            <div class="card-text">
-                                <p>We couldn't find anything for the search criteria <span class="backgroundSlide">{{filter}}</span> ...</p>
-                                </p>
-                                <small>Please, go back and select another option.</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div v-else v-for='match in filteredMatches' class="card flex-fill col-12 mx-1 my-2 p-0">
-                        <div class="card-header text-center">
-                            <h6>
-                                <span class="clickable" @click='globalFilter(match.teamA)'>
+              </div>
+            </li>
+          </ul>
+          <!-- END OF #categoryOptions -->
+        </div>
+        <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer col-xs-6 flex-wrap" v-bind:class='infoContainerClasslist'>
+          <div v-if='filteredMatches.length === 0' class="card flex-fill col-12 mx-1 my-2 p-0">
+            <div class="card-header text-center">
+              OOPS... &#x1F937;
+            </div>
+            <div class="card-body">
+              <div class="card-text">
+                <p>We couldn't find anything for the search criteria <span class="backgroundSlide">{{filter}}</span> ...</p>
+                </p>
+                <small>Please, go back and select another option.</small>
+              </div>
+            </div>
+          </div>
+          <div v-else v-for='match in filteredMatches' class="card flex-fill col-12 mx-1 my-2 p-0">
+            <div class="card-header text-center">
+              <h6>
+                <span class="clickable" @click='globalFilter(match.teamA)'>
                 {{match.teamA}} 
               </span> <span class="versus">VS.</span>
-                                <span class="clickable" @click='globalFilter(match.teamB)'>
+                <span class="clickable" @click='globalFilter(match.teamB)'>
                 {{match.teamB}}
               </span>
-                            </h6>
-                        </div>
-                        <div @click='selectStadium(match.location)' class="card-body d-inline-flex">
-                            <div class="col-8">
-                                <p class="clickable" @click="globalFilter(match.date)">
-                                    {{match.date}} <br> {{match.time}}
-                                </p>
-                                <p class="clickable" @click="globalFilter(match.location)">
-                                    {{match.location}} <br> <small><em>{{locations[match.location].address}}</em></small>
-                                </p>
-                            </div>
-                            <a target="_blank" :href='locations[match.location].map' class="hide-on-landscape">
-                                <div id="gmapsIcon" class="col-4">
-                                    <img src="img/gMapsicon.png" alt="">
-                                </div>
-                            </a>
-                            <div class="hide-on-portrait">
-                                <h1>
-                                    &GreaterGreater;
-                                </h1>
-                            </div>
-                        </div>
-                        <!-- END OF CARD -->
-                    </div>
-
-                    <!-- END OF #filtered -->
+              </h6>
+            </div>
+            <div @click='selectStadium(match.location)' class="card-body d-inline-flex">
+              <div class="col-8">
+                <p class="clickable" @click="globalFilter(match.date)">
+                  {{match.date}} <br> {{match.time}}
+                </p>
+                <p class="clickable" @click="globalFilter(match.location)">
+                  {{match.location}} <br> <small><em>{{locations[match.location].address}}</em></small>
+                </p>
+              </div>
+              <a target="_blank" :href='locations[match.location].map' class="hide-on-landscape">
+                <div id="gmapsIcon" class="col-4">
+                  <img src="img/gMapsicon.png" alt="">
                 </div>
-                <!-- END OF #content -->
+              </a>
+              <div class="hide-on-portrait">
+                <h1>
+                  &GreaterGreater;
+                </h1>
+              </div>
             </div>
-            <div v-cloak v-if='showDiv === "filtered" && filteredMatches.length > 0 && selectedStadium != ""' id="landscapeMap" class="col-6 hide-on-portrait show-on-landscape">
-                <div v-if="selectedStadium != ''">
-                    <p> {{selectedStadium}} -</p>
-                    <p> <small> {{locations[selectedStadium].address}} </small>
-                    </p>
-                    <iframe :src="locations[selectedStadium].embeded" width="100%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
-                </div>
-                <!-- END OF #landscapeMap -->
-            </div>
-        </main>
-        <footer class="footer d-flex container-fluid justify-content-around ">
-            <div @click='showSection("home")'> &#x1F3E0; Home</div>
-            <!-- <div @click='globalFilter()'> &#x26BD; ALL matches</div> -->
-            <div v-cloak @click='globalFilter(today)'><span v-if='todayMatches.length === 0'>&#x1F4C5;</span><span v-else class="badge badge-danger pulse">{{todayMatches.length}}</span> Today</div>
-            <div @click='goBack()'>
-                <h3>
-                    &#x1F519;
-                </h3>
-            </div>
-        </footer>
-        <!-- END OF APP -->
-    </div>
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/vue.min.js"></script>
-    <script src="js/app.js"></script>
+            <!-- END OF CARD -->
+          </div>
 
-    <script>
-        if ('serviceWorker' in navigator) {
-            console.log("Will the service worker register?");
-            navigator.serviceWorker.register('service-worker.js')
-                .then(function(reg) {
-                    console.log("Yes, it did.");
-                }).catch(function(err) {
-                    console.log("No it didn't. This happened:", err)
-                });
-        }
-    </script>
+          <!-- END OF #filtered -->
+        </div>
+        <!-- END OF #content -->
+      </div>
+      <div v-cloak v-if='showDiv === "filtered" && filteredMatches.length > 0 && selectedStadium != ""' id="landscapeMap" class="col-6 hide-on-portrait show-on-landscape">
+        <div v-if="selectedStadium != ''">
+          <p> {{selectedStadium}} -</p>
+          <p> <small> {{locations[selectedStadium].address}} </small>
+          </p>
+          <iframe :src="locations[selectedStadium].embeded" width="100%" height="50%" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <!-- END OF #landscapeMap -->
+      </div>
+    </main>
+    <footer class="footer d-flex container-fluid justify-content-around ">
+      <div @click='showSection("home")'> &#x1F3E0; Home</div>
+      <!-- <div @click='globalFilter()'> &#x26BD; ALL matches</div> -->
+      <div v-cloak @click='globalFilter(today)'><span v-if='todayMatches.length === 0'>&#x1F4C5;</span><span v-else class="badge badge-danger pulse">{{todayMatches.length}}</span> Today</div>
+      <div @click='goBack()'>
+        <h3>
+          &#x1F519;
+        </h3>
+      </div>
+    </footer>
+    <!-- END OF APP -->
+  </div>
+  <script src="js/jquery-3.3.1.slim.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/vue.min.js"></script>
+  <script src="js/app.js"></script>
+
+  <script>
+    // if ('serviceWorker' in navigator) {
+    //   console.log("Will the service worker register?");
+    //   navigator.serviceWorker.register('sw.js')
+    //     .then(function(reg) {
+    //       console.log("Yes, it did.");
+    //     }).catch(function(err) {
+    //       console.log("No it didn't. This happened:", err)
+    //     });
+    // }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('sw.js')
+        .then(function() {
+          console.log("Service Worker Registered");
+        });
+    }
+  </script>
 </body>
 
 </html>
