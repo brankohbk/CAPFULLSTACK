@@ -180,7 +180,6 @@ let nysl = new Vue({
     categoryData: '',
     selectedStadium: "",
     showDiv: 'home',
-    infoContainerClasslist: 'col-12 justify-content-center',
     history: [],
   },
   methods: {
@@ -242,6 +241,10 @@ let nysl = new Vue({
     },
     selectStadium: function(selection) {
       this.selectedStadium = selection;
+    },
+    formatDate: function(date) {
+      var formated = moment(date).format("DD MMMM YY");
+      return formated;
     }
   },
   computed: {

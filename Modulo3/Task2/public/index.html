@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="theme-color" content="#1c5364" />
+  <meta name="theme-color" content="#498294" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" sizes="196x196" href="img/icon.png" type="image/x-icon">
   <link rel="apple-touch-icon" sizes="196x196" href="img/icon.png" type="image/x-icon">
@@ -39,7 +39,7 @@
           <!-- END OF #subtitle -->
         </h5>
 
-        <div v-if='showDiv === "home"' id="home" class="infoContainer" v-bind:class='infoContainerClasslist'>
+        <div v-if='showDiv === "home"' id="home" class="infoContainer col-12 justify-content-center">
           <div class="card-deck">
             <div class="card sectionCard" @click='selectCategory("teams")'>
               <div class="card-body">
@@ -61,7 +61,7 @@
               </div>
             </div>
 
-            <div class="card">
+            <!-- <div class="card">
               <div class="card-header">
                 <h5 class="card-title">
                   CONTACT
@@ -73,16 +73,17 @@
                 <p>&#x1F4DE; : <a href="tel:+1-630-690-8132">+1 (630) 690-8132</a></p>
                 <p>&#x2709; : <a href="mailto:michael.randall@chisoccer.org">michael.randall@chisoccer.org</a></p>
               </div>
-            </div>
+            </div> -->
 
           </div>
           <!-- END OF #home -->
         </div>
-        <div v-if='showDiv === "categoryOptions"' id="categoryOptions" class="infoContainer col-12" :class='infoContainerClasslist'>
+        <div v-if='showDiv === "categoryOptions"' id="categoryOptions" class="infoContainer col-12 justify-content-center">
           <ul class="list-group list-group-flush col-12 d-flex">
             <li v-for='item in categoryData' @click='globalFilter(item)' class="list-group-item d-flex flex-fill align-items-center justify-content-between">
               <div class="d-flex-row">
-                <p>{{item}}</p>
+                <p v-if='actualCategory=="dates"'>{{formatDate(item)}}</p>
+                <p v-else>{{item}}</p>
                 <p v-if='locations[item]'>
                   <small>{{locations[item].address}}</small>
                 </p>
@@ -95,7 +96,7 @@
           </ul>
           <!-- END OF #categoryOptions -->
         </div>
-        <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer col-xs-6 flex-wrap" v-bind:class='infoContainerClasslist'>
+        <div v-if='showDiv === "filtered"' id="filtered" class="infoContainer col-xs-6 flex-wrap col-12 justify-content-center">
           <div v-if='filteredMatches.length === 0' class="card flex-fill col-12 mx-1 my-2 p-0">
             <div class="card-header text-center">
               OOPS... &#x1F937;
@@ -122,7 +123,7 @@
             <div @click='selectStadium(match.location)' class="card-body d-inline-flex">
               <div class="col-8">
                 <p class="clickable" @click="globalFilter(match.date)">
-                  {{match.date}} <br> {{match.time}}
+                  {{formatDate(match.date)}} <br> {{match.time}}
                 </p>
                 <p class="clickable" @click="globalFilter(match.location)">
                   {{match.location}} <br> <small><em>{{locations[match.location].address}}</em></small>
@@ -171,6 +172,7 @@
   <script src="js/jquery-3.3.1.slim.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/vue.min.js"></script>
+  <script src="js/moment.min.js"></script>
   <script src="js/app.js"></script>
 
   <script>
