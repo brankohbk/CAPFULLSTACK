@@ -108,6 +108,7 @@ a:hover {
 :root {
   --mindhub-width: 20vw;
   --mindhub-height: calc(var(--mindhub-width) / 3.53);
+  --github-side: 2em
 }
 
 small {
@@ -201,3 +202,33 @@ header h1 {
 .done:hover::after {
   content: "Task Finished";
 } */
+
+footer {
+  margin: 2em;
+  margin-bottom: 3em;
+  text-align: center;
+  align-items: center;
+}
+
+footer>* {
+  margin: 10px;
+}
+
+.container>* {
+  margin: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-inline {
+  display: inline-flex;
+}
+
+#githubLogo {
+  width: var(--github-side);
+  height: var(--github-side);
+  background-image: url("GitHub-Mark.png");
+  background-size: cover;
+}
